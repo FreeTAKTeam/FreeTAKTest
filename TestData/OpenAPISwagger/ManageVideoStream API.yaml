@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: ManageVideoStream API
+  version: 1.0.0
+  description: Manages creation of videos endpoints in the clients. The videos are visible under 'Video Player'
+
+paths:
+  /ManageVideoStream/postVideoStream:
+    post:
+      summary: Add a new video stream
+      operationId: postVideoStream
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                streamAddress:
+                  type: string
+                  description: the IP of the video server.
+                streamPort:
+                  type: string
+                  description: the port the video server respond to.
+                streamPath:
+                  type: string
+                  description: the unique path of the video stream*
+                alias:
+                  type: string
+                  description: a name for the stream.
+                streamProtocol:
+                  type: string
+                  description: the type of protocol used (e.g. rtsp, rtmp, raw).
+      responses:
+        200:
+          description: Video stream added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uid:
+                    type: string
+                    description: server-generated unique id
+  /ManageVideoStream/getVideoStream:
+    get:
+      summary: Retrieve a list of video stream paths
+      operationId: getVideoStream
+      responses:
+        200:
+          description: List of video stream paths retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  video_stream:
+                    type: array
+                    items:
+                      type: string
+                      description: unique path of the video stream

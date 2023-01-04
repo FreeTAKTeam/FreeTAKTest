@@ -1,0 +1,104 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: Manage System Users
+paths:
+  /systemUser:
+    get:
+      summary: Retrieve all system users and their associated information
+      tags:
+        - Manage System Users
+      responses:
+        '200':
+          description: System user information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  systemUsers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Name:
+                          type: string
+                        Group:
+                          type: string
+                        Token:
+                          type: string
+                        Password:
+                          type: string
+                        Certs:
+                          type: string
+                        Uid:
+                          type: string
+      x-subscription:
+        event: systemUser
+        filter: systemUserUpdate
+  /addSystemUser:
+    post:
+      summary: Add one or many system users to the server
+      tags:
+        - Manage System Users
+      responses:
+        '204':
+          description: No content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                systemUsers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                      Group:
+                        type: string
+                      Token:
+                        type: string
+                      Password:
+                        type: string
+                      Certs:
+                        type: boolean
+      x-subscription:
+        event: addSystemUser
+  /removeSystemUser:
+    post:
+      summary: Remove a system user from the server
+      description: Remove one or many system users from the server
+      operationId: removeSystemUser
+      tags:
+        - Manage System Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                systemUsers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      uid:
+                        type: string
+                        description: uid of system user to be deleted
+                      required:
+                        - uid
+                        
+      responses:
+        '200':
+          description: Successful removal of system users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Confirmation message of successful removal of system users

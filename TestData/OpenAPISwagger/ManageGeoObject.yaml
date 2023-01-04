@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: putGeoObject API
+  description: A GeoObject is an element placed on a map. It has a name, characteristics, and an attitude.
+  contact:
+    name: API Support
+    email: support@example.com
+    url: https://www.example.com/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: /ManageGeoObject/postGeoObject
+paths:
+  /putGeoObject:
+    put:
+      tags:
+        - ManageGeoObject
+      summary: Add a new GeoObject to the map.
+      operationId: putGeoObject
+      parameters:
+        - name: GeoObject
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The information that will determine which type of GeoObject will be placed on the map, including its icon.
+        - name: longitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+          description: The angular distance of the GeoObject from the meridian of Greenwich, UK, expressed in positive or negative float.
+        - name: latitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+          description: The angular distance of the GeoObject from the Earth's equator, expressed in positive or negative float.
+        - name: how
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The way in which this GeoObject information has been acquired.
+        - name: attitude
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The expected behavior of the GeoObject (e.g., friendly, hostile, unknown).
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+          description: A string to identify the GeoObject on a map.
+        - name: bearing
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+          description: The direction of the GeoObject, expressed in degrees (1-360).
+        - name: distance
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+          description: The distance in meters from the latitude/longitude or address.
+        - name: timeout
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+          description: The length of time, in seconds, until the point will stale out.
+        - name: uid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The existing ID for this element.
+        - name: address
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The address of the destination, if latitude/longitude is not provided.
+      responses:
+        '200':
+          description: Success. The GeoObject has been delivered

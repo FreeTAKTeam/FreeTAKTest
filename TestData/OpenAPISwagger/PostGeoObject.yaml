@@ -1,0 +1,44 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: ManageChat API
+  description: API for managing chat messages in a TAK-compatible application
+  termsOfService: ''
+  contact:
+    name: 'FreeTAKTeam@gmail.com'
+    email: 'FreeTAKTeam@gmail.com'
+    url: 'https://freetakteam.github.io/FreeTAKServer-User-Docs/API/'
+  license:
+    name: 'EPL'
+    url: 'https://freetakteam.github.io'
+host: '204.48.30.216:19023'
+basePath: /
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /ManageChat/postChatToAll:
+    post:
+      summary: Send a geo chat message to all users
+      operationId: sendGeoChatObject
+      parameters:
+        - name: message
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: The text of the GeoChat message
+              sender:
+                type: string
+                description: The name of the chat's sender, changing this will also change the chat room for the client
+      responses:
+        200:
+          description: Successfully sent the chat message
+        400:
+          description: Invalid request body

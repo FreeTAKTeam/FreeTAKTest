@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: ManageKML
+  description: Allows to post a set of geo information with attached metadata in tabular format
+servers:
+  - url: /ManageKML
+paths:
+  /postKML:
+    post:
+      summary: Posts a KML with geo information and metadata
+      operationId: postKML
+      parameters:
+        - name: name
+          in: query
+          description: The name of the report
+          required: true
+          schema:
+            type: string
+        - name: longitude
+          in: query
+          description: The angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float
+          required: true
+          schema:
+            type: number
+        - name: latitude
+          in: query
+          description: The angular distance of the geoobject from the earths equator expressed in positive or negative float
+          required: true
+          schema:
+            type: number
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: object
+                  additionalProperties:
+                    type: string
+      responses:
+        '200':
+          description: Successful
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

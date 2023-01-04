@@ -1,0 +1,71 @@
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "ManageEmergency API"
+basePath: "/ManageEmergency"
+schemes:
+  - "http"
+paths:
+  /postEmergency:
+    post:
+      summary: "Create a new emergency"
+      parameters:
+        - name: "name"
+          in: "formData"
+          required: true
+          type: "string"
+        - name: "emergencyType"
+          in: "formData"
+          required: true
+          type: "string"
+          enum:
+            - "911 Alert"
+            - "Ring The Bell"
+            - "Geo-fence Breached"
+            - "In Contact"
+        - name: "longitude"
+          in: "formData"
+          required: true
+          type: "number"
+        - name: "latitude"
+          in: "formData"
+          required: true
+          type: "number"
+        - name: "uid"
+          in: "formData"
+          required: true
+          type: "string"
+        - name: "address"
+          in: "formData"
+          type: "string"
+      responses:
+        200:
+          description: "Success"
+  /getEmergency:
+    get:
+      summary: "Get a list of current active emergencies"
+      parameters: []
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "object"
+            properties:
+              json_list:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    PrimaryKey:
+                      type: "integer"
+                    event_id:
+                      type: "string"
+  /deleteEmergency:
+    delete:
+      summary: "Delete an active emergency"
+      parameters:
+        - name: "uid
+          type: "string"
+      responses:
+        200:
+          description: "Success"
