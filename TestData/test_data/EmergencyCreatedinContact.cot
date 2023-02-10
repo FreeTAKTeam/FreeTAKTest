@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<event how="h-e" stale="2023-01-06T21:05:50.324Z" start="2023-01-06T21:05:40.324Z" time="2023-01-06T21:05:40.324Z" type="b-a-o-opn" uid="19027480992-9-1-1" version="2.0">
+	<detail>
+		<contact callsign="corvo-Alert"/>
+		<emergency type="In Contact"/>
+		<link relation="p-p" type="a-f-G-U-C" uid="ANDROID-351811095448994"/>
+		<marti>
+			<dest callsign="HelioHQ"/>
+			<dest callsign="corvo"/>
+		</marti>
+		<remarks/>
+	</detail>
+	<point ce="9999999.0" hae="-21.285268407416115" lat="43.84456191618114" le="9999999.0" lon="-66.11718428195833"/>
+</event>

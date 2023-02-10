@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<event version="2.0" type="b-m-p-a" uid="943cf2d8-b0c5-449a-bfdf-a2737c38b925" time="2023-02-10T09:19:46.084Z" start="2023-02-10T09:19:46.08Z" stale="2024-02-10T09:19:46.08Z" how="h-g-i-g-o">
+	<point lat="37.05364017485581" lon="41.212511658668525" hae="0" ce="9.999999e+06" le="9.999999e+06"/>
+	<detail>
+		<link relation="p-p" uid="ANDROID-ffc4d95f0ee3f9" parent_callsign="Мел"/>
+		<status readiness="true"/>
+		<contact callsign="as1"/>
+		<precisionlocation altsrc="USER" geopointsrc="DTED0"/>
+	</detail>
+</event>

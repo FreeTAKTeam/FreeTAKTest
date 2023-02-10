@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<event version="2.0" uid="6db341f4-035a-4eea-aac1-a25f8fa08120" type="b-f-t-r" time="2023-02-10T10:17:03.050Z" start="2023-02-10T10:17:03.050Z" stale="2023-02-10T10:17:13.050Z" how="h-e">
+	<point lat="43.83034636" lon="-65.98168998" hae="-18.82157097" ce="nan" le="nan"/>
+	<detail>
+		<fileshare filename="South threat Map.zip" senderUrl="http://204.48.30.216:8080/Marti/api/sync/metadata/91327289e1d8aea8d7496304c7be80ab658be1b625e28a2c3ad7072b468494e7/tool" sizeInBytes="2932" sha256="91327289e1d8aea8d7496304c7be80ab658be1b625e28a2c3ad7072b468494e7" senderUid="ANDROID-351811095448994" senderCallsign="corvo" name="South threat Map"/>
+		<ackrequest uid="21e26795-2590-462d-8f2b-ea8a04f19339" ackrequested="true" tag="South threat Map"/>
+		<marti>
+			<dest callsign="HelioHQ"/>
+		</marti>
+	</detail>
+</event>

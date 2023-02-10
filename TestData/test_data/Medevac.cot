@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<event version="2.0" uid="52973757-4931-4d57-82b0-f48bdb20bc5a" type="b-r-f-h-c" time="2023-02-10T10:08:42.69Z" start="2023-02-10T10:08:42.69Z" stale="2023-02-11T10:08:42.69Z" how="h-g-i-g-o">
+	<point lat="37.0537799023904" lon="41.2085172995207" hae="477.024291091959" ce="9999999" le="9999999"/>
+	<detail>
+		<link type="a-f-G-U-C-I" uid="S-1-5-21-220624095-3181715117-1398502648-1001" parent_callsign="HelioHQ" relation="p-p" production_time="2023-02-10T10:08:05Z"/>
+		<archive/>
+		<status readiness="false"/>
+		<remarks/>
+		<_medevac_ title="MED.10.100805" casevac="false" freq="0.0" urgent="3" extraction_equipment="true" litter="3" security="1" hlz_marking="1" us_military="3" terrain_slope="true" obstacles="Sloping terrain to the N" terrain_slope_dir="N" medline_remarks="" zone_prot_selection="0" zone_protected_coord="37S FB 96380 03119" zone_prot_marker="37.0537799023904,41.2085172995207,477.024291091959,NaN,NaN,???"/>
+		<contact callsign="HelioHQ"/>
+	</detail>
+</event>
