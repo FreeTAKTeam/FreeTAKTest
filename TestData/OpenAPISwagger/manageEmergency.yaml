@@ -8,6 +8,10 @@ schemes:
 paths:
   /postEmergency:
     post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
       summary: "Create a new emergency"
       parameters:
         - name: "name"
@@ -63,9 +67,12 @@ paths:
   /deleteEmergency:
     delete:
       summary: "Delete an active emergency"
+      post:
       parameters:
-        - name: "uid
-          type: "string"
+       - in: "body"
+      name: "body"
+      - name: "uid"
+        type: "string"
       responses:
         200:
           description: "Success"

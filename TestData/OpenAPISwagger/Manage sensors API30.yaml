@@ -1,0 +1,108 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Manage sensors
+paths:
+  /Sensor/postDrone:
+    post:
+      summary: Create a drone object with a field of view, a current aiming point, and a video stream
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              timeout:
+                type: integer
+                description: The length, expressed in seconds, until the point will stale out. Default is 300 seconds or 5 minutes.
+              name:
+                type: string
+                description: The name of the drone, which will also become the name of the video stream.
+              Range:
+                type: string
+                description: The range of view of the sensor in meters.
+              Bearing:
+                type: string
+                description: The direction in which the sensor is aimed in degrees.
+              FieldOfView:
+                type: string
+                description: The field of view of the drone in degrees.
+              VideoURLUID:
+                type: string
+                description: The address of the video stream. DJI drones only support RTMP protocol. You need to have FreeTAKHub Video service active to see a stream.
+              longitude:
+                type: string
+                description: The angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API.
+              latitude:
+                type: string
+                description: The angular distance of the geoobject from the earth's equator expressed in positive or negative float (e.g 43.855682).
+              uid:
+                type: string
+                description: Optional input parameter, needed to update existing drone COT.
+              SPIName:
+                type: string
+                description: The name of the Sensor Point of Interest (SPI) the UAS is currently aiming to. Currently will NOT work in an update message (when you send the UID).
+              SPILongitude:
+                type: string
+                description: The longitude of the target. Currently will NOT work in an update message (when you send the UID).
+              SPILatitude:
+                type: string
+                description: The latitude of the target. Currently will NOT work in an update message (when you send the UID).
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              DRONE_UID:
+                type: string
+                description: The unique ID of the drone object.
+              SPI_UID:
+                type: string
+                description: The unique ID of the SPI object.
+  /Sensor/postSPI:
+    post:
+      summary: Create an SPI at a point or update an existing SPI. If the video source is a UAV, and the UAV is also publishing its own position and SPI, those will be plotted on the map.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: timeout
+          description: The length, in seconds, until the point will expire. Default is 300 seconds or 5 minutes.
+          type: integer
+        - in: query
+          name: uid
+          description: Input parameter needed to update an existing SPI
+          type: string
+        - in: query
+          name: longitude
+          description: The angular distance of the geoobject from the meridian of the Greenwich, UK, expressed in a positive or negative float (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API.
+          type: number
+        - in: query
+          name: latitude
+          description: The angular distance of the geoobject from the Earth's equator, expressed in a positive or negative float (e.g 43.855682).
+          type: number
+        - in: query
+          name: droneUid
+          description: The UID of the connected drone
+          type: string
+        - in: query
+          name: name
+          description: The name of the drone, which will also be the name of the video stream
+          type: string
+      responses:
+        200:
+          description: Successfully created or updated the SPI
+          schema:
+            type: object
+            properties:
+              uid:
+                type: string
+                description: The UID of the created or updated SPI

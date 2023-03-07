@@ -88,8 +88,6 @@ paths:
                       uid:
                         type: string
                         description: array of uid of system user to be deleted
-
-                        
       responses:
         '200':
           description: Successful removal of system users
