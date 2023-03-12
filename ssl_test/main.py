@@ -36,7 +36,7 @@ logging.basicConfig(
 
 #TODO add number of successfull connection attempts/connection attempts
 
-TEST_FREQUENCY = 2
+TEST_FREQUENCY = 30
 
 REFRESH_RATE = 2
 
@@ -50,9 +50,11 @@ ADDRESS = "198.199.70.185"
 
 PORT = 8089
 
-KEY_PATH = "ssl_test/certs/Dev.key"
+KEY_PATH = "/home/natha/Development/work/FreeTAKTest/ssl_test/certs/KING.key"
 
-CERT_PATH = "ssl_test/certs/Dev.pem"
+CERT_PATH = "/home/natha/Development/work/FreeTAKTest/ssl_test/certs/KING.pem"
+
+BATCH_LENGTH = 1000
 
 
 class SSLTestClass:
@@ -76,6 +78,9 @@ class SSLTestClass:
         self.batch_num = self.manager.Value('i', 0)
         self.batch_num.value = 0
 
+        self.failure_count = self.manager.Value('i', 0)
+        self.failure_count.value = 0
+
         self.terminate = threading.Event()
         self.terminate.clear()
 
@@ -98,14 +103,16 @@ class SSLTestClass:
         self.batch_phase = TESTING
         kill_count = 0
         #time.sleep(self.num_clients)
-        time.sleep(30)
         logging.info("waiting "+str(self.num_clients)+"s to begin disconnects")
+        time.sleep(BATCH_LENGTH)
         
         # kill workers at random intervels
         self.kill_workers(procs, kill_count)
 
     def kill_workers(self, procs, kill_count):
+        """kill all workers in a batch"""
         self.batch_phase = KILLING
+        logging.info("killing phase")
         while kill_count<len(procs) and not self.terminate.is_set():
             proc, killswitch = random.choice(procs)
             logging.debug("killing proc "+str(proc.pid))
@@ -155,10 +162,9 @@ class SSLTestClass:
 
     def connection_validator(self):
         """ensure that the server has not died"""
-        failure_count = 0 # set the failure counter to 0
         cot_mgmt = CoTManager("test"+"_"+str(uuid.uuid4()), str(uuid.uuid4()), 1000) # instantiate the cot manager
         
-        while not self.terminate.is_set() and failure_count<=5: # continue until test completes or 6 failures in a row are reached
+        while not self.terminate.is_set() and self.failure_count.value<=5: # continue until test completes or 6 failures in a row are reached
             # attempt to create socket connection
             try:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -167,13 +173,13 @@ class SSLTestClass:
                                     certfile=CERT_PATH)
                 ssl_sock.connect((ADDRESS, PORT))
             except Exception:
-                with self.failed_connections.get_lock():
-                    self.failed_connections.value += 1
-                failure_count+=1
+                
+                self.failed_connections.value += 1
+                self.failure_count.value+=1
                 time.sleep(TEST_FREQUENCY)
                 continue # re-attempt socket conn
 
-            failure_count = 0 # reset failure count
+            self.failure_count.value = 0 # reset failure count
             self.total_connections.value += 1
 
             con_msg_obj = cot_mgmt.get_con_message()
@@ -194,35 +200,39 @@ class SSLTestClass:
         curses.cbreak()
         stdscr.timeout(100)
         while not self.terminate.is_set():
-            with self.total_connections.get_lock():
-                total_cons = self.total_connections.value
-            with self.failed_connections.get_lock():
-                failed_cons = self.failed_connections.value
-            with self.dropped_connection_count.get_lock():
-                dropped_cons = self.dropped_connection_count.value
-            with self.active_connections.get_lock():
-                active_cons = self.active_connections.value
+            
+            total_cons = self.total_connections.value
+        
+            failed_cons = self.failed_connections.value
+        
+            dropped_cons = self.dropped_connection_count.value
+        
+            active_cons = self.active_connections.value
+
+            fail_count = self.failure_count.value
+
             stdscr.clear()
             stdscr.addstr(0,0,"connected clients: "+str(self.client_count.value))
             stdscr.addstr(1,0,"batch number: "+str(self.batch_num.value))
             stdscr.addstr(2,0,"total connections attempted: "+str(total_cons))
             stdscr.addstr(3,0,"batch phase: "+str(self.batch_phase))
             stdscr.addstr(4,0,"failed connections: "+str(failed_cons))
-            stdscr.addstr(5,0,"dropped_connections: "+str(dropped_cons))
-            stdscr.addstr(6,0,"active connections: "+str(active_cons))
+            stdscr.addstr(5,0,"failed tests: "+str(fail_count))
+            stdscr.addstr(6,0,"dropped_connections: "+str(dropped_cons))
+            stdscr.addstr(7,0,"active connections: "+str(active_cons))
             stdscr.refresh()
             time.sleep(REFRESH_RATE)
     
     def save_export(self):
         with open("test_results.txt", "w") as f:
-            with self.total_connections.get_lock():
-                total_cons = self.total_connections.value
-            with self.failed_connections.get_lock():
-                failed_cons = self.failed_connections.value
-            with self.dropped_connection_count.get_lock():
-                dropped_cons = self.dropped_connection_count.value
-            with self.active_connections.get_lock():
-                active_cons = self.active_connections.value
+            
+            total_cons = self.total_connections.value
+        
+            failed_cons = self.failed_connections.value
+        
+            dropped_cons = self.dropped_connection_count.value
+        
+            active_cons = self.active_connections.value
             f.write("total connections attempted: "+str(total_cons)+"\n")
             f.write("failed connections: "+str(failed_cons)+"\n")
             f.write("dropped_connections: "+str(dropped_cons)+"\n")
