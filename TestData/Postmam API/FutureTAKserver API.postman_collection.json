@@ -1,0 +1,3063 @@
+{
+	"info": {
+		"_postman_id": "53a0b3aa-0a80-4daa-a7c8-3777e0d60cd4",
+		"name": "FutureTAKserver API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13256783"
+	},
+	"item": [
+		{
+			"name": "manageAPI",
+			"item": [
+				{
+					"name": "Get API Version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/manageAPI/getHelp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"manageAPI",
+								"getHelp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API Config",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "API Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Alive",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Alive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageSystemUser",
+			"item": [
+				{
+					"name": "Get All System Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ManageSystemUser/getAll",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageSystemUser",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search System Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"systemuser:[\r\n        \"group\": \"\",\r\n        \"token\": \"\",\r\n        \"password\": \"\",\r\n        \"certs\": \"\",\r\n        \"devicetype\": \"\",\r\n        \"uid\": \"\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageSystemUser/getSystemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageSystemUser",
+								"getSystemUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update System User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"systemuser\":[\r\n        \"token\": \"\",\r\n        \"password\": \"\",\r\n        \"group\": \"\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageSystemUser/putSystemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageSystemUser",
+								"putSystemUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New System User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"systemUsers\": [\r\n        {\r\n        \"Name\": \"mac\",\r\n        \"Group\": \"admins\",\r\n        \"Token\": \"ZSZcSZxDAy\",\r\n        \"Password\": \"ZSZcSZxDAy\",\r\n        \"Certs\": \"false\",\r\n        \"DeviceType\": \"mobile\"\r\n    }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageSystemUser/postSystemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageSystemUser",
+								"postSystemUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add one or many system users to FTS",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"systemUsers\": [\n    {\n      \"Name\": \"sunt dolore dolor sit tempor\",\n      \"Group\": \"nostrud id Excepteur amet\",\n      \"Token\": \"sint laboris\",\n      \"Password\": \"eu sit ul\",\n      \"Certs\": false\n    },\n    {\n      \"Name\": \"voluptate incididunt\",\n      \"Group\": \"anim exercitation proident\",\n      \"Token\": \"u\",\n      \"Password\": \"do aliquip dolore occaecat\",\n      \"Certs\": true\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addSystemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addSystemUser"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "No content",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"systemUsers\": [\n    {\n      \"Name\": \"ipsum\",\n      \"Group\": \"Ut laboris\",\n      \"Token\": \"consectetur est dolor\",\n      \"Password\": \"co\",\n      \"Certs\": false\n    },\n    {\n      \"Name\": \"magna labore tempor\",\n      \"Group\": \"eu commodo\",\n      \"Token\": \"Duis id officia\",\n      \"Password\": \"id in do mollit\",\n      \"Certs\": false\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/addSystemUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"addSystemUser"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete System User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"systemuser\": [\r\n        \"name\": \"\",\r\n        \"uid\": \"\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageSystemUser/deleteSystemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageSystemUser",
+								"deleteSystemUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a system user from the server",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"systemUsers\": [\n    {\n      \"uid\": \"ad officia\"\n    },\n    {\n      \"uid\": \"irure voluptate Excepteu\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/removeSystemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"removeSystemUser"
+							]
+						},
+						"description": "Remove one or many system users from the server"
+					},
+					"response": [
+						{
+							"name": "Successful removal of system users",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"systemUsers\": [\n    {\n      \"uid\": \"fugiat incididunt Ut cillum\"\n    },\n    {\n      \"uid\": \"pariatur\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/removeSystemUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"removeSystemUser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"pariatur qui sit\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "UserManagement",
+			"item": [
+				{
+					"name": "Authenticate User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/AuthenticateUser?username=admin&password=password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"AuthenticateUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "password"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search all? API Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/APIUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"APIUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create API User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"token\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/APIUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"APIUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete API User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/APIUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"APIUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all system users and their associated information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/systemUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"systemUser"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "System user information",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/systemUser",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"systemUser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"systemUsers\": [\n    {\n      \"Name\": \"reprehenderit\",\n      \"Group\": \"cupidatat incididunt\",\n      \"Token\": \"ea elit\",\n      \"Password\": \"nostrud officia mollit\",\n      \"Certs\": \"proident dolore mollit laborum\",\n      \"Uid\": \"enim culpa labore\"\n    },\n    {\n      \"Name\": \"in ex ad labore\",\n      \"Group\": \"voluptate commodo Lorem id nulla\",\n      \"Token\": \"laboris aliqua sint consectetur\",\n      \"Password\": \"veniam dolor magna\",\n      \"Certs\": \"sed in aliquip\",\n      \"Uid\": \"nostrud non\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ManageSystemUser",
+			"item": [
+				{
+					"name": "putSystemUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"systemUsers\":[{\"uid\": \"45\", \"Name\":\"dan\", \"Group\":\"Yellow\"}]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{staging url}}:19023/ManageSystemUser/putSystemUser",
+							"protocol": "http",
+							"host": [
+								"{{staging url}}"
+							],
+							"port": "19023",
+							"path": [
+								"ManageSystemUser",
+								"putSystemUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSystemUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"group\": \"admins\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{staging url}}:19023/ManageSystemUser/getSystemUser",
+							"protocol": "http",
+							"host": [
+								"{{staging url}}"
+							],
+							"port": "19023",
+							"path": [
+								"ManageSystemUser",
+								"getSystemUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{staging url}}:19023/ManageSystemUser/getAll",
+							"protocol": "http",
+							"host": [
+								"{{staging url}}"
+							],
+							"port": "19023",
+							"path": [
+								"ManageSystemUser",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search User",
+			"item": [
+				{
+					"name": "Search User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							},
+							{
+								"key": "proxy-connection",
+								"value": "Keep-Alive"
+							}
+						],
+						"url": {
+							"raw": "{{basehttp}}Marti/ExportMissionKML?startTime=2023-02-10T20:34:50.912Z&endTime=2023-02-15T20:34:50.912Z&uid=ANDROID-351811095448994&multiTrackThreshold=10&format=kml&optimizeExport=true&extendedData=true",
+							"host": [
+								"{{basehttp}}Marti"
+							],
+							"path": [
+								"ExportMissionKML"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "2023-02-10T20:34:50.912Z"
+								},
+								{
+									"key": "endTime",
+									"value": "2023-02-15T20:34:50.912Z"
+								},
+								{
+									"key": "uid",
+									"value": "ANDROID-351811095448994"
+								},
+								{
+									"key": "multiTrackThreshold",
+									"value": "10"
+								},
+								{
+									"key": "format",
+									"value": "kml"
+								},
+								{
+									"key": "optimizeExport",
+									"value": "true"
+								},
+								{
+									"key": "extendedData",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Search the track of a user on the server"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageKML",
+			"item": [
+				{
+					"name": "Posts a KML with geo information and metadata",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Putin Report\",\n  \"longitude\": -77.01399,\n  \"latitude\": 38.889,\n  \"body\": {\n    \"userCallsign\": \"Mr Putin\",\n    \"dateTime\": \"2021-07-13\",\n    \"type\": \"Surveillance\",\n    \"eventScale\": \"Capital\",\n    \"importance\": \"Routine\",\n    \"status\": \"FurtherInvestigation\",\n    \"Time Observed\": \"2021-05-13T13:55:05.19Z\",\n    \"Duration of Event\": \"All day\",\n    \"Method Of Detection\": \"General Observation\",\n    \"Surveillance Type\": \"Discreet\",\n    \"Assessed Threats\": \"Threat to Mission\",\n    \"Final Remarks\": \"SNAFU\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageKML/postKML",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageKML",
+								"postKML"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"body\": {\n    \"sunt0\": \"non irure\",\n    \"laborum28\": \"minim exercitation\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/postKML?name=Lorem culpa in consectetur&longitude=-67924471.65662141&latitude=-67924471.65662141",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"postKML"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Lorem culpa in consectetur"
+										},
+										{
+											"key": "longitude",
+											"value": "-67924471.65662141"
+										},
+										{
+											"key": "latitude",
+											"value": "-67924471.65662141"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"body\": {\n    \"sunt0\": \"non irure\",\n    \"laborum28\": \"minim exercitation\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/postKML?name=Lorem culpa in consectetur&longitude=-67924471.65662141&latitude=-67924471.65662141",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"postKML"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Lorem culpa in consectetur"
+										},
+										{
+											"key": "longitude",
+											"value": "-67924471.65662141"
+										},
+										{
+											"key": "latitude",
+											"value": "-67924471.65662141"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"c\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ManageGeoObject",
+			"item": [
+				{
+					"name": "GetRepeatedMessages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ManageGeoObject/GetRepeatedMessages",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageGeoObject",
+								"GetRepeatedMessages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostRepeatedMessage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"uid\": \"test-user-uid-25984\",\r\n\"longitude\": 3,\r\n\"latitude\": 3,\r\n\"attitude\": \"hostile\",\r\n \"bearing\": 132, \r\n\"geoObject\": \"Medic\",\r\n\"how\": \"nonCoT\",\r\n\"name\": \"TestF\",\r\n\"timeout\" : 360,\r\n\"repeat\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageGeoObject/postGeoObject",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageGeoObject",
+								"postGeoObject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostRepeatedMessage No Timeout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"uid\": \"test-user-uid-25989\",\r\n\"longitude\": 4,\r\n\"latitude\": 4,\r\n\"attitude\": \"hostile\",\r\n \"bearing\": 132, \r\n\"geoObject\": \"Medic\",\r\n\"how\": \"nonCoT\",\r\n\"name\": \"TestG\",\r\n\"timeout\": 600,\r\n\"repeat\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageGeoObject/postGeoObject",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageGeoObject",
+								"postGeoObject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteRepeatedMessage",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ManageGeoObject/DeleteRepeatedMessages?ids=test-user-uid-25984",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageGeoObject",
+								"DeleteRepeatedMessages"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "test-user-uid-25984"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new GeoObject to the map.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"uid\": \"test-putin-uid-1029334\",\r\n\"longitude\": -77.0134,\r\n\"latitude\": 38.999,\r\n\"attitude\": \"hostile\",\r\n \"bearing\": 132, \r\n \"distance\": 1,\r\n\"geoObject\": \"Medic\",\r\n\"how\": \"nonCoT\",\r\n\"name\": \"Putin\",\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}//ManageGeoObject/putGeoObject",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"",
+								"ManageGeoObject",
+								"putGeoObject"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success. The GeoObject has been delivered",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/putGeoObject?GeoObject=dolor cupidatat aute&longitude=-61567688.352932535&latitude=-61567688.352932535&how=dolor cupidatat aute&attitude=dolor cupidatat aute&name=dolor cupidatat aute&bearing=-61567688.352932535&distance=-61567688.352932535&timeout=-61567688.352932535&uid=dolor cupidatat aute&address=dolor cupidatat aute",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"putGeoObject"
+									],
+									"query": [
+										{
+											"key": "GeoObject",
+											"value": "dolor cupidatat aute"
+										},
+										{
+											"key": "longitude",
+											"value": "-61567688.352932535"
+										},
+										{
+											"key": "latitude",
+											"value": "-61567688.352932535"
+										},
+										{
+											"key": "how",
+											"value": "dolor cupidatat aute"
+										},
+										{
+											"key": "attitude",
+											"value": "dolor cupidatat aute"
+										},
+										{
+											"key": "name",
+											"value": "dolor cupidatat aute"
+										},
+										{
+											"key": "bearing",
+											"value": "-61567688.352932535"
+										},
+										{
+											"key": "distance",
+											"value": "-61567688.352932535"
+										},
+										{
+											"key": "timeout",
+											"value": "-61567688.352932535"
+										},
+										{
+											"key": "uid",
+											"value": "dolor cupidatat aute"
+										},
+										{
+											"key": "address",
+											"value": "dolor cupidatat aute"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Recent COTs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/RecentCoT",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"RecentCoT"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mission",
+			"item": [
+				{
+					"name": "Get Missions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MissionTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MissionTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MissionTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MissionTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MissionTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MissionTable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Federation",
+			"item": [
+				{
+					"name": "Get Federations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FederationTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FederationTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Federation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"outgoingFederations\":\r\n    [\r\n      {\r\n        \"name\": \"federation with Dev\",\r\n        \"address\": \"198.199.70.185\",\r\n        \"port\": \"9000\",\r\n        \"fallBack\": \"federation TakServer\",\r\n        \"status\": \"Disabled\",\r\n        \"reconnectInterval\": \"32\",\r\n        \"maxRetries\": \"15\"\r\n      }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/FederationTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FederationTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Existing Federation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FederationTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FederationTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Existing Federation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/FederationTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FederationTable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ExCheck",
+			"item": [
+				{
+					"name": "Get ExChecks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ExCheckTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ExCheckTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create ExCheck",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<checklist xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <checklistDetails>\r\n    <name>OPSCOMM</name>\r\n    <uid>fdbcf581-6dc7-4079-a861-c2171853ffd3</uid>\r\n    <description>USDF OPERATIONS COMM LINK </description>\r\n    <startTime>0001-01-01T00:00:00.00Z</startTime>\r\n    <templateName>OPSCOMM</templateName>\r\n    <creatorUid>S-1-5-21-632283988-2506778409-1357211192-1002</creatorUid>\r\n    <creatorCallsign>WHISKEY SIX-USDF</creatorCallsign>\r\n  </checklistDetails>\r\n  <checklistColumns>\r\n    <checklistColumn>\r\n      <columnName>No</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Description</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Req</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Callsign</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Net</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>From</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>To</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Codeword</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Due Relative DTG</columnName>\r\n      <columnType>ActualTime</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n  </checklistColumns>\r\n  <checklistTasks />\r\n</checklist>"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ExCheckTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ExCheckTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ExChecks",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ExCheck\": \r\n  {\r\n    \"Templates\": [{\"uid\": \"TemplateUID1\"}, {\"uid\": \"TemplateUID2\"}],\r\n    \"Checklists\": [{\"uid\": \"ChecklistUID1\"}, {\"uid\": \"ChecklistUID2\"}]  \r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ExCheckTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ExCheckTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excheck create template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "content-type",
+								"value": "application/xml"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							},
+							{
+								"key": "content-length",
+								"value": "2953"
+							},
+							{
+								"key": "expect",
+								"value": "100-continue"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<checklist xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <checklistDetails>\r\n    <name>aa</name>\r\n    <uid>5904d95f-a5e4-40cd-bc60-2d139dbd88f0</uid>\r\n    <description>aa</description>\r\n    <startTime>0001-01-01T00:00:00.00Z</startTime>\r\n    <templateName>aa</templateName>\r\n    <creatorUid>S-1-5-21-220624095-3181715117-1398502648-1001</creatorUid>\r\n    <creatorCallsign>HelioHQ</creatorCallsign>\r\n  </checklistDetails>\r\n  <checklistColumns>\r\n    <checklistColumn>\r\n      <columnName>No</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Description</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Req</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Callsign</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Net</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>From</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>To</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Codeword</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Due Relative DTG</columnName>\r\n      <columnType>ActualTime</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n  </checklistColumns>\r\n  <checklistTasks>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>3d69b372-e360-475b-9126-ac196593fe7a</uid>\r\n      <value>1</value>\r\n      <value>sdsd</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>691bb387-7955-40a7-9afd-33c10402f510</uid>\r\n      <value>2</value>\r\n      <value>sddss</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n  </checklistTasks>\r\n</checklist>"
+						},
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/excheck/template?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"template"
+							],
+							"query": [
+								{
+									"key": "clientUid",
+									"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get active checklist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/excheck/checklist/active",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"checklist",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get active Checklists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/excheck/checklist/active",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"checklist",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List active  ExChecks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<checklist xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <checklistDetails>\r\n    <name>OPSCOMM</name>\r\n    <uid>fdbcf581-6dc7-4079-a861-c2171853ffd3</uid>\r\n    <description>USDF OPERATIONS COMM LINK </description>\r\n    <startTime>0001-01-01T00:00:00.00Z</startTime>\r\n    <templateName>OPSCOMM</templateName>\r\n    <creatorUid>S-1-5-21-632283988-2506778409-1357211192-1002</creatorUid>\r\n    <creatorCallsign>WHISKEY SIX-USDF</creatorCallsign>\r\n  </checklistDetails>\r\n  <checklistColumns>\r\n    <checklistColumn>\r\n      <columnName>No</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Description</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Req</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Callsign</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Net</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>From</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>To</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Codeword</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Due Relative DTG</columnName>\r\n      <columnType>ActualTime</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n  </checklistColumns>\r\n  <checklistTasks />\r\n</checklist>"
+						},
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/excheck/checklist/active",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"checklist",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Templates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/missions/exchecktemplates",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"missions",
+								"exchecktemplates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Templates Capital",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/missions/ExCheckTemplates",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"missions",
+								"ExCheckTemplates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Changes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/missions/exchecktemplates/changes",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"missions",
+								"exchecktemplates",
+								"changes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Checklist ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/excheck/checklist/0d1424e0-b3be-4b72-a66d-0a6b2f34b05f",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"checklist",
+								"0d1424e0-b3be-4b72-a66d-0a6b2f34b05f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active Excheck",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							}
+						],
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/excheck/checklist/active?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"checklist",
+								"active"
+							],
+							"query": [
+								{
+									"key": "clientUid",
+									"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageEmergency",
+			"item": [
+				{
+					"name": "Create a new emergency",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "culpa",
+									"description": "(Required) "
+								},
+								{
+									"key": "emergencyType",
+									"value": "911 Alert",
+									"description": "(Required) "
+								},
+								{
+									"key": "longitude",
+									"value": "2447484.245802209",
+									"description": "(Required) "
+								},
+								{
+									"key": "latitude",
+									"value": "-90676722.14090669",
+									"description": "(Required) "
+								},
+								{
+									"key": "uid",
+									"value": "sit veniam aliqua tempor aute",
+									"description": "(Required) "
+								},
+								{
+									"key": "address",
+									"value": "deserunt Excepteur"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/postEmergency",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"postEmergency"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "culpa",
+											"description": "(Required) "
+										},
+										{
+											"key": "emergencyType",
+											"value": "911 Alert",
+											"description": "(Required) "
+										},
+										{
+											"key": "longitude",
+											"value": "2447484.245802209",
+											"description": "(Required) "
+										},
+										{
+											"key": "latitude",
+											"value": "-90676722.14090669",
+											"description": "(Required) "
+										},
+										{
+											"key": "uid",
+											"value": "sit veniam aliqua tempor aute",
+											"description": "(Required) "
+										},
+										{
+											"key": "address",
+											"value": "deserunt Excepteur"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/postEmergency",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"postEmergency"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get a list of current active emergencies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/getEmergency",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getEmergency"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/getEmergency",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"getEmergency"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"json_list\": [\n    {\n      \"PrimaryKey\": 10386579,\n      \"event_id\": \"Ut Excepteur veniam sit\"\n    },\n    {\n      \"PrimaryKey\": -62736909,\n      \"event_id\": \"ex aute exercitation sit sint\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete an active emergency",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/deleteEmergency",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"deleteEmergency"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/deleteEmergency",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"deleteEmergency"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Manage Emergency",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ManageEmergency",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageEmergency"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManagePresence",
+			"item": [
+				{
+					"name": "Add a new team member position",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"longitude\": 28130012.343277186,\n  \"latitude\": -48363227.63722185,\n  \"how\": \"pariatur ad dolor\",\n  \"role\": \"pariatur\",\n  \"name\": \"velit non\",\n  \"team\": \"dolor ex culpa in incididunt\",\n  \"uid\": \"ut cupidatat\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManagePresence/postPresence",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManagePresence",
+								"postPresence"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Team member position added or updated successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"longitude\": 28130012.343277186,\n  \"latitude\": -48363227.63722185,\n  \"how\": \"pariatur ad dolor\",\n  \"role\": \"pariatur\",\n  \"name\": \"velit non\",\n  \"team\": \"dolor ex culpa in incididunt\",\n  \"uid\": \"ut cupidatat\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ManagePresence/postPresence",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ManagePresence",
+										"postPresence"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"uid\": \"in esse ullamco incididunt\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/ManagePresence/putPresence",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ManagePresence/putPresence",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManagePresence",
+								"putPresence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Connected TAK clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Clients",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageRoute",
+			"item": [
+				{
+					"name": "Add a new route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeout\": 18634807,\n  \"address\": \"proident reprehenderit pariatur\",\n  \"method\": \"nostrud Lorem co\",\n  \"longitudeDest\": -67934166.29555905,\n  \"latitudeDest\": -99290187.14109379,\n  \"uid\": \"enim in voluptate\",\n  \"routeName\": \"occaecat nisi dolore\",\n  \"endName\": \"cillum dolore dolor id\",\n  \"startName\": \"velit\",\n  \"longitude\": 83682749.57646134,\n  \"latitude\": -97054885.2705822\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageRoute/postRoute",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageRoute",
+								"postRoute"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Route added or updated successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"timeout\": 18634807,\n  \"address\": \"proident reprehenderit pariatur\",\n  \"method\": \"nostrud Lorem co\",\n  \"longitudeDest\": -67934166.29555905,\n  \"latitudeDest\": -99290187.14109379,\n  \"uid\": \"enim in voluptate\",\n  \"routeName\": \"occaecat nisi dolore\",\n  \"endName\": \"cillum dolore dolor id\",\n  \"startName\": \"velit\",\n  \"longitude\": 83682749.57646134,\n  \"latitude\": -97054885.2705822\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ManageRoute/postRoute",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ManageRoute",
+										"postRoute"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"uid\": \"minim\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post route to server",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/vnd.google-earth.kml+xml"
+							},
+							{
+								"key": "host",
+								"value": "204.48.30.216:8080"
+							},
+							{
+								"key": "content-length",
+								"value": "3637"
+							},
+							{
+								"key": "expect",
+								"value": "100-continue"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<kml xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns=\"http://www.opengis.net/kml/2.2\">\r\n  <Document>\r\n    <name>track_2022-11-25T12-58-35Z</name>\r\n    <description>track_2022-11-25T12-58-35Z generated by WinTAK v4.7.0.163 on 2023-02-16T16-46-43Z</description>\r\n    <Style id=\"-1\">\r\n      <IconStyle>\r\n        <color>ffffffff</color>\r\n      </IconStyle>\r\n      <LineStyle>\r\n        <color>ffffffff</color>\r\n        <width>4</width>\r\n      </LineStyle>\r\n    </Style>\r\n    <Schema id=\"trackschema\">\r\n      <gx:SimpleArrayField type=\"double\" name=\"speed\">\r\n        <displayName>Speed m/s</displayName>\r\n      </gx:SimpleArrayField>\r\n      <gx:SimpleArrayField type=\"double\" name=\"ce\">\r\n        <displayName>Circular Error (m)</displayName>\r\n      </gx:SimpleArrayField>\r\n      <gx:SimpleArrayField type=\"double\" name=\"le\">\r\n        <displayName>Linear Error (m)</displayName>\r\n      </gx:SimpleArrayField>\r\n    </Schema>\r\n    <Folder>\r\n      <name>Tracks</name>\r\n      <Placemark id=\"10track_2022-11-25T12-58-35Z\">\r\n        <name>HelioHQ track_2022-11-25T12-58-35Z</name>\r\n        <description>Track for HelioHQ beginning at 2022-11-25T12-58-35Z</description>\r\n        <styleUrl>#-1</styleUrl>\r\n        <gx:Track>\r\n          <altitudeMode>absolute</altitudeMode>\r\n          <ExtendedData>\r\n            <SchemaData schemaUrl=\"#trackschema\">\r\n              <gx:SimpleArrayData name=\"speed\">\r\n                <gx:value>0</gx:value>\r\n                <gx:value>0</gx:value>\r\n                <gx:value>0</gx:value>\r\n                <gx:value>0</gx:value>\r\n                <gx:value>0</gx:value>\r\n              </gx:SimpleArrayData>\r\n              <gx:SimpleArrayData name=\"ce\">\r\n                <gx:value />\r\n                <gx:value />\r\n                <gx:value />\r\n                <gx:value />\r\n                <gx:value />\r\n              </gx:SimpleArrayData>\r\n              <gx:SimpleArrayData name=\"le\">\r\n                <gx:value />\r\n                <gx:value />\r\n                <gx:value />\r\n                <gx:value />\r\n                <gx:value />\r\n              </gx:SimpleArrayData>\r\n              <gx:SimpleArrayData name=\"geopointsrc\">\r\n                <gx:value>User</gx:value>\r\n                <gx:value>User</gx:value>\r\n                <gx:value>User</gx:value>\r\n                <gx:value>User</gx:value>\r\n                <gx:value>User</gx:value>\r\n              </gx:SimpleArrayData>\r\n              <gx:SimpleArrayData name=\"altsrc\">\r\n                <gx:value>???</gx:value>\r\n                <gx:value>???</gx:value>\r\n                <gx:value>???</gx:value>\r\n                <gx:value>???</gx:value>\r\n                <gx:value>???</gx:value>\r\n              </gx:SimpleArrayData>\r\n            </SchemaData>\r\n          </ExtendedData>\r\n          <when>2022-11-25T13:00:59Z</when>\r\n          <when>2022-11-25T17:24:02Z</when>\r\n          <when>2022-11-25T18:03:57Z</when>\r\n          <when>2022-11-25T18:05:45Z</when>\r\n          <when>2022-11-25T18:05:51Z</when>\r\n          <gx:coord>-66.125949331242495 43.9344558388511 0</gx:coord>\r\n          <gx:coord>-66.084457172040899 43.906637357142998 0</gx:coord>\r\n          <gx:coord>-66.116849785778598 43.921277190109201 0</gx:coord>\r\n          <gx:coord>-66.072308230704607 43.897537422600401 0</gx:coord>\r\n          <gx:coord>-65.712437361808099 43.547542223834803 0</gx:coord>\r\n          <gx:angles>0</gx:angles>\r\n          <gx:angles>0</gx:angles>\r\n          <gx:angles>0</gx:angles>\r\n          <gx:angles>0</gx:angles>\r\n          <gx:angles>0</gx:angles>\r\n        </gx:Track>\r\n      </Placemark>\r\n    </Folder>\r\n  </Document>\r\n</kml>\r\n"
+						},
+						"url": {
+							"raw": "{{basehttp}}/Marti/TracksKML?uid=S-1-5-21-220624095-3181715117-1398502648-1001&callsign=HelioHQ&cotType=a-f-G-U-C-I&groupName=Yellow&groupRole=HQ",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"TracksKML"
+							],
+							"query": [
+								{
+									"key": "uid",
+									"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+								},
+								{
+									"key": "callsign",
+									"value": "HelioHQ"
+								},
+								{
+									"key": "cotType",
+									"value": "a-f-G-U-C-I"
+								},
+								{
+									"key": "groupName",
+									"value": "Yellow"
+								},
+								{
+									"key": "groupRole",
+									"value": "HQ"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor",
+			"item": [
+				{
+					"name": "Create a drone object with a field of view, a current aiming point, and a video stream",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeout\": 78016762,\n  \"name\": \"conse\",\n  \"Range\": \"ut elit\",\n  \"Bearing\": \"nisi eu officia Ut\",\n  \"FieldOfView\": \"laborum\",\n  \"VideoURLUID\": \"ut pariatur amet\",\n  \"longitude\": \"ullamco aute consectetur\",\n  \"latitude\": \"adipisicing elit pariatur ea Lorem\",\n  \"uid\": \"cillum tempor commodo sun\",\n  \"SPIName\": \"labore sed dolore\",\n  \"SPILongitude\": \"veniam voluptate id\",\n  \"SPILatitude\": \"voluptate aliquip esse fugiat occaecat\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Sensor/postDrone",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Sensor",
+								"postDrone"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"timeout\": 78016762,\n  \"name\": \"conse\",\n  \"Range\": \"ut elit\",\n  \"Bearing\": \"nisi eu officia Ut\",\n  \"FieldOfView\": \"laborum\",\n  \"VideoURLUID\": \"ut pariatur amet\",\n  \"longitude\": \"ullamco aute consectetur\",\n  \"latitude\": \"adipisicing elit pariatur ea Lorem\",\n  \"uid\": \"cillum tempor commodo sun\",\n  \"SPIName\": \"labore sed dolore\",\n  \"SPILongitude\": \"veniam voluptate id\",\n  \"SPILatitude\": \"voluptate aliquip esse fugiat occaecat\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Sensor/postDrone",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Sensor",
+										"postDrone"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"DRONE_UID\": \"esse ea id officia\",\n  \"SPI_UID\": \"aliqua adipisicing\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create an SPI at a point or update an existing SPI. If the video source is a UAV, and the UAV is also publishing its own position and SPI, those will be plotted on the map.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Sensor/postSPI?timeout=25079269&uid=in nisi&longitude=-1167773.6240462065&latitude=-1167773.6240462065&droneUid=in nisi&name=in nisi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Sensor",
+								"postSPI"
+							],
+							"query": [
+								{
+									"key": "timeout",
+									"value": "25079269",
+									"description": "The length, in seconds, until the point will expire. Default is 300 seconds or 5 minutes."
+								},
+								{
+									"key": "uid",
+									"value": "in nisi",
+									"description": "Input parameter needed to update an existing SPI"
+								},
+								{
+									"key": "longitude",
+									"value": "-1167773.6240462065",
+									"description": "The angular distance of the geoobject from the meridian of the Greenwich, UK, expressed in a positive or negative float (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API."
+								},
+								{
+									"key": "latitude",
+									"value": "-1167773.6240462065",
+									"description": "The angular distance of the geoobject from the Earth's equator, expressed in a positive or negative float (e.g 43.855682)."
+								},
+								{
+									"key": "droneUid",
+									"value": "in nisi",
+									"description": "The UID of the connected drone"
+								},
+								{
+									"key": "name",
+									"value": "in nisi",
+									"description": "The name of the drone, which will also be the name of the video stream"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully created or updated the SPI",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Sensor/postSPI?timeout=25079269&uid=in nisi&longitude=-1167773.6240462065&latitude=-1167773.6240462065&droneUid=in nisi&name=in nisi",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Sensor",
+										"postSPI"
+									],
+									"query": [
+										{
+											"key": "timeout",
+											"value": "25079269"
+										},
+										{
+											"key": "uid",
+											"value": "in nisi"
+										},
+										{
+											"key": "longitude",
+											"value": "-1167773.6240462065"
+										},
+										{
+											"key": "latitude",
+											"value": "-1167773.6240462065"
+										},
+										{
+											"key": "droneUid",
+											"value": "in nisi"
+										},
+										{
+											"key": "name",
+											"value": "in nisi"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"uid\": \"tempor ad sed\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ManageChat",
+			"item": [
+				{
+					"name": "Send a geo chat message to all users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\": \"Duis id\",\n  \"sender\": \"dolor aliqua fugiat enim\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ManageChat/postChatToAll",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ManageChat",
+								"postChatToAll"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully sent the chat message",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Duis id\",\n  \"sender\": \"dolor aliqua fugiat enim\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ManageChat/postChatToAll",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ManageChat",
+										"postChatToAll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Invalid request body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Duis id\",\n  \"sender\": \"dolor aliqua fugiat enim\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ManageChat/postChatToAll",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ManageChat",
+										"postChatToAll"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Data Package",
+			"item": [
+				{
+					"name": "Broadcast Data Package",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/BroadcastDataPackage",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"BroadcastDataPackage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Data Package",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DataPackageTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DataPackageTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Packages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DataPackageTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DataPackageTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data Package",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DataPackageTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DataPackageTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data Package",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/DataPackageTable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"DataPackageTable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Data Package list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							},
+							{
+								"key": "proxy-connection",
+								"value": "Keep-Alive"
+							}
+						],
+						"url": {
+							"raw": "{{basehttp}}/Marti/sync/search?keywords=missionpackage",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"sync",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keywords",
+									"value": "missionpackage"
+								}
+							]
+						},
+						"description": "Get all the data packages on the server"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"item": [
+				{
+					"name": "Post Video Stream",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"protocol\": \"string\",\r\n\"alias\": \"string\",\r\n\"uid\": \"string\",\r\n\"address\": \"string\",\r\n\"port\": \"string\",\r\n\"over_port\": \"string\",\r\n\"ignore_klv\": \"string\",\r\n\"preferred_mac\": \"string\",\r\n\"path\": \"string\",\r\n\"buf\": \"string\",\r\n\"timeout\": \"string\",\r\n\"rtsp_reliable\": \"string\"\r\n}"
+						},
+						"url": {
+							"raw": "{{basehttp}}/Marti/vcm",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"vcm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Video Stream",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							},
+							{
+								"key": "proxy-connection",
+								"value": "Keep-Alive"
+							}
+						],
+						"url": {
+							"raw": "{{basehttp}}/Marti/vcm",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"vcm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Send report to server",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							},
+							{
+								"key": "content-length",
+								"value": "1256"
+							},
+							{
+								"key": "expect",
+								"value": "100-continue"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ".O'��������\u000e��V\u0000E=\u000eVWA���\u0016��1j��\u0019��+tL�a��@\t�\b��o�V�`�X\u000bi)\r�\t��_U�F!�\\\u001d�\u0013�ێ}]C}\u0014�\"~�Y��nￛf\u0003��\u0017�_I����(Y�� }�\u000b������|<�]J��յ�i�Y��\u00051�\u0018� �M�j��\u0014O��9����\n�����2�-SY�]8�\u0005�?1�A�2jh5\u0004�ɪ*6�����c2���k�|0�B��d@��a岳~)�'�\u0002�uѨ��vJB��\u0017\u0007�\u0014����a8j\f+�r��RBv��\f�'\u0012\u0015�؆��n�h����_E�<�c���^�r%�A��\u000b�7�@��d��\u001c8\u0018\u0003��s�}y\u0011�\"�"
+						},
+						"url": {
+							"raw": "{{basehttp}}/Marti/api/citrap/?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+							"host": [
+								"{{basehttp}}"
+							],
+							"path": [
+								"Marti",
+								"api",
+								"citrap",
+								""
+							],
+							"query": [
+								{
+									"key": "clientUid",
+									"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/URL",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"URL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status Check?",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/checkStatus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"checkStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Undocumented Change Status?",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/changeStatus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"changeStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://198.199.70.185:8080/Marti/api/version/config",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_version",
+						"value": "3"
+					},
+					{
+						"key": "host",
+						"value": "198.199.70.185:8080"
+					}
+				],
+				"url": {
+					"raw": "http://198.199.70.185:8080/Marti/api/version/config",
+					"protocol": "http",
+					"host": [
+						"198",
+						"199",
+						"70",
+						"185"
+					],
+					"port": "8080",
+					"path": [
+						"Marti",
+						"api",
+						"version",
+						"config"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://198.199.70.185:8080/Marti/api/version/config",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							}
+						],
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/version/config",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"version",
+								"config"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "138"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "date",
+							"value": "Wed, 15 Feb 2023 19:10:03 GMT"
+						},
+						{
+							"key": "connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\"version\":\"2\",\"type\":\"ServerConfig\",\"data\":{\"version\":\"FreeTAKServer-1.9.9.6 Public\",\"api\":\"2\",\"hostname\":\"0.0.0.0\"},\"nodeId\":\"FTS\"}"
+				}
+			]
+		},
+		{
+			"name": "http://198.199.70.185:8080/Marti/api/version/config",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_version",
+						"value": "3"
+					},
+					{
+						"key": "host",
+						"value": "198.199.70.185:8080"
+					}
+				],
+				"url": {
+					"raw": "http://198.199.70.185:8080/Marti/api/version/config",
+					"protocol": "http",
+					"host": [
+						"198",
+						"199",
+						"70",
+						"185"
+					],
+					"port": "8080",
+					"path": [
+						"Marti",
+						"api",
+						"version",
+						"config"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://198.199.70.185:8080/Marti/api/version/config",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							}
+						],
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/version/config",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"version",
+								"config"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "138"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "date",
+							"value": "Wed, 15 Feb 2023 19:10:03 GMT"
+						},
+						{
+							"key": "connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\"version\":\"2\",\"type\":\"ServerConfig\",\"data\":{\"version\":\"FreeTAKServer-1.9.9.6 Public\",\"api\":\"2\",\"hostname\":\"0.0.0.0\"},\"nodeId\":\"FTS\"}"
+				}
+			]
+		},
+		{
+			"name": "http://198.199.70.185:8080/Marti/api/excheck/template?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api_version",
+						"value": "3"
+					},
+					{
+						"key": "content-type",
+						"value": "application/xml"
+					},
+					{
+						"key": "host",
+						"value": "198.199.70.185:8080"
+					},
+					{
+						"key": "content-length",
+						"value": "3447"
+					},
+					{
+						"key": "expect",
+						"value": "100-continue"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\r\n<checklist xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <checklistDetails>\r\n    <name>Improve my Life</name>\r\n    <uid>6c7b588b-2727-47c3-ba3f-bbad24f46edb</uid>\r\n    <description>a checklist for Life balance</description>\r\n    <startTime>0001-01-01T00:00:00.00Z</startTime>\r\n    <templateName>Improve my Life</templateName>\r\n    <creatorUid>S-1-5-21-220624095-3181715117-1398502648-1001</creatorUid>\r\n    <creatorCallsign>HelioHQ</creatorCallsign>\r\n  </checklistDetails>\r\n  <checklistColumns>\r\n    <checklistColumn>\r\n      <columnName>No</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Description</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Req</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Callsign</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Net</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>From</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>To</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Codeword</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Due Relative DTG</columnName>\r\n      <columnType>ActualTime</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n  </checklistColumns>\r\n  <checklistTasks>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>59a6da65-cd32-44d8-99b9-bc6867f7db1a</uid>\r\n      <value>1</value>\r\n      <value>Stop Coding</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>033819d8-bd67-42d5-9176-3227630c2217</uid>\r\n      <value>2</value>\r\n      <value>Diet</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>b6f1e161-24b0-419a-8785-6c55d06ecfb1</uid>\r\n      <value>3</value>\r\n      <value>Exercise</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n  </checklistTasks>\r\n</checklist>"
+				},
+				"url": {
+					"raw": "http://198.199.70.185:8080/Marti/api/excheck/template?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+					"protocol": "http",
+					"host": [
+						"198",
+						"199",
+						"70",
+						"185"
+					],
+					"port": "8080",
+					"path": [
+						"Marti",
+						"api",
+						"excheck",
+						"template"
+					],
+					"query": [
+						{
+							"key": "clientUid",
+							"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://198.199.70.185:8080/Marti/api/excheck/template?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "content-type",
+								"value": "application/xml"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							},
+							{
+								"key": "content-length",
+								"value": "3447"
+							},
+							{
+								"key": "expect",
+								"value": "100-continue"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<checklist xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <checklistDetails>\r\n    <name>Improve my Life</name>\r\n    <uid>6c7b588b-2727-47c3-ba3f-bbad24f46edb</uid>\r\n    <description>a checklist for Life balance</description>\r\n    <startTime>0001-01-01T00:00:00.00Z</startTime>\r\n    <templateName>Improve my Life</templateName>\r\n    <creatorUid>S-1-5-21-220624095-3181715117-1398502648-1001</creatorUid>\r\n    <creatorCallsign>HelioHQ</creatorCallsign>\r\n  </checklistDetails>\r\n  <checklistColumns>\r\n    <checklistColumn>\r\n      <columnName>No</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Description</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Req</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Callsign</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Net</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>From</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>To</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Codeword</columnName>\r\n      <columnType>LongString</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n    <checklistColumn>\r\n      <columnName>Due Relative DTG</columnName>\r\n      <columnType>ActualTime</columnType>\r\n      <columnWidth>0</columnWidth>\r\n    </checklistColumn>\r\n  </checklistColumns>\r\n  <checklistTasks>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>59a6da65-cd32-44d8-99b9-bc6867f7db1a</uid>\r\n      <value>1</value>\r\n      <value>Stop Coding</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>033819d8-bd67-42d5-9176-3227630c2217</uid>\r\n      <value>2</value>\r\n      <value>Diet</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n    <checklistTask>\r\n      <lineBreak>false</lineBreak>\r\n      <number>0</number>\r\n      <uid>b6f1e161-24b0-419a-8785-6c55d06ecfb1</uid>\r\n      <value>3</value>\r\n      <value>Exercise</value>\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <value />\r\n      <Status>Pending</Status>\r\n      <status>Pending</status>\r\n      <CompleteDTG xsi:nil=\"true\" />\r\n    </checklistTask>\r\n  </checklistTasks>\r\n</checklist>"
+						},
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/excheck/template?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"template"
+							],
+							"query": [
+								{
+									"key": "clientUid",
+									"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "36"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "date",
+							"value": "Wed, 15 Feb 2023 19:18:28 GMT"
+						},
+						{
+							"key": "connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "6c7b588b-2727-47c3-ba3f-bbad24f46edb"
+				}
+			]
+		},
+		{
+			"name": "http://198.199.70.185:8080/Marti/api/excheck/checklist/active?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_version",
+						"value": "3"
+					},
+					{
+						"key": "host",
+						"value": "198.199.70.185:8080"
+					}
+				],
+				"url": {
+					"raw": "http://198.199.70.185:8080/Marti/api/excheck/checklist/active?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+					"protocol": "http",
+					"host": [
+						"198",
+						"199",
+						"70",
+						"185"
+					],
+					"port": "8080",
+					"path": [
+						"Marti",
+						"api",
+						"excheck",
+						"checklist",
+						"active"
+					],
+					"query": [
+						{
+							"key": "clientUid",
+							"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://198.199.70.185:8080/Marti/api/excheck/checklist/active?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							}
+						],
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/excheck/checklist/active?clientUid=S-1-5-21-220624095-3181715117-1398502648-1001",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"excheck",
+								"checklist",
+								"active"
+							],
+							"query": [
+								{
+									"key": "clientUid",
+									"value": "S-1-5-21-220624095-3181715117-1398502648-1001"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "14"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "date",
+							"value": "Wed, 15 Feb 2023 19:20:53 GMT"
+						},
+						{
+							"key": "connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "<checklists />"
+				}
+			]
+		},
+		{
+			"name": "http://198.199.70.185:8080/Marti/api/version/config",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_version",
+						"value": "3"
+					},
+					{
+						"key": "host",
+						"value": "198.199.70.185:8080"
+					}
+				],
+				"url": {
+					"raw": "http://198.199.70.185:8080/Marti/api/version/config",
+					"protocol": "http",
+					"host": [
+						"198",
+						"199",
+						"70",
+						"185"
+					],
+					"port": "8080",
+					"path": [
+						"Marti",
+						"api",
+						"version",
+						"config"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://198.199.70.185:8080/Marti/api/version/config",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api_version",
+								"value": "3"
+							},
+							{
+								"key": "host",
+								"value": "198.199.70.185:8080"
+							}
+						],
+						"url": {
+							"raw": "http://198.199.70.185:8080/Marti/api/version/config",
+							"protocol": "http",
+							"host": [
+								"198",
+								"199",
+								"70",
+								"185"
+							],
+							"port": "8080",
+							"path": [
+								"Marti",
+								"api",
+								"version",
+								"config"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "138"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "date",
+							"value": "Wed, 15 Feb 2023 19:20:56 GMT"
+						},
+						{
+							"key": "connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\"version\":\"2\",\"type\":\"ServerConfig\",\"data\":{\"version\":\"FreeTAKServer-1.9.9.6 Public\",\"api\":\"2\",\"hostname\":\"0.0.0.0\"},\"nodeId\":\"FTS\"}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://198.199.70.185:19023",
+			"type": "string"
+		},
+		{
+			"key": "bearerToken",
+			"value": "token",
+			"type": "string"
+		}
+	]
+}
