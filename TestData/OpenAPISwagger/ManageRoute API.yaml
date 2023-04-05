@@ -13,43 +13,9 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                timeout:
-                  type: integer
-                  description: the length, expressed in seconds until the point will stale out. Default is 300 seconds or 5 minutes.
-                address:
-                  type: string
-                  description: address of destination. If sent will try to solve the exact geolocation of the destination. Possible valid examples (are:) Big Arkansas River Park, Wichita, KS, USA; Wichita, KS, USA; Big Arkansas River Park, Wichita; and so on.
-                method:
-                  type: string
-                  description: the method we plan to use for the route (Driving, Flying, Walking, Swimming, Watercraft). currently not used and set to Driving in the client.
-                longitudeDest:
-                  type: number
-                  description: if address is not sent.
-                latitudeDest:
-                  type: number
-                  description: if address is not sent.
-                uid:
-                  type: string
-                  description: server generated Unique Id of this element. it will update the existing element.
-                routeName:
-                  type: string
-                  description: the name of the route.
-                endName:
-                  type: string
-                  description: the name of the destination (end point on the route).
-                startName:
-                  type: string
-                  description: the name of the start (start point of the route).
-                longitude:
-                  type: number
-                  description: the angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float. (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API.
-                latitude:
-                  type: number
-                  description: the angular distance of the geoobject from the earths equator expressed in positive or negative float. (e.g 43.855682).
+              $ref: '#/components/schemas/Route'
       responses:
-        200:
+        '200':
           description: Route added or updated successfully
           content:
             application/json:
@@ -59,3 +25,42 @@ paths:
                   uid:
                     type: string
                     description: server-generated unique id
+
+components:
+  schemas:
+    Route:
+      type: object
+      properties:
+        timeout:
+          type: integer
+          description: the length, expressed in seconds until the point will stale out. Default is 300 seconds or 5 minutes.
+        address:
+          type: string
+          description: address of destination. If sent will try to solve the exact geolocation of the destination. Possible valid examples (are:) Big Arkansas River Park, Wichita, KS, USA; Wichita, KS, USA; Big Arkansas River Park, Wichita; and so on.
+        method:
+          type: string
+          description: the method we plan to use for the route (Driving, Flying, Walking, Swimming, Watercraft). currently not used and set to Driving in the client.
+        longitudeDest:
+          type: number
+          description: if address is not sent.
+        latitudeDest:
+          type: number
+          description: if address is not sent.
+        uid:
+          type: string
+          description: server generated Unique Id of this element. it will update the existing element.
+        routeName:
+          type: string
+          description: the name of the route.
+        endName:
+          type: string
+          description: the name of the destination (end point on the route).
+        startName:
+          type: string
+          description: the name of the start (start point of the route).
+        longitude:
+          type: number
+          description: the angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float. (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API.
+        latitude:
+          type: number
+          description: the angular distance of the geoobject from the earths equator expressed in positive or negative float. (e.g 43.855682).

@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.0.1
 info:
   version: 1.0.0
   title: Manage System Users
@@ -78,19 +78,21 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                systemUsers:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      uid:
-                        type: string
-                        description: uid of system user to be deleted
-                      required:
-                        - uid
-                        
+                UserList:
+                    request:
+                      type: object
+                      properties:
+                        systemUsers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uid:
+                                type: string
+                                description: uid of system user to be deleted
+                              required:
+                                - uid
+                            
       responses:
         '200':
           description: Successful removal of system users

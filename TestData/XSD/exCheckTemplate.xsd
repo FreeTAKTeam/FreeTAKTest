@@ -1,0 +1,55 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="checklist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="checklistDetails">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:string" name="uid"/>
+              <xs:element type="xs:string" name="description"/>
+              <xs:element type="xs:dateTime" name="startTime"/>
+              <xs:element type="xs:string" name="templateName"/>
+              <xs:element type="xs:string" name="creatorUid"/>
+              <xs:element type="xs:string" name="creatorCallsign"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="checklistColumns">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="checklistColumn" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="columnName"/>
+                    <xs:element type="xs:string" name="columnType"/>
+                    <xs:element type="xs:byte" name="columnWidth"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="checklistTasks">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="checklistTask" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="lineBreak"/>
+                    <xs:element type="xs:byte" name="number"/>
+                    <xs:element type="xs:string" name="uid"/>
+                    <xs:element type="xs:string" name="value" maxOccurs="unbounded" minOccurs="0"/>
+                    <xs:element type="xs:string" name="Status"/>
+                    <xs:element type="xs:string" name="status"/>
+                    <xs:element type="xs:string" name="CompleteDTG" nillable="true"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<event version="2.0" uid="a1adc40a-a9d8-41d5-b03c-6ca503174ca5" type="u-d-c-c" time="2023-02-10T13:54:06.12Z" start="2023-02-10T13:54:06.12Z" stale="2023-02-17T13:54:06.12Z" how="h-g-i-g-o">
+	<point lat="32.051436912353" lon="35.9327087347754" hae="885.573732616145" ce="9999999" le="9999999"/>
+	<detail>
+		<contact callsign="Circle 1"/>
+		<fillColor value="-2130706433"/>
+		<strokeColor value="-1"/>
+		<strokeWeight value="3.75"/>
+		<remarks/>
+		<color value="-1" argb="-1"/>
+		<height value="0.00">0.00</height>
+		<height_unit>4</height_unit>
+		<precisionlocation altsrc="DTED0"/>
+		<archive/>
+		<shape>
+			<ellipse minor="1176.07838566219" angle="360" major="1176.07838566219"/>
+			<link relation="p-c" uid="a1adc40a-a9d8-41d5-b03c-6ca503174ca5.style" type="b-x-KmlStyle">
+				<Style>
+					<LineStyle>
+						<color>FFFFFFFF</color>
+						<width>3</width>
+						<alpha>128</alpha>
+					</LineStyle>
+					<PolyStyle>
+						<color>80FFFFFF</color>
+					</PolyStyle>
+				</Style>
+			</link>
+			<link uid="S-1-5-21-220624095-3181715117-1398502648-1001.NMEA.Simulated" type="a-f-G-U-C-I" relation="p-p-CenterAnchor"/>
+			<link uid="S-1-5-21-220624095-3181715117-1398502648-1001.NMEA.Simulated" type="a-f-G-U-C-I" relation="p-p-CenterAnchor"/>
+		</shape>
+		<shape>
+			<ellipse minor="1176.07838566219" angle="360" major="1176.07838566219"/>
+			<link relation="p-c" uid="a1adc40a-a9d8-41d5-b03c-6ca503174ca5.style" type="b-x-KmlStyle">
+				<Style>
+					<LineStyle>
+						<color>FFFFFFFF</color>
+						<width>3</width>
+						<alpha>128</alpha>
+					</LineStyle>
+					<PolyStyle>
+						<color>80FFFFFF</color>
+					</PolyStyle>
+				</Style>
+			</link>
+		</shape>
+		<shape>
+			<ellipse minor="1176.07838566219" angle="360" major="1176.07838566219"/>
+			<link relation="p-c" uid="a1adc40a-a9d8-41d5-b03c-6ca503174ca5.style" type="b-x-KmlStyle">
+				<Style>
+					<LineStyle>
+						<color>FFFFFFFF</color>
+						<width>3</width>
+						<alpha>128</alpha>
+					</LineStyle>
+					<PolyStyle>
+						<color>80FFFFFF</color>
+					</PolyStyle>
+				</Style>
+			</link>
+		</shape>
+	</detail>
+</event>

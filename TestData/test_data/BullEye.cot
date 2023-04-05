@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<event version="2.0" uid="e97aaee4-24e4-4859-9d7b-a9578440eb78" type="u-r-b-bullseye" time="2023-02-10T13:47:09.78Z" start="2023-02-10T13:47:09.78Z" stale="2023-02-11T13:47:09.78Z" how="h-e">
+	<point lat="32.0788294308043" lon="35.9633914715508" hae="884.669999809865" ce="9999999" le="9999999"/>
+	<detail>
+		<archive/>
+		<contact callsign="Bullseye 1"/>
+		<bullseye title="Bullseye 1" edgeToCenter="true" mils="false" hasRangeRings="true" ringDist="100.0000" ringNum="1" rangeRingVisible="false" distance="521.03" bullseyeUID="72663e23-c08d-47bf-9a4e-8873a097de94" bearingRef="M"/>
+	</detail>
+</event>

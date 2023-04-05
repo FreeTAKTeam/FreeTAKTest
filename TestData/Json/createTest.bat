@@ -1,0 +1,52 @@
+@echo off
+setlocal enabledelayedexpansion
+
+for /f "tokens=*" %%a in (testfile.txt) do (type nul>"%%a")
+	set testname=%%~na
+
+for /f "tokens=*" %%a in (testfile.txt) do (
+  echo "%testname%": {>>"%%a"
+  echo			"test_id": "%RANDOM%",>>"%%a"
+  echo			"test_name": "Test Case %testname%",>>"%%a"
+  echo			"test_description": "This is the TCP test for %testname%.xml" , >>"%%a"
+  echo			"environment": {>>"%%a"
+  echo							"host": "localhost",>>"%%a"
+  echo							"port": 8087,>>"%%a"
+  echo							"protocol": "TCP">>"%%a"
+  echo							},>>"%%a"
+  echo			"setup":>>"%%a"
+  echo			{>>"%%a"
+  echo				"setup_resource": true,>>"%%a"
+  echo				"dependencies":>>"%%a"
+  echo								{>>"%%a"
+  echo									"ancestors":{},>>"%%a"
+  echo									"descendents":{}>>"%%a"
+  echo								}>>"%%a"
+  echo			}>>"%%a"
+  echo			"test_info": {>>"%%a"
+  echo						"endpoint": {>>"%%a"
+  echo									"path": "NA",>>"%%a"
+  echo									"method": "NA">>"%%a"
+  echo									},>>"%%a"
+  echo						"header-info": {>>"%%a"
+  echo										"Content-Type": "NA",>>"%%a"
+  echo										"Authorization": "NA">>"%%a"
+  echo										},>>"%%a"
+  echo						"request": {>>"%%a"
+  echo									"file": "\src\FreeTAKTest\TestData\test_data\%testname%.xml">>"%%a"
+  echo								},>>"%%a"
+  echo						"response": {>>"%%a"
+  echo										"file": "\src\FreeTAKTest\TestData\test_data\%testname%.xml">>"%%a"													
+  echo									},>>"%%a"
+  echo						"comparison": {>>"%%a"
+  echo										"compare_response_body": true,>>"%%a"
+  echo										"compare_response_headers": false>>"%%a"
+  echo									},>>"%%a"
+  echo						"teardown": {>>"%%a"
+  echo									"delete_resource": true>>"%%a"
+  echo									}>>"%%a"
+  echo						}>>"%%a"
+  echo			}>>"%%a"
+  echo >>"%%a"
+  )
+  

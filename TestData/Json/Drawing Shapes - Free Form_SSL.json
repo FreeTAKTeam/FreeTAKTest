@@ -1,0 +1,39 @@
+{
+    "test_id": "11938",
+    "test_name": "Test Case Drawing Shapes - Free Form",
+    "test_description": "This is the SSL test for Drawing Shapes - Free Form.xml",
+    "environment": {
+        "host": "localhost",
+        "port": 8089,
+        "protocol": "SSL"
+    },
+    "setup": {
+        "setup_resource": true,
+        "dependencies": {
+            "ancestors": {},
+            "descendents": {}
+        }
+    },
+    "test_info": {
+        "endpoint": {
+            "path": "NA",
+            "method": "NA"
+        },
+        "header-info": {
+            "Content-Type": "NA",
+            "Authorization": "NA"
+        },
+        "request": {
+            "file": "\src\FreeTAKTest\TestData\test_data\Drawing Shapes - Free Form.xml"
+        },
+        "response": {
+            "file": "\src\FreeTAKTest\TestData\test_data\Drawing Shapes - Free Form.xml"
+        },
+        "comparison": {
+            "compare_response_body": true,
+            "compare_response_headers": false
+        },
+        "teardown": {
+            "delete_resource": true
+        }
+}

@@ -1,0 +1,39 @@
+{
+    "test_id": "11938",
+    "test_name": "Test Case Range & Bearing - Line",
+    "test_description": "This is the SSL test for Range & Bearing - Line.xml",
+    "environment": {
+        "host": "localhost",
+        "port": 8089,
+        "protocol": "SSL"
+    },
+    "setup": {
+        "setup_resource": true,
+        "dependencies": {
+            "ancestors": {},
+            "descendents": {}
+        }
+    },
+    "test_info": {
+        "endpoint": {
+            "path": "NA",
+            "method": "NA"
+        },
+        "header-info": {
+            "Content-Type": "NA",
+            "Authorization": "NA"
+        },
+        "request": {
+            "file": "\src\FreeTAKTest\TestData\test_data\Range & Bearing - Line.xml"
+        },
+        "response": {
+            "file": "\src\FreeTAKTest\TestData\test_data\Range & Bearing - Line.xml"
+        },
+        "comparison": {
+            "compare_response_body": true,
+            "compare_response_headers": false
+        },
+        "teardown": {
+            "delete_resource": true
+        }
+}

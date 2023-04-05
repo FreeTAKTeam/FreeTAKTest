@@ -1,0 +1,39 @@
+{
+    "test_id": "1606",
+    "test_name": "Test Case Delete",
+    "test_description": "This is the TCP test for Delete.xml",
+    "environment": {
+        "host": "localhost",
+        "port": 8087,
+        "protocol": "TCP"
+    },
+    "setup": {
+        "setup_resource": true,
+        "dependencies": {
+            "ancestors": {},
+            "descendents": {}
+        }
+    },
+    "test_info": {
+        "endpoint": {
+            "path": "NA",
+            "method": "NA"
+        },
+        "header-info": {
+            "Content-Type": "NA",
+            "Authorization": "NA"
+        },
+        "request": {
+            "file": "\src\FreeTAKTest\TestData\test_data\Delete.xml"
+        },
+        "response": {
+            "file": "\src\FreeTAKTest\TestData\test_data\Delete.xml"
+        },
+        "comparison": {
+            "compare_response_body": true,
+            "compare_response_headers": false
+        },
+        "teardown": {
+            "delete_resource": true
+        }
+}
