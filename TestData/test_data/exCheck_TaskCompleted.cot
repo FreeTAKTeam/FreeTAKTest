@@ -1,0 +1,19 @@
+<event version="2.0"
+       uid="ce7893b5-b522-4be1-a100-0a02e145a082"
+       type="t-x-m-c-m"
+       time="2023-06-09T16:56:10.00Z"
+       start="2023-06-09T16:56:10.00Z"
+       stale="2023-06-09T16:56:30.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="ExCheck"
+		         name="6c312d5e-9020-4380-a618-9c62e081a03a"
+		         authorUid="e7f71100-dbbe-4d93-b5b8-1037935f6ee6"/>
+	</detail>
+</event>
