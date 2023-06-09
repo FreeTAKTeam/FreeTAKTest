@@ -60,6 +60,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SPIObject'
+            example:
+                uid: "e452b6bf-d4f0-11eb-b818-2cf05d092d98"
+                timeout: 500
+                longitude: 4
+                latitude: 8
+                droneUid: "d76f608a-d4f0-11eb-b375-2cf05d092d98"
+                name: "test"
       responses:
         '200':
           description: Successfully created or updated the SPI

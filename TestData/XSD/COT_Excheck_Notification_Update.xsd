@@ -1,0 +1,415 @@
+<?xml  version='1.0' encoding='UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:m="http:/freetakteam.fts.org/COT_Excheck_Notification_Update#" targetNamespace="http:/freetakteam.fts.org/COT_Excheck_Notification_Update#" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="COT_Excheck_Notification_Update" type="m:COT_Excheck_Notification_Update"/>
+	<xs:complexType name="COT_Excheck_Notification_Update">
+		<xs:sequence>
+			<xs:element name="Event" type="m:Event" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="COT2525" sawsdl:modelReference="http://freetakteam.fts.org#COT2525">
+		<xs:annotation>
+			<xs:documentation>this class manages the types of COTS and 2525 (if possible) that are stored in the persistency.</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="COTType" sawsdl:modelReference="http://freetakteam.fts.org#COT2525">
+		<xs:annotation>
+			<xs:documentation>this class manages the types of COTS and 2525 (if possible) that are stored in the persistency.</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="Event" sawsdl:modelReference="http://freetakteam.fts.org#Event">
+		<xs:annotation>
+			<xs:documentation>represents a TAK event: this class is instantiated with a standard set of values.</xs:documentation>
+			<xs:documentation>  The opex field is intended to indicate that the event is part of a   live operation, an exercise, or a simulation.  For backward compatibility, absence of the opex indicates "no statement", which will be interpreted in   an installation specific manner.</xs:documentation>
+			<xs:documentation>  </xs:documentation>
+			<xs:documentation>  opex="o-&amp;lt;name&amp;gt;" or "e-&amp;lt;nickname&amp;gt;"  or "s-&amp;lt;nickname&amp;gt;",</xs:documentation>
+			<xs:documentation>  where "-&amp;lt;name&amp;gt;" is optional.  That is, it is permissible to   specify only "o", "e", or "s" for the opex value.</xs:documentation>
+			<xs:documentation>&lt;ul&gt;</xs:documentation>
+			<xs:documentation>	&lt;li&gt;  o = operations&lt;/li&gt;</xs:documentation>
+			<xs:documentation>	&lt;li&gt;  e = exercise&lt;/li&gt;</xs:documentation>
+			<xs:documentation>&lt;/ul&gt;</xs:documentation>
+			<xs:documentation>  s = simulation</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="how" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#Event.how">
+				<xs:annotation>
+					<xs:documentation>Gives a hint about how the coordinates were generated.  It is used specifically to relay a hint about the types of errors that may be expected in the data and to weight the data in systems that fuse  multiple inputs.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stale" minOccurs="1" maxOccurs="1" type="xs:long" sawsdl:modelReference="http://freetakteam.fts.org#Event.stale">
+				<xs:annotation>
+					<xs:documentation>The "stale" attribute defines the ending time of the event's validity interval. The start and stale fields together define an interval in time.</xs:documentation>
+					<xs:documentation>It has the same format as time and start.</xs:documentation>
+					<xs:documentation>ending time when an event should no longer be considered valid l (with respect to Zulu time in extended ISO 8601 format)</xs:documentation>
+					<xs:documentation>In protobuff is in milliseconds</xs:documentation>
+					<xs:documentation>the attribute is calculated as following</xs:documentation>
+					<xs:documentation>String stale = DateUtil.toCotTime(millis + 20L * 1000L);</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="start" minOccurs="1" maxOccurs="1" type="xs:long" sawsdl:modelReference="http://freetakteam.fts.org#Event.start">
+				<xs:annotation>
+					<xs:documentation>format - DTG</xs:documentation>
+					<xs:documentation>The "start" attribute defines the starting time of the event's validity interval. The start and stale fields together define an interval in time.</xs:documentation>
+					<xs:documentation>It has the same format as time and stale.</xs:documentation>
+					<xs:documentation>starting time of the event's validity interval (with respect to Zulu time in extended ISO 8601 format) </xs:documentation>
+					<xs:documentation>. As different from the moment in which the element was generated</xs:documentation>
+					<xs:documentation>in protobuff this is expressed in milliseconds</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="time" minOccurs="1" maxOccurs="1" type="xs:long" sawsdl:modelReference="http://freetakteam.fts.org#Event.time">
+				<xs:annotation>
+					<xs:documentation>time stamp with respect to Zulu time indicating when an event was generated in extended ISO 8601 format </xs:documentation>
+					<xs:documentation>in ProtoBuff expressed is in milliseconds</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#Event.type">
+				<xs:annotation>
+					<xs:documentation>Event.type contains the Code for the Center on Target object. It Defines what the Event is about. An event may describe a physical object, a set of raw, unprocessed bits, or a tasking. </xs:documentation>
+					<xs:documentation># Hierarchically organized hint about event type (&lt;b&gt;default &lt;/b&gt;is  'a-f-G-I' for "Friendly Ground infrastructure)</xs:documentation>
+					<xs:documentation>The "type" attribute is a composite of components delimited by the semi-colon character. The first component of this composite attribute is defined below.</xs:documentation>
+					<xs:documentation>   Future versions of this schema will define other components which we expect   will aid in machine filtering. Despite the exclusion of definitions   for additional components in this version of the schema, users of   this schema should expect and design an optional trailing field  delimited by the semi-colon character. This field can be ignored.</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;   &lt;font color="#a52a2a"&gt;&lt;i&gt;component1&lt;/i&gt;&lt;/font&gt;;&lt;font color="#32cd32"&gt;optional field&lt;/font&gt;&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>     The first component (&lt;font color="#a52a2a"&gt;component1&lt;/font&gt;) is a hierarchically organized hint about type.</xs:documentation>
+					<xs:documentation>   The intention is that this hierarchy be flexible and extensible and facilitate simple filtering, translation and display.  To  facilitate  filtering, the hierarchy needs to present key  fields in an easily parsed and logical order.  To facilitate  this, this component is a composite of fields separated by the "-" punctuation   character, so a valid type would be: x-x-X-X-x.  Using a punctuation for field separation allows arbitrary expansion of the  type space, </xs:documentation>
+					<xs:documentation>&lt;i&gt;e.g., a-fzp-mlk-gm-...&lt;/i&gt;</xs:documentation>
+					<xs:documentation>   Field meanings are type specific.  That is, the third field of an  "&lt;u&gt;atom&lt;/u&gt;" type may represent air vs. ground while the same field for a   "&lt;u&gt;reservation&lt;/u&gt;" type may represent purpose.</xs:documentation>
+					<xs:documentation>&lt;b&gt;&lt;u&gt;MEANING of 'a' in the first position&lt;/u&gt;&lt;/b&gt;  </xs:documentation>
+					<xs:documentation>The "Atoms" portion of the type tree requires some additional explanation past the taxonomy defined below. The "Atoms" portion of  the type tree contains CoT defined fields and part of the &lt;b&gt;MIL-STD-2525&lt;/b&gt;    type definition. &lt;u&gt;To distinguish MIL-STD-2525 type strings from CoT defined  fields, the MIL-STD-2525 types must be represented in all upper    case&lt;/u&gt;. Differentiation of type namespace with upper/lower case   facilitates extension of CoT types and MIL-STD-2525 types without   name space conflict. An example:</xs:documentation>
+					<xs:documentation>   &lt;font color="#008080"&gt;a&lt;/font&gt;-&lt;font color="#006400"&gt;f&lt;/font&gt;-&lt;font color="#dc143c"&gt;&lt;b&gt;A-B-C&lt;/b&gt;&lt;/font&gt;-&lt;font color="#00ffff"&gt;x&lt;/font&gt; </xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;a = Atom&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;&lt;font color="#006400"&gt;f&lt;/font&gt; = attitude or disposition (friendly in this case)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;A-B-C  =the SDIC 2525 separated by dashs&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;&lt;font color="#00ffff"&gt;x&lt;/font&gt; = COT specific extension&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>   The organization of CoT and MIL-STD-2525 types can be determined   from the taxonomy below, but additional details are provided here.</xs:documentation>
+					<xs:documentation>   The "Atoms" portion of the "type" tree contains the "Battle  Dimension" and  "Function ID" fields taken from MIL-STD-2525.</xs:documentation>
+					<xs:documentation>   "Battle Dimension" is a single character taken from MIL-STD-2525 and is located in the position 5. </xs:documentation>
+					<xs:documentation>a-.-&lt;font color="#dc143c"&gt;&lt;b&gt;G&lt;/b&gt;&lt;/font&gt;-I-M-N-B</xs:documentation>
+					<xs:documentation>&amp;nbsp;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;P - Space&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;A - Air&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;G - Ground&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;S - Sea Surface&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;U - Sea Subsurface&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;SF - Special Operations Forces&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>   The typical 2525 representation for "Function ID" is three groups of   two characters separated by a space (e.g. "12 34 56"). The CoT  schema maps this to a "-" delimited list of characters. (e.g. "1-2-3-4-5-6").</xs:documentation>
+					<xs:documentation>   The concatenation of the "Battle Dimension" and "Function ID" fields    from the MIL-STD-2525 specification represented in the CoT schema   will be as follows:</xs:documentation>
+					<xs:documentation>   battle dimension-&lt;font color="#a52a2a"&gt;func id char1&lt;/font&gt;-func id char2- ... -func id char6</xs:documentation>
+					<xs:documentation>   When an appropriate MIL-STD-2525 type exists, it should be used. If  there is a MIL-STD-2525 representation which is close, but may be   refined, a CoT extension to the 2525 type can be appended.</xs:documentation>
+					<xs:documentation>   for example: </xs:documentation>
+					<xs:documentation>a-h-X-X-X-X-X-&lt;b&gt;i&lt;/b&gt; might represent hostile MIL-STD-2525 type X-X-X-X-X  of   &lt;b&gt;Israeli &lt;/b&gt;(the 'i'&lt;b&gt;) &lt;/b&gt;manufacture. Again, the&lt;u&gt; CoT extension uses lower case&lt;/u&gt;. </xs:documentation>
+					<xs:documentation>   Conceptually, this extension defines further branching from the nearest MIL-STD-2525 tree point.</xs:documentation>
+					<xs:documentation>   If no appropriate 2525 representation exists, a type definition can be added to the CoT tree defined here. The resulting definition    would be represented in all lower case. For example</xs:documentation>
+					<xs:documentation>   a-h-G-p-i</xs:documentation>
+					<xs:documentation>   might define atoms-hostile-Ground-photon cannon-infrared.</xs:documentation>
+					<xs:documentation>   The taxonomy currently looks like this: Note that the coding of the  sub fields are determined entirely by the preceding fields!) The  current type tree is defined here. </xs:documentation>
+					<xs:documentation>       &lt;b&gt;+--- First position, this event describes&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;       a - Atoms - this event describes an actual "thing"&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>      &lt;b&gt;     +--- 2nd CoT affiliation of these atoms&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;&lt;b&gt;     &lt;/b&gt;        p - Pending&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           u - Unknown&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           a - Assumed friend&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           f - Friend&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           n - Neutral&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           s - Suspect&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           h - Hostile&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           j - Joker&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           k - Faker&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           o - None specified&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           x - Other&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;               +--- Battle dimension&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;               |    Taken from MIL-STD-2525 "Battle Dimension" (upper case)&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;&lt;b&gt; &lt;/b&gt;P - Space&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;A - Air&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;G - Ground&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;S - Sea Surface&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;U - Sea Subsurface&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;SF - Special Operations Forces&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>          &lt;b&gt;         +--- Function (dimension specific!)&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;              &lt;/b&gt;&lt;i&gt;See MIL-STD-2525B specification for  function fields (must be upper case)    &lt;/i&gt;</xs:documentation>
+					<xs:documentation>               Any number of char before the first “dash”, it express also the hierarchy</xs:documentation>
+					<xs:documentation>(Hundreds of options)</xs:documentation>
+					<xs:documentation>&lt;b&gt;       +--- The event describes ...&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;    &lt;/b&gt;       &lt;b&gt;b - Bits &lt;/b&gt;- Events in the "Bit" group (pos 1163++ ) carry meta information about raw data sources.  For example, range-doppler  radar returns or SAR imagery represent classes of information that are "bits".  However, tracks derived from such sources represent objects on the battlespace and this have event type "A-..."</xs:documentation>
+					<xs:documentation>                  The intention with the "Bit" type is to facilitate the identification of germane information products.</xs:documentation>
+					<xs:documentation>                  This hierarchy is not intended to replace more detailed domain-specific meta information (such as that contained in NITF image headers or the GMTI data formats), rather it is intended to provide a domain-neutral mechanism for rapid filtering of information products.</xs:documentation>
+					<xs:documentation>&lt;b&gt;           +--- Dimension     &lt;/b&gt;</xs:documentation>
+					<xs:documentation>second position, Like battle dimension but for 'b' types</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;        &lt;font color="#006400"&gt;   i - Imagery&lt;/font&gt;&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ol&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               e - Electro-optical&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               i - Infra red&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               s - SAR&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               v - video&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ol&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               ...&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           r - Radar&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ol&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;            &lt;font color="#006400"&gt;   m - MTI data&lt;/font&gt;&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ol&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               ...&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;        &lt;font color="#006400"&gt;   d - Sensor detection events&lt;/font&gt;&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ol&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               s - Seismic&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               d - Doppler&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               a - Acoustic&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               m - Motion (e.g., IR)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ol&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           m - Mapping&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;ol&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               p - Designated point (rally point, etc.)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;                   i - initial points&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;                   r - rally points&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;                   ...&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ol&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;       r - Reservation/Restriction/References &lt;/b&gt;</xs:documentation>
+					<xs:documentation>                  Events in this category are generally "notices" about specific areas.  These events are used for deconfliction and conveyance of significant "area" conditions.  Generally, the "point" entity will describe a conical region that completely encloses the affected area.  The details entity will provide more specific bounds on precisely the region affected.</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           u - Unsafe (hostile capability)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           o - Occupied (e.g., SOF forces on ground)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           c - Contaminated (NBC event)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;               c - chemical&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;                   x - agents, direction,&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;                   y&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;                   z&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           f - Flight restrictions&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;       t - Tasking (requests/orders)&lt;/b&gt;</xs:documentation>
+					<xs:documentation>Events in this category are generalized requests for service.  These may be used to request for data collection, request mesuration of a specific object, order an asset to take action against a specific point.  Generally, the "details" entity will identify the general or specific entity being tasked.</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           s - Surveillance&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           r - Relocate&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           e - Engage&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           m - Mensurate&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>&lt;b&gt;      c - Capability (applied to an area)&lt;/b&gt;</xs:documentation>
+					<xs:documentation>&lt;ul&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           s - Surveillance&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           r - Rescue&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           f - Fires&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           d - Direct fires&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;            i - Indirect fires&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;           l - Logistics (supply)&lt;/li&gt;</xs:documentation>
+					<xs:documentation>	&lt;li&gt;            f - Fuel&lt;/li&gt;</xs:documentation>
+					<xs:documentation>&lt;/ul&gt;</xs:documentation>
+					<xs:documentation>               ...</xs:documentation>
+					<xs:documentation>&lt;b&gt;c - Communications&lt;/b&gt;</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="uid" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#Event.uid">
+				<xs:annotation>
+					<xs:documentation>The "uid" attribute is a globally unique name for this specific piece of information.</xs:documentation>
+					<xs:documentation>Several "events" may be associated with one UID, but in that case, the latest (ordered by timestamp), </xs:documentation>
+					<xs:documentation>overwrites all previous events for that UID.</xs:documentation>
+					<xs:documentation>can have additional information attached.</xs:documentation>
+					<xs:documentation>[EventTYPE].[MACHINESENDERID].Nichname.UniqueID</xs:documentation>
+					<xs:documentation>e.g. -&lt;i&gt;ping &lt;/i&gt;means that this event is a ping, </xs:documentation>
+					<xs:documentation>&lt;i&gt;GeoChat &lt;/i&gt;indicates a chat type structure.</xs:documentation>
+					<xs:documentation>The &lt;b&gt;UID&lt;/b&gt; should be in the following format: GeoChat.&amp;lt;sender uid&amp;gt;.&amp;lt;recipient callsign or name of the group&amp;gt;.&amp;lt;random string for uniqueness&amp;gt;.  Diverging from this format should not cause significant issues; however, the UID is used as a fallback if other information cannot be parsed from the message, so issues may still be experienced.  If uid does not contain any “.” characters, the chat room will default to “All Chat Rooms”.</xs:documentation>
+					<xs:documentation>GeoChat.ANDROID-7C:91:22:E8:6E:4D.DIPPER.44bf77cd-289e-4ea4-8756-ce295de168ca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="version" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#Event.version">
+				<xs:annotation>
+					<xs:documentation>Schema version of this event instance (e.g. 2.0)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="detail" minOccurs="1" maxOccurs="1" type="m:detail" sawsdl:modelReference="http://freetakteam.fts.org#Event.detail"/>
+			<xs:element name="point" minOccurs="1" maxOccurs="1" type="m:point" sawsdl:modelReference="http://freetakteam.fts.org#Event.point"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExternalData" sawsdl:modelReference="http://freetakteam.fts.org#ExternalData">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#ExternalData.name"/>
+			<xs:element name="notes" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#ExternalData.notes"/>
+			<xs:element name="tool" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#ExternalData.tool">
+				<xs:annotation>
+					<xs:documentation>the type of tool e.g excheck</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="urlData" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#ExternalData.urlData">
+				<xs:annotation>
+					<xs:documentation>this is the URL of the complete element </xs:documentation>
+					<xs:documentation>e.g. for a checklist  "IP/Marti/api/excheck/checklist/&amp;lt;hash&amp;gt;/"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="urlView" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#ExternalData.urlView">
+				<xs:annotation>
+					<xs:documentation>this ios the URL of the Status call </xs:documentation>
+					<xs:documentation>e.g.  "IP/Marti/api/excheck/checklist/&amp;lt;hash&amp;gt;/status"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MissionChange" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange">
+		<xs:sequence>
+			<xs:element name="content" minOccurs="1" maxOccurs="1" type="m:content" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.content"/>
+			<xs:element name="contentResource" minOccurs="1" maxOccurs="1" type="m:contentResource" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.contentResource"/>
+			<xs:element name="creatorUid" minOccurs="1" maxOccurs="1" type="m:creatorUid" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.creatorUid"/>
+			<xs:element name="isFederatedChange" minOccurs="1" maxOccurs="1" type="m:isFederatedChange" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.isFederatedChange"/>
+			<xs:element name="missionName" minOccurs="1" maxOccurs="1" type="m:missionName" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.missionName"/>
+			<xs:element name="timestamp" minOccurs="1" maxOccurs="1" type="m:timestamp" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.timestamp"/>
+			<xs:element name="type" minOccurs="1" maxOccurs="1" type="m:type" sawsdl:modelReference="http://freetakteam.fts.org#MissionChange.type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MissionChangeType" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ADD_CONTENT" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.ADD_CONTENT"/>
+			<xs:enumeration value="CREATE_DATA_FEED" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.CREATE_DATA_FEED"/>
+			<xs:enumeration value="CREATE_MISSION" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.CREATE_MISSION"/>
+			<xs:enumeration value="DELETE_DATA_FEED" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.DELETE_DATA_FEED"/>
+			<xs:enumeration value="DELETE_MISSION" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.DELETE_MISSION"/>
+			<xs:enumeration value="MAP_LAYER" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.MAP_LAYER"/>
+			<xs:enumeration value="REMOVE_CONTENT" sawsdl:modelReference="http://freetakteam.fts.org#MissionChangeType.REMOVE_CONTENT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MissionChanges" sawsdl:modelReference="http://freetakteam.fts.org#MissionChanges">
+		<xs:sequence>
+			<xs:element name="MissionChange" minOccurs="1" maxOccurs="unbounded" type="m:MissionChange" sawsdl:modelReference="http://freetakteam.fts.org#MissionChanges.MissionChange"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MissionType" sawsdl:modelReference="http://freetakteam.fts.org#MissionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CHANGE" sawsdl:modelReference="http://freetakteam.fts.org#MissionType.CHANGE"/>
+			<xs:enumeration value="CREATE" sawsdl:modelReference="http://freetakteam.fts.org#MissionType.CREATE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="checklistTask" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask">
+		<xs:sequence>
+			<xs:element name="completeBy" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.completeBy"/>
+			<xs:element name="completeDTG" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.completeDTG"/>
+			<xs:element name="dueRelativeTime" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.dueRelativeTime"/>
+			<xs:element name="lineBreak" minOccurs="1" maxOccurs="1" type="xs:boolean" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.lineBreak"/>
+			<xs:element name="notes" minOccurs="0" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.notes"/>
+			<xs:element name="number" minOccurs="1" maxOccurs="1" type="xs:integer" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.number"/>
+			<xs:element name="status" minOccurs="0" maxOccurs="1" type="m:checklistTaskStatus" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.status"/>
+			<xs:element name="uid" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.uid"/>
+			<xs:element name="value" minOccurs="1" maxOccurs="1" type="xs:string" sawsdl:modelReference="http://freetakteam.fts.org#checklistTask.value"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="checklistTaskStatus" sawsdl:modelReference="http://freetakteam.fts.org#checklistTaskStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Complete" sawsdl:modelReference="http://freetakteam.fts.org#checklistTaskStatus.Complete"/>
+			<xs:enumeration value="Complete (late)" sawsdl:modelReference="http://freetakteam.fts.org#checklistTaskStatus.Complete (late)"/>
+			<xs:enumeration value="Late" sawsdl:modelReference="http://freetakteam.fts.org#checklistTaskStatus.Late"/>
+			<xs:enumeration value="Pending" sawsdl:modelReference="http://freetakteam.fts.org#checklistTaskStatus.Pending"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="content" sawsdl:modelReference="http://freetakteam.fts.org#content">
+		<xs:sequence>
+			<xs:element name="checklistTask" minOccurs="1" maxOccurs="1" type="m:checklistTask" sawsdl:modelReference="http://freetakteam.fts.org#content.checklistTask"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="contentResource" sawsdl:modelReference="http://freetakteam.fts.org#contentResource">
+		<xs:sequence>
+			<xs:element name="filename" minOccurs="0" maxOccurs="1" type="m:filename" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.filename"/>
+			<xs:element name="hash" minOccurs="1" maxOccurs="1" type="m:hash" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.hash"/>
+			<xs:element name="keywords" minOccurs="0" maxOccurs="1" type="m:keywords" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.keywords"/>
+			<xs:element name="mimeType" type="m:mimeType" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.mimeType"/>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="m:name" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.name"/>
+			<xs:element name="size" minOccurs="1" maxOccurs="1" type="m:size" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.size"/>
+			<xs:element name="submissionTime" minOccurs="1" maxOccurs="1" type="m:submissionTime" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.submissionTime"/>
+			<xs:element name="submitter" minOccurs="1" maxOccurs="1" type="m:submitter" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.submitter"/>
+			<xs:element name="tool" minOccurs="0" maxOccurs="1" type="m:tool" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.tool"/>
+			<xs:element name="uid" minOccurs="1" maxOccurs="1" type="m:uid" sawsdl:modelReference="http://freetakteam.fts.org#contentResource.uid"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="creatorUid" sawsdl:modelReference="http://freetakteam.fts.org#creatorUid"/>
+	<xs:complexType name="detail" sawsdl:modelReference="http://freetakteam.fts.org#detail">
+		<xs:annotation>
+			<xs:documentation>An optional element used to hold CoT sub-schema. Detail has no special properties.</xs:documentation>
+			<xs:documentation>&lt;b&gt;   Detail entities...&lt;/b&gt;</xs:documentation>
+			<xs:documentation>  The "detail" entity is intended to carry information that is   specific to smaller communities of producers and consumers and     require more intimate knowledge of the operating domain.  For example, mesurated "target" events may come from dramatically     different sources and need to propagate dramatically different     "detail" information.  A close-air-support mission will augment     target details with initial point and callsign details to     facilitate coordination of weapon delivery.  In contrast, a mission planning system may augment planned targets with target     catalog information and weapon fuzing requirements.  Because the "details" portion of the event are of interest only to a subset of subscribers, that entity may be mentioned by reference     when the event is communicated.  This reduces the congestion when events are transmitted over bandwidth limited links and also     prevents the retransmission of static data elements.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="mission" minOccurs="1" maxOccurs="1" type="m:mission" sawsdl:modelReference="http://freetakteam.fts.org#detail.mission"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="filename" sawsdl:modelReference="http://freetakteam.fts.org#filename"/>
+	<xs:complexType name="hash" sawsdl:modelReference="http://freetakteam.fts.org#hash"/>
+	<xs:complexType name="isFederatedChange" sawsdl:modelReference="http://freetakteam.fts.org#isFederatedChange"/>
+	<xs:complexType name="keywords" sawsdl:modelReference="http://freetakteam.fts.org#keywords"/>
+	<xs:complexType name="mimeType" sawsdl:modelReference="http://freetakteam.fts.org#mimeType"/>
+	<xs:complexType name="mission" sawsdl:modelReference="http://freetakteam.fts.org#mission">
+		<xs:sequence>
+			<xs:element name="authorUid" minOccurs="1" maxOccurs="1" type="" sawsdl:modelReference="http://freetakteam.fts.org#mission.authorUid"/>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="" sawsdl:modelReference="http://freetakteam.fts.org#mission.name"/>
+			<xs:element name="tool" minOccurs="1" maxOccurs="1" type="" sawsdl:modelReference="http://freetakteam.fts.org#mission.tool"/>
+			<xs:element name="type" minOccurs="1" maxOccurs="1" type="m:MissionType" sawsdl:modelReference="http://freetakteam.fts.org#mission.type">
+				<xs:annotation>
+					<xs:documentation> Types of mission changes: Missions, and Mission content. Content changes will specify either a hash or uid, not both</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MissionChanges" minOccurs="1" maxOccurs="1" type="m:MissionChanges" sawsdl:modelReference="http://freetakteam.fts.org#mission.MissionChanges"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="missionName" sawsdl:modelReference="http://freetakteam.fts.org#missionName"/>
+	<xs:complexType name="name" sawsdl:modelReference="http://freetakteam.fts.org#name"/>
+	<xs:complexType name="point" sawsdl:modelReference="http://freetakteam.fts.org#point">
+		<xs:sequence>
+			<xs:element name="ce" minOccurs="1" maxOccurs="1" type="xs:double" sawsdl:modelReference="http://freetakteam.fts.org#point.ce">
+				<xs:annotation>
+					<xs:documentation>Circular area around the point defined by lat and lon fields in meters.  Although named ce, this field is intended to define a circular area around the event point, not necessarily an error (e.g. Describing a reservation area is not an "error").  </xs:documentation>
+					<xs:documentation>If it is appropriate for the "ce" field to represent an error value (e.g. event describes laser designated target), the value will represent the one sigma point for a zero mean  normal (Guassian) distribution.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="hae" minOccurs="1" maxOccurs="1" type="xs:double" sawsdl:modelReference="http://freetakteam.fts.org#point.hae">
+				<xs:annotation>
+					<xs:documentation>Height above Ellipsoid based on WGS-84 ellipsoid (measured in meters) </xs:documentation>
+					<xs:documentation>HAE acronym for Height above Ellipsoid based on WGS-84 ellipsoid (measured in meters).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lat" minOccurs="1" maxOccurs="1" type="xs:double" sawsdl:modelReference="http://freetakteam.fts.org#point.lat">
+				<xs:annotation>
+					<xs:documentation>Latitude referred to the WGS 84 ellipsoid in degrees</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="le" minOccurs="1" maxOccurs="1" type="xs:double" sawsdl:modelReference="http://freetakteam.fts.org#point.le">
+				<xs:annotation>
+					<xs:documentation>Linear Error in meters associated with the HAE field. Although named le, this field is intended to define a height range about the event point, not necessarily an error. This field, along with the ce field allow for the definition of a cylindrical volume about the point. If it is appropriate for the "le" field to represent an error (e.g. event describes laser designated target), the value will represent the one sigma point for a zero mean normal (Guassian) distribution.</xs:documentation>
+					<xs:documentation>A height range about the event point in meters associated with the HAE field. When used to represent error, the value represents the one sigma point for a zero mean normal (Gaussian) distribution.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lon" minOccurs="1" maxOccurs="1" type="xs:double" sawsdl:modelReference="http://freetakteam.fts.org#point.lon">
+				<xs:annotation>
+					<xs:documentation>Longitude referred to the WGS 84 in degrees</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="size" sawsdl:modelReference="http://freetakteam.fts.org#size"/>
+	<xs:complexType name="submissionTime" sawsdl:modelReference="http://freetakteam.fts.org#submissionTime"/>
+	<xs:complexType name="submitter" sawsdl:modelReference="http://freetakteam.fts.org#submitter"/>
+	<xs:complexType name="timestamp" sawsdl:modelReference="http://freetakteam.fts.org#timestamp"/>
+	<xs:complexType name="tool" sawsdl:modelReference="http://freetakteam.fts.org#tool"/>
+	<xs:complexType name="type" sawsdl:modelReference="http://freetakteam.fts.org#type"/>
+	<xs:complexType name="uid" sawsdl:modelReference="http://freetakteam.fts.org#uid">
+		<xs:annotation>
+			<xs:documentation>special class used in mission only for ID</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+</xs:schema>

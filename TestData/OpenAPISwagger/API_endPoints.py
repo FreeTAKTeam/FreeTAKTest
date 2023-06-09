@@ -21,6 +21,9 @@
     """
 @app.route('/Marti/api/citrap/<id>', methods=["
 @app.route('/Marti/api/citrap/<id>/attachment', methods=["
+    """
+   Classification (???)
+    """
 @app.route('/Marti/api/classification', methods=["
 @app.route('/Marti/api/classification/<level>', methods=["
 @app.route('/Marti/api/clearFederationEvents', methods=["
@@ -57,17 +60,17 @@
     checklist that is hosted out on a TAK server. Each checklist is an instance of a template 
     that defines a number of tasks to be completed. 
     """
-@app.route('/Marti/api/excheck/<checklistUid>/stop', methods=["
-@app.route('/Marti/api/excheck/<templateUid>/start', methods=["
-@app.route('/Marti/api/excheck/checklist', methods=["
-@app.route('/Marti/api/excheck/checklist/<checklistUid>', methods=["
-@app.route('/Marti/api/excheck/checklist/<checklistUid>/mission/<missionName>', methods=["
-@app.route('/Marti/api/excheck/checklist/<checklistUid>/status', methods=["
-@app.route('/Marti/api/excheck/checklist/<checklistUid>/task/<taskUid>', methods=["
-@app.route('/Marti/api/excheck/checklist/active', methods=["
-@app.route('/Marti/api/excheck/template', methods=["
-@app.route('/Marti/api/excheck/template/<templateUid>', methods=["
-@app.route('/Marti/api/excheck/template/<templateUid>/task/<taskUid>', methods=["
+@app.route('/Marti/api/excheck/<checklistUid>/stop', methods=['POST'])
+@app.route('/Marti/api/excheck/<templateUid>/start', methods=['POST'])
+@app.route('/Marti/api/excheck/checklist', methods=['POST'])
+@app.route('/Marti/api/excheck/checklist/<checklistUid>', methods=['GET'])
+@app.route('/Marti/api/excheck/checklist/<checklistUid>/mission/<missionName>', methods=['PUT', 'DELETE'])
+@app.route('/Marti/api/excheck/checklist/<checklistUid>/status', methods=['GET', 'DELETE'])
+@app.route('/Marti/api/excheck/checklist/<checklistUid>/task/<taskUid>', methods=['GET', 'PUT','DELETE'])
+@app.route('/Marti/api/excheck/checklist/active', methods=['GET'])
+@app.route('/Marti/api/excheck/template', methods=['POST'])
+@app.route('/Marti/api/excheck/template/<templateUid>', methods=['GET', 'DELETE'])
+@app.route('/Marti/api/excheck/template/<templateUid>/task/<taskUid>', methods=['GET', 'PUT','DELETE','POST'])
     """
         The federation function allows  to connect to another server of the TAK family and exchange information such as COT and chats. 
         
@@ -95,12 +98,12 @@
 @app.route('/Marti/api/groupprefix', methods=["
 @app.route('/Marti/api/groups', methods=["
 @app.route('/Marti/api/groups/<name>/<direction>', methods=["
-@app.route('/Marti/api/groups/active', methods=["PUT
-@app.route('/Marti/api/groups/activebits', methods=["PUT
+@app.route('/Marti/api/groups/active', methods=['PUT'])
+@app.route('/Marti/api/groups/activebits', methods=['PUT'])
 @app.route('/Marti/api/groups/all', methods=["
 @app.route('/Marti/api/groups/groupCacheEnabled', methods=["
 @app.route('/Marti/api/groups/members', methods=["
-@app.route('/Marti/api/groups/update/<username>', methods=["GET
+@app.route('/Marti/api/groups/update/<username>', methods=['GET'
 @app.route('/Marti/api/home', methods=["
 @app.route('/Marti/api/icon/<uid>/<group>/<name>', methods=["
 @app.route('/Marti/api/iconimage', methods=["
@@ -123,49 +126,49 @@
     """
        The Data Synchronizationis used to synchronize multiple TAK clients involved in the same exercise or event. 
     """
-@app.route('/Marti/api/missions', methods=["
-@app.route('/Marti/api/missions/<childName>/parent', methods=["DELETE
-@app.route('/Marti/api/missions/<childName>/parent/<parentName>', methods=["PUT
-@app.route('/Marti/api/missions/<missionName>/copy', methods=["PUT
-@app.route('/Marti/api/missions/<missionName>/feed', methods=["POST, 
-@app.route('/Marti/api/missions/<missionName>/feed/<uid>', methods=["DELETE
-@app.route('/Marti/api/missions/<missionName>/invitations', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/log', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/maplayers', methods=["PUT,POST
-@app.route('/Marti/api/missions/<missionName>/maplayers/<uid>', methods=["DELETE
-@app.route('/Marti/api/missions/<missionName>/role', methods=["GET, PUT
-@app.route('/Marti/api/missions/<missionName>/subscription', methods=["GET, PUT, POST, DELETE
-@app.route('/Marti/api/missions/<missionName>/subscriptions', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/subscriptions/roles', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/token', methods=["GET
-@app.route('/Marti/api/missions/<missionName>', methods=["GET, PUT, DELETE
-@app.route('/Marti/api/missions/<missionName>/archive', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/changes', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/children', methods=["
-@app.route('/Marti/api/missions/<missionName>/contacts', methods=["
-@app.route('/Marti/api/missions/<missionName>/content/<hash>/keywords', methods=["PUT, DELETE
-@app.route('/Marti/api/missions/<missionName>/contents', methods=["PUT,DELETE
-@app.route('/Marti/api/missions/<missionName>/contents/missionpackage', methods=["PUT
-@app.route('/Marti/api/missions/<missionName>/cot', methods=["
-@app.route('/Marti/api/missions/<missionName>/expiration', methods=["PUT
-@app.route('/Marti/api/missions/<missionName>/externaldata', methods=["POST,
-@app.route('/Marti/api/missions/<missionName>/externaldata/<id>', methods=["DELETE
-@app.route('/Marti/api/missions/<missionName>/externaldata/<id>/change', methods=["POST
-@app.route('/Marti/api/missions/<missionName>/invite', methods=["POST
-@app.route('/Marti/api/missions/<missionName>/invite/<type>/<invitee>', methods=["PUT, DELETE
-@app.route('/Marti/api/missions/<missionName>/keywords', methods=["PUT, DELETE
-@app.route('/Marti/api/missions/<missionName>/keywords/<keyword>', methods=["DELETE
-@app.route('/Marti/api/missions/<missionName>/kml', methods=["
-@app.route('/Marti/api/missions/<missionName>/parent', methods=["GET
-@app.route('/Marti/api/missions/<missionName>/password', methods=["DELETE, PUT
-@app.route('/Marti/api/missions/<missionName>/send', methods=["POST
-@app.route('/Marti/api/missions/<missionName>/uid/<uid>/keywords', methods=["PUT,DELETE
-@app.route('/Marti/api/missions/all/invitations', methods=["GET
-@app.route('/Marti/api/missions/all/logs', methods=["GET
-@app.route('/Marti/api/missions/all/subscriptions', methods=["GET
-@app.route('/Marti/api/missions/invitations', methods=["GET
-@app.route('/Marti/api/missions/logs/entries', methods=["PUT,POST
-@app.route('/Marti/api/missions/logs/entries/<id>', methods=["GET,DELETE 
+@app.route('/Marti/api/missions', methods=['GET'])
+@app.route('/Marti/api/missions/<childName>/parent', methods=['DELETE'])
+@app.route('/Marti/api/missions/<childName>/parent/<parentName>', methods=['PUT'])
+@app.route('/Marti/api/missions/<missionName>/copy', methods=['PUT'])
+@app.route('/Marti/api/missions/<missionName>/feed', methods=['POST']) 
+@app.route('/Marti/api/missions/<missionName>/feed/<uid>', methods=['DELETE'])
+@app.route('/Marti/api/missions/<missionName>/invitations', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/log', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/maplayers', methods=['PUT','POST'])
+@app.route('/Marti/api/missions/<missionName>/maplayers/<uid>', methods=['DELETE'])
+@app.route('/Marti/api/missions/<missionName>/role', methods=['GET', 'PUT'])
+@app.route('/Marti/api/missions/<missionName>/subscription', methods=['GET', 'PUT', 'POST', 'DELETE'])
+@app.route('/Marti/api/missions/<missionName>/subscriptions', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/subscriptions/roles', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/token', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/Marti/api/missions/<missionName>/archive', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/changes', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/children', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/contacts', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/content/<hash>/keywords', methods=['PUT', 'DELETE', 'GET'])
+@app.route('/Marti/api/missions/<missionName>/contents', methods=['PUT','DELETE'])
+@app.route('/Marti/api/missions/<missionName>/contents/missionpackage', methods=['PUT'])
+@app.route('/Marti/api/missions/<missionName>/cot', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/expiration', methods=['PUT'])
+@app.route('/Marti/api/missions/<missionName>/externaldata', methods=['POST'])
+@app.route('/Marti/api/missions/<missionName>/externaldata/<id>', methods=['DELETE'
+@app.route('/Marti/api/missions/<missionName>/externaldata/<id>/change', methods=['POST'])
+@app.route('/Marti/api/missions/<missionName>/invite', methods=['POST'])
+@app.route('/Marti/api/missions/<missionName>/invite/<type>/<invitee>', methods=['PUT', 'DELETE'])
+@app.route('/Marti/api/missions/<missionName>/keywords', methods=['PUT', 'DELETE'])
+@app.route('/Marti/api/missions/<missionName>/keywords/<keyword>', methods=['DELETE'])
+@app.route('/Marti/api/missions/<missionName>/kml', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/parent', methods=['GET'])
+@app.route('/Marti/api/missions/<missionName>/password', methods=['DELETE', 'PUT'])
+@app.route('/Marti/api/missions/<missionName>/send', methods=['POST'])
+@app.route('/Marti/api/missions/<missionName>/uid/<uid>/keywords', methods=['PUT','DELETE'])
+@app.route('/Marti/api/missions/all/invitations', methods=['GET'])
+@app.route('/Marti/api/missions/all/logs', methods=['GET'])
+@app.route('/Marti/api/missions/all/subscriptions', methods=['GET'])
+@app.route('/Marti/api/missions/invitations', methods=['GET'])
+@app.route('/Marti/api/missions/logs/entries', methods=['PUT','POST'])
+@app.route('/Marti/api/missions/logs/entries/<id>', methods=['GET','DELETE' ])
     """
         Internal API
     """
@@ -202,7 +205,7 @@
     """
 @app.route('/Marti/api/repeater/list', methods=["
 @app.route('/Marti/api/repeater/period', methods=["
-@app.route('/Marti/api/repeater/remove/<uid>', methods=["GET
+@app.route('/Marti/api/repeater/remove/<uid>', methods=['GET'
 @app.route('/Marti/api/resources/<hash>', methods=["
 @app.route('/Marti/api/security/config', methods=["
 @app.route('/Marti/api/security/isSecure', methods=["
@@ -210,19 +213,19 @@
   """
     subscription-api
     """
-@app.route('/Marti/api/subscriptions/<clientUid>/filter', methods=["PUT, DELETE,
-@app.route('/Marti/api/subscriptions/add', methods=["POST
-@app.route('/Marti/api/subscriptions/all', methods=["GET
-@app.route('/Marti/api/subscriptions/delete/<uid>', methods=["DELETE
-@app.route('/Marti/api/subscriptions/incognito/<uid>', methods=["POST
+@app.route('/Marti/api/subscriptions/<clientUid>/filter', methods=['PUT', 'DELETE',
+@app.route('/Marti/api/subscriptions/add', methods=["'POST'
+@app.route('/Marti/api/subscriptions/all', methods=['GET'
+@app.route('/Marti/api/subscriptions/delete/<uid>', methods=[''DELETE''
+@app.route('/Marti/api/subscriptions/incognito/<uid>', methods=["'POST'
    """
     syncronize metadata
     """
-@app.route('/Marti/api/sync/metadata/<hash>/<metadata>', methods=["PUT
-@app.route('/Marti/api/sync/metadata/<hash>/expiration', methods=["PUT
-@app.route('/Marti/api/sync/metadata/<hash>/keywords', methods=["PUT
+@app.route('/Marti/api/sync/metadata/<hash>/<metadata>', methods=['PUT'
+@app.route('/Marti/api/sync/metadata/<hash>/expiration', methods=['PUT'
+@app.route('/Marti/api/sync/metadata/<hash>/keywords', methods=['PUT'
 
-@app.route('/Marti/api/sync/search', methods=["
+@app.route('/Marti/api/sync/search', methods=['GET'
 @app.route('/Marti/api/sync/sequence/<key>', methods=["
 @app.route('/Marti/api/tls/config', methods=["
 @app.route('/Marti/api/tls/makeClientKeyStore', methods=["
@@ -249,8 +252,8 @@
         video-connection-manager-v-2 (since TAK Server 4.8
         Manage informations related to video feeds (not the video itself 
     """
-@app.route('/Marti/api/video', methods=["GET,POST 
-@app.route('/Marti/api/video/<uid>', methods=["GET,DELETE,PUT
+@app.route('/Marti/api/video', methods=['GET','POST' 
+@app.route('/Marti/api/video/<uid>', methods=['GET','DELETE',PUT
 
    """
    
@@ -262,15 +265,15 @@
     """
     file-user-account-management-api
     """
-@app.route('/user-management/api/change-user-password', methods=["PUT
-@app.route('/user-management/api/delete-user/<username>', methods=["DELETE
-@app.route('/user-management/api/get-groups-for-user/<username>', methods=["GET
-@app.route('/user-management/api/list-groupnames', methods=["GET
-@app.route('/user-management/api/list-users', methods=["GET
-@app.route('/user-management/api/new-user', methods=["POST
-@app.route('/user-management/api/new-users', methods=["POST
-@app.route('/user-management/api/update-groups', methods=["PUT
-@app.route('/user-management/api/users-in-group/<group>', methods=["GET
+@app.route('/user-management/api/change-user-password', methods=['PUT'
+@app.route('/user-management/api/delete-user/<username>', methods=['DELETE'
+@app.route('/user-management/api/get-groups-for-user/<username>', methods=['GET'
+@app.route('/user-management/api/list-groupnames', methods=['GET'
+@app.route('/user-management/api/list-users', methods=['GET'
+@app.route('/user-management/api/new-user', methods=["'POST'
+@app.route('/user-management/api/new-users', methods=["'POST'
+@app.route('/user-management/api/update-groups', methods=['PUT'
+@app.route('/user-management/api/users-in-group/<group>', methods=['GET'
     """
     file-user-account-management-api
     """
@@ -281,6 +284,6 @@
     xmpp-api
     Manages files transfer over the XMMP protocol, works only with the proper plugin
 """
-@app.route('/Marti/api/xmpp/transfer/{uid}/{filename}', methods=["GET
-@app.route('/Marti/api/xmpp/transfer/{uid}/{filename}', methods=["PUT
+@app.route('/Marti/api/xmpp/transfer/{uid}/{filename}', methods=['GET'
+@app.route('/Marti/api/xmpp/transfer/{uid}/{filename}', methods=['PUT'
 @app.route('/Marti/api/xmpp/transfer/<uid>/<filename>', methods=["

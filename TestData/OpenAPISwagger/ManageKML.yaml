@@ -1,10 +1,11 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
   title: ManageKML
   description: Allows to post a set of geo information with attached metadata in tabular format
+  version: 1.0.0
 servers:
   - url: /ManageKML
+
 paths:
   /postKML:
     post:
@@ -19,17 +20,16 @@ paths:
             type: string
         - name: longitude
           in: query
-          description: The angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float
+          description: The angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float. (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API.
           required: true
           schema:
             type: number
         - name: latitude
           in: query
-          description: The angular distance of the geoobject from the earths equator expressed in positive or negative float
+          description: The angular distance of the geoobject from the earths equator expressed in positive or negative float. (e.g 43.855682).
           required: true
           schema:
             type: number
-
       requestBody:
         required: true
         content:
@@ -37,10 +37,20 @@ paths:
             schema:
               type: object
               properties:
+                name:
+                  type: string
+                  description: The name of the report
+                longitude:
+                  type: number
+                  description: The angular distance of the geoobject from the meridian of the greenwich, UK expressed in positive or negative float. (e.g -76.107.7998). Remember to set the display of your TAK in decimal coordinates, where West 77.08 is equal to '-77.08' in the API.
+                latitude:
+                  type: number
+                  description: The angular distance of the geoobject from the earths equator expressed in positive or negative float. (e.g 43.855682).
                 body:
                   type: object
                   additionalProperties:
                     type: string
+                  description: A JSON structure of key pairs (name, value)
       responses:
         '200':
           description: Successful
@@ -53,3 +63,24 @@ paths:
                 properties:
                   message:
                     type: string
+
+    examples:
+      Putin Report:
+        summary: Example of a POST request to postKML endpoint
+        value:
+          name: Putin Report
+          longitude: -77.01399
+          latitude: 38.889
+          body:
+            userCallsign: Mr Putin
+            dateTime: '2021-07-13'
+            type: Surveillance
+            eventScale: Capital
+            importance: Routine
+            status: FurtherInvestigation
+            Time Observed: '2021-05-13T13:55:05.19Z'
+            Duration of Event: All day
+            Method Of Detection: General Observation
+            Surveillance Type: Discreet
+            Assessed Threats: Threat to Mission
+            Final Remarks: SNAFU
