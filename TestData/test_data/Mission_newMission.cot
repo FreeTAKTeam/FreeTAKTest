@@ -1,0 +1,19 @@
+<event version="2.0"
+       uid="c1a220e3-7568-47a7-8818-ba8bba047238"
+       type="t-x-m-n"
+       time="2023-06-15T16:37:54.00Z"
+       start="2023-06-15T16:37:54.00Z"
+       stale="2023-06-15T16:38:14.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CREATE"
+		         tool="public"
+		         name="Last Defense!"
+		         authorUid="S-1-5-21-220624095-3181715117-1398502648-1001"/>
+	</detail>
+</event>

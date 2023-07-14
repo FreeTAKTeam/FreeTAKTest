@@ -1,0 +1,37 @@
+<!-- This file was derived from a protobuf message, so the exact XML structure may be incorrect -->
+<event how="h-g-i-g-o"
+       type="t-x-m-c"
+       version="2.0"
+       uid="d9a38e67-a6ae-443e-b18f-e0b14a2ff2d5"
+       start="2023-07-07T17:24:30Z"
+       time="2023-07-07T17:24:30Z"
+       stale="2023-07-07T17:24:50Z">
+	<point ce="9999999"
+	       le="9999999"
+	       hae="0"
+	       lat="0"
+	       lon="0"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="WWIII"
+		         authorUid="e7f71100-dbbe-4d93-b5b8-1037935f6ee6">
+			<MissionChanges>
+				<MissionChange>
+					<contentUid>7a4027c2-7ae3-4cde-bb09-1dd8de14ba08</contentUid>
+					<creatorUid>e7f71100-dbbe-4d93-b5b8-1037935f6ee6</creatorUid>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>WWIII</missionName>
+					<timestamp>2023-07-07T17:53:32.725Z</timestamp>
+					<type>ADD_CONTENT</type>
+					<details type="a-h-G"
+					         callsign="R.19.145459"
+					         iconsetPath="COT_MAPPING_2525C/a-h/a-h-G">
+						<location lat="50.718592526718"
+						          lon="-3.98582618991103"/>
+					</details>
+				</MissionChange>
+			</MissionChanges>
+		</mission>"
+	</detail>
+</event>

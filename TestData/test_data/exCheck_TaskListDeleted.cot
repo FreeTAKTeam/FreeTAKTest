@@ -1,0 +1,19 @@
+<event version="2.0"
+       uid="fa5ca2d8-8c97-4fa4-ac0c-5fcfcf4f3481"
+       type="t-x-m-d"
+       time="2023-06-15T12:18:18.00Z"
+       start="2023-06-15T12:18:18.00Z"
+       stale="2023-06-15T12:18:38.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="DELETE"
+		         tool="ExCheck"
+		         name="053c4294-7878-43f7-a148-cfd9b5b9630c"
+		         authorUid="Corvo"/>
+	</detail>
+</event>

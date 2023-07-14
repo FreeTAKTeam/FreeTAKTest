@@ -1,0 +1,37 @@
+<event version="2.0"
+       uid="3410376a-6976-4b5b-a558-bb34d4b119ff"
+       type="t-x-m-c-e"
+       time="2023-06-15T16:56:25.00Z"
+       start="2023-06-15T16:56:25.00Z"
+       stale="2023-06-15T16:56:45.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="WWIII"
+		         authorUid="e7f71100-dbbe-4d93-b5b8-1037935f6ee6">
+			<MissionChanges>
+				<MissionChange>
+					<creatorUid>e7f71100-dbbe-4d93-b5b8-1037935f6ee6</creatorUid>
+					<externalData>
+						<uid>8707c207-b372-40c8-8e72-7c364eadaf9c</uid>
+						<name>PlatoonEquipment</name>
+						<notes>e7f71100-dbbe-4d93-b5b8-1037935f6ee6 added PlatoonEquipment</notes>
+						<tool>ExCheck</tool>
+						<urlData>https://142.67.92.68:8443/Marti/api/excheck/checklist/8707c207-b372-40c8-8e72-7c364eadaf9c</urlData>
+						<urlView>https://142.67.92.68:8443/Marti/api/excheck/checklist/8707c207-b372-40c8-8e72-7c364eadaf9c/status</urlView>
+					</externalData>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>WWIII</missionName>
+					<timestamp>2023-06-15T16:56:25.366Z</timestamp>
+					<type>ADD_CONTENT</type>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>
