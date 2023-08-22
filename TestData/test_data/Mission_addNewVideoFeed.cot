@@ -1,0 +1,13 @@
+<event version="2.0" uid="7cfe6cec-ed9e-11ed-a66c-db64950af705" type="b-i-v" time="2023-08-21T22:52:03.005Z" start="2023-08-21T22:52:03.005Z" stale="2023-08-21T23:52:03.005Z" how="m-g">
+	<point lat="0.0" lon="0.0" hae="9999999.0" ce="9999999.0" le="9999999.0"/>
+	<detail>
+		<contact callsign="/live/Corvo"/>
+		<link uid="7cfe6cec-ed9e-11ed-a66c-db64950af705" production_time="2023-08-21T22:52:03.005Z" relationship="p-p" parent_callsign="DOWN"/>
+		<__video>
+			<ConnectionEntry networkTimeout="5000" uid="7cfe6cec-ed9e-11ed-a66c-db64950af705" path="/live/Corvo" protocol="rtsp" bufferTime="-1" address="204.48.30.216" port="8554" roverPort="-1" rtspReliable="0" ignoreEmbeddedKLV="false" alias="/live/Corvo"/>
+		</__video>
+		<marti>
+			<dest mission="mymissionwin"/>
+		</marti>
+	</detail>
+</event>

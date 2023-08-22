@@ -1,0 +1,35 @@
+<event version="2.0" uid="e14a2f06-3965-40e5-b3bc-291f81c89a82" type="u-d-c-c" time="2023-08-21T22:47:16.101Z" start="2023-08-21T22:47:16.101Z" stale="2023-08-22T22:47:16.101Z" how="h-e">
+	<point lat="44.6571615" lon="-63.5967004" hae="21.943" ce="9999999.0" le="9999999.0"/>
+	<detail>
+		<shape>
+			<ellipse major="35.09522274742541" minor="35.09522274742541" angle="360"/>
+			<link uid="e14a2f06-3965-40e5-b3bc-291f81c89a82.Style" type="b-x-KmlStyle" relation="p-c">
+				<Style>
+					<LineStyle>
+						<color>ffffffff</color>
+						<width>4.0</width>
+					</LineStyle>
+					<PolyStyle>
+						<color>96ffffff</color>
+					</PolyStyle>
+				</Style>
+			</link>
+		</shape>
+		<__geofence elevationMonitored="false" minElevation="NaN" monitor="TAKUsers" trigger="Both" tracking="true" maxElevation="NaN" boundingSphere="75000.0"/>
+		<remarks/>
+		<strokeColor value="-1"/>
+		<strokeWeight value="4.0"/>
+		<strokeStyle value="solid"/>
+		<fillColor value="-1761607681"/>
+		<contact callsign="Drawing Circle 1"/>
+		<archive/>
+		<geofenceMissions>
+			<mission uid="192.168.4.49-8080-tcp-mymissionwin"/>
+		</geofenceMissions>
+		<precisionlocation altsrc="DTED0"/>
+		<labels_on value="true"/>
+		<marti>
+			<dest mission="mymissionwin"/>
+		</marti>
+	</detail>
+</event>

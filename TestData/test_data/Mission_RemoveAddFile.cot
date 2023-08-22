@@ -1,0 +1,36 @@
+<event version="2.0"
+       uid="a38fae7f-2ded-43ea-a2cb-0b9a14e218a1"
+       type="t-x-m-c"
+       time="2023-07-14T19:14:09.00Z"
+       start="2023-07-14T19:14:09.00Z"
+       stale="2023-07-14T19:14:29.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="MI2"
+		         authorUid="e7f71100-dbbe-4d93-b5b8-1037935f6ee6">
+			<MissionChanges>
+				<MissionChange>
+					<contentUid>78d17012-a5ce-4b46-a112-ce8441fe871f</contentUid>
+					<creatorUid>e7f71100-dbbe-4d93-b5b8-1037935f6ee6</creatorUid>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>MI2</missionName>
+					<timestamp>2023-07-14T19:14:06.801Z</timestamp>
+					<type>REMOVE_CONTENT</type>
+					<details type="a-h-G-E-V-A-T-H"
+					         callsign="Russian Tanks"
+					         iconsetPath="COT_MAPPING_2525C/a-h/a-h-G">
+						<location lat="53.0093795375597"
+						          lon="28.6128057612574"/>
+					</details>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>

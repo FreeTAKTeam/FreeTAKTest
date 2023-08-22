@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event version="2.0"
+       uid="8c8eaa97-ad3c-4169-a504-7e3eeca46f76"
+       type="b-i-v"
+       time="2023-07-14T14:08:59Z"
+       start="2023-07-14T14:08:59Z"
+       stale="2023-07-14T15:08:58Z"
+       how="m-g">
+	<point lat="0.0"
+	       lon="0.0"
+	       hae="9999999.0000000000"
+	       ce="9999999.0"
+	       le="9999999.0"/>
+	<detail>
+		<contact callsign="Putin calls out West for a Real War against Russia - Tony Shaffer"/>
+		<precisionlocation geopointsrc="???"
+		                   altsrc="???"/>
+		<__video>
+			<ConnectionEntry protocol="raw"
+			                 address="https://www.youtube.com/watch?v=ikq2JxLgSRk"
+			                 port="80"
+			                 uid="8c8eaa97-ad3c-4169-a504-7e3eeca46f76"
+			                 alias="Putin calls out West for a Real War against Russia - Tony Shaffer"
+			                 roverPort="-1"
+			                 rtspReliable="0"
+			                 ignoreEmbeddedKLV="False"
+			                 networkTimeout="3000"
+			                 bufferTime="5000"/>
+		</__video>
+		<_flow-tags_ TAK-Server-b1d6379781644d108ae159f461a94279="2023-07-14T14:08:59Z"/>
+	</detail>
+</event>

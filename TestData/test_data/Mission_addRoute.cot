@@ -1,0 +1,48 @@
+<event version="2.0" uid="c6f31d65-fd35-48c7-9bb1-bfeed61e6f5c" type="b-m-r" time="2023-08-21T22:51:18.505Z" start="2023-08-21T22:51:18.505Z" stale="2023-08-22T22:51:18.505Z" how="h-e">
+	<point lat="0.0" lon="0.0" hae="9999999.0" ce="9999999.0" le="9999999.0"/>
+	<detail>
+		<link uid="6ee4c4b2-8ffa-4f8f-8345-75b271e8aada" callsign="Exfill TGT" type="b-m-p-w" point="44.084113,-65.463045,67.011" remarks="" relation="c"/>
+		<link uid="b3a6371c-6525-4dd4-9eeb-1dc50dccbacb" callsign="" type="b-m-p-c" point="44.084142,-65.463085,67.035" remarks="" relation="c"/>
+		<link uid="fe02c543-12f1-42c1-be8d-7136107d0f74" callsign="" type="b-m-p-c" point="44.084215,-65.463744,67.378" remarks="" relation="c"/>
+		<link uid="3211b8b7-4073-40fc-9399-967109afbd4e" callsign="" type="b-m-p-c" point="44.08409,-65.464328,67.651" remarks="" relation="c"/>
+		<link uid="e508cd1f-6815-4f50-94a4-fee4230b6291" callsign="" type="b-m-p-c" point="44.083103,-65.464394,67.509" remarks="" relation="c"/>
+		<link uid="604f8377-0a5d-4d6b-9534-c2ad420a2b19" callsign="" type="b-m-p-c" point="44.081355,-65.465142,67.585" remarks="" relation="c"/>
+		<link uid="4db082fa-ca3e-4001-9604-7a300b259534" callsign="" type="b-m-p-c" point="44.078944,-65.467852,68.456" remarks="" relation="c"/>
+		<link uid="d27409b3-b421-47f6-912f-63b01641963e" callsign="" type="b-m-p-c" point="44.075752,-65.467346,67.83" remarks="" relation="c"/>
+		<link uid="324254ea-3ab9-4a46-9afa-3e0b22ac20f7" callsign="" type="b-m-p-c" point="44.072947,-65.465636,66.922" remarks="" relation="c"/>
+		<link uid="cf260968-3daa-46ef-99d9-1d7ebcebd255" callsign="" type="b-m-p-c" point="44.071298,-65.465626,66.939" remarks="" relation="c"/>
+		<link uid="7d6952d5-6524-4bb4-9fb2-7e59a4f43804" callsign="" type="b-m-p-c" point="44.070266,-65.465385,66.797" remarks="" relation="c"/>
+		<link uid="b18e3463-05d6-4b37-b72c-6d8be51e74dc" callsign="" type="b-m-p-c" point="44.069046,-65.464248,66.097" remarks="" relation="c"/>
+		<link uid="2dfa6cc6-e462-4287-9d2b-1de8deed4ca4" callsign="" type="b-m-p-c" point="44.067298,-65.463016,65.406" remarks="" relation="c"/>
+		<link uid="156df196-dca1-43ed-8871-ddd3819ae28c" callsign="CP4" type="b-m-p-w" point="44.066714,-65.462009,64.832" remarks="" relation="c"/>
+		<link uid="28e0bebc-c87a-441e-af15-98458d7f443b" callsign="" type="b-m-p-c" point="44.064648,-65.462379,64.329" remarks="" relation="c"/>
+		<link uid="6ed391b8-d56e-4822-a40c-e672efc94b71" callsign="" type="b-m-p-c" point="44.06366,-65.463763,64.802" remarks="" relation="c"/>
+		<link uid="40af74f8-ab18-41fa-a248-c70a15378a82" callsign="" type="b-m-p-c" point="44.063463,-65.464703,65.295" remarks="" relation="c"/>
+		<link uid="b97dc4d1-78b5-4d31-b452-4a3ed7997205" callsign="" type="b-m-p-c" point="44.06267,-65.465267,65.348" remarks="" relation="c"/>
+		<link uid="4caf2baf-dde0-4811-80ce-b93ca17f8c6f" callsign="" type="b-m-p-c" point="44.060291,-65.465986,64.921" remarks="" relation="c"/>
+		<link uid="8fa60ec8-df60-490a-9edc-299de116cf07" callsign="CP3" type="b-m-p-w" point="44.059848,-65.466511,65.076" remarks="" relation="c"/>
+		<link uid="69b9387f-ed80-4aeb-9bd1-f794a87031d2" callsign="" type="b-m-p-c" point="44.058649,-65.467338,64.659" remarks="" relation="c"/>
+		<link uid="5f00069f-fcba-41ee-99bb-b9786eacda8c" callsign="" type="b-m-p-c" point="44.05661,-65.466849,64.204" remarks="" relation="c"/>
+		<link uid="bfba0ca1-7c7b-40e6-b01a-7ad58e6b59b7" callsign="CP2" type="b-m-p-w" point="44.054929,-65.467756,63.886" remarks="" relation="c"/>
+		<link uid="a6e877e7-d639-49b7-9ee4-fcaaa625beee" callsign="" type="b-m-p-c" point="44.052218,-65.465174,62.123" remarks="" relation="c"/>
+		<link uid="253e48d8-4dc2-4f48-bee1-a36749b12b28" callsign="CP1" type="b-m-p-w" point="44.048535,-65.463716,61.121" remarks="" relation="c"/>
+		<link uid="7c9bf304-76d8-49ac-85c7-d1dd4a367696" callsign="" type="b-m-p-c" point="44.044606,-65.463321,62.4" remarks="" relation="c"/>
+		<link uid="9df45ea6-5379-4ab5-b70d-cc2d5731d33c" callsign="" type="b-m-p-c" point="44.043167,-65.464175,63.936" remarks="" relation="c"/>
+		<link uid="ee475652-e7d0-4cc6-8546-21a08d925859" callsign="EP" type="b-m-p-w" point="44.042935,-65.464438,64.338" remarks="" relation="c"/>
+		<link_attr planningmethod="Infil" color="-65281" method="Walking" prefix="CP" type="On Foot" stroke="3" direction="Exfil" routetype="Secondary" order="Descending Check Points"/>
+		<remarks>#Danger #Resource #Gas</remarks>
+		<strokeColor value="-65281"/>
+		<strokeWeight value="3.0"/>
+		<strokeStyle value="solid"/>
+		<contact callsign="Exfill"/>
+		<__routeinfo>
+			<__navcues/>
+		</__routeinfo>
+		<archive/>
+		<color value="-65281"/>
+		<labels_on value="false"/>
+		<marti>
+			<dest mission="mymissionwin"/>
+		</marti>
+	</detail>
+</event>
