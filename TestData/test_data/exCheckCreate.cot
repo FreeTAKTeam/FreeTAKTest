@@ -1,0 +1,19 @@
+<event version="2.0"
+       uid="ad42c2ac-5ac9-484f-af6b-eb8702a5719e"
+       type="t-x-m-n"
+       time="2023-08-23T12:57:14.00Z"
+       start="2023-08-23T12:57:14.00Z"
+       stale="2023-08-23T12:57:34.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CREATE"
+		         tool="ExCheck"
+		         name="bd5e9332-780a-4f30-ac0c-fce8d74b2b81"
+		         authorUid="ANDROID-351811095448994"/>
+	</detail>
+</event>

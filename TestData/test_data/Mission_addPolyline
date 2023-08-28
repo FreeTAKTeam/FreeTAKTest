@@ -1,0 +1,29 @@
+<event version="2.0" uid="928f9877-8330-44bd-ab47-60442f43ceb1" type="u-d-f" time="2023-08-22T16:45:47Z" start="2023-08-22T16:45:47Z" stale="2023-05-10T16:29:38Z" how="h-e">
+	<point lat="-33.7063582" lon="-69.1698082" hae="1053.229" ce="9999999.0" le="9999999.0"/>
+	<detail>
+		<contact callsign="Shape 2"/>
+		<link point="-33.7061632,-69.1699773,1053.18"/>
+		<link/>
+		<link point="-33.7058762,-69.1695589,1052.587"/>
+		<link/>
+		<link point="-33.7066056,-69.1695347,1053.241"/>
+		<link/>
+		<link point="-33.7066103,-69.1699029,1053.539"/>
+		<link/>
+		<link point="-33.7065355,-69.1700671,1053.6"/>
+		<link/>
+		<link point="-33.7061632,-69.1699773,1053.18"/>
+		<link/>
+		<labels_on value="false"/>
+		<precisionlocation altsrc="DTED0"/>
+		<strokeColor value="-65281"/>
+		<strokeWeight value="6.0"/>
+		<strokeStyle value="solid"/>
+		<fillColor value="-1761672961"/>
+		<color value="-1"/>
+		<marti>
+			<dest mission="MI IV"/>
+		</marti>
+		<_flow-tags_ TAK-Server-b1d6379781644d108ae159f461a94279="2023-08-22T16:45:47Z"/>
+	</detail>
+</event>

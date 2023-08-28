@@ -1,0 +1,17 @@
+<event version="2.0" uid="d10c27d0-8b05-4d53-9b7d-5aa3ec1dc2d5" type="b-i-x-i" time="2023-08-22T13:54:47Z" start="2023-08-22T13:54:47Z" stale="2024-08-21T13:54:46Z" how="h-g-i-g-o">
+	<point lat="43.9672176" lon="-66.1258811" hae="14.069" ce="9999999.0" le="9999999.0"/>
+	<detail>
+		<contact callsign="Corvo.6.183857"/>
+		<status readiness="true"/>
+		<archive/>
+		<link uid="ANDROID-351811095448994" production_time="2023-08-22T13:54:46.247Z" type="a-f-G-U-C" parent_callsign="Corvo" relation="p-p"/>
+		<remarks/>
+		<color argb="-1"/>
+		<attachment_list hashes="[&quot;63895ba6798127bd0a36b93dec87736e8d79e346a81e4a9f0e50cd37119f436d&quot;]"/>
+		<archive/>
+		<marti>
+			<dest mission="MI IV"/>
+		</marti>
+		<_flow-tags_ TAK-Server-b1d6379781644d108ae159f461a94279="2023-08-22T13:54:47Z"/>
+	</detail>
+</event>

@@ -1,0 +1,36 @@
+<event version="2.0"
+       uid="0642d556-b36e-47d5-bcf5-38c1cdb81656"
+       type="t-x-m-c"
+       time="2023-08-23T12:24:41.00Z"
+       start="2023-08-23T12:24:41.00Z"
+       stale="2023-08-23T12:25:01.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="WWIII"
+		         authorUid="e7f71100-dbbe-4d93-b5b8-1037935f6ee6">
+			<MissionChanges>
+				<MissionChange>
+					<contentUid>43bf3604-cd79-4029-9a5c-7a9f017f18fc</contentUid>
+					<creatorUid>e7f71100-dbbe-4d93-b5b8-1037935f6ee6</creatorUid>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>WWIII</missionName>
+					<timestamp>2023-08-23T12:24:41.54Z</timestamp>
+					<type>ADD_CONTENT</type>
+					<details type="a-h-G"
+					         callsign="R.23.122333.1"
+					         iconsetPath="COT_MAPPING_2525C/a-h/a-h-G">
+						<location lat="44.8314984010374"
+						          lon="-63.4057170100146"/>
+					</details>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>

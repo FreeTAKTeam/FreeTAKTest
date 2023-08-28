@@ -1,0 +1,59 @@
+<event version="2.0"
+       uid="ANDROID-R9WN31QNTAJ"
+       type="a-f-G-U-C"
+       time="2023-08-28T16:25:11.78Z"
+       start="2023-08-28T16:25:11.78Z"
+       stale="2023-08-28T16:31:26.78Z"
+       how="h-e">
+	<point lat="43.967343"
+	       lon="-66.126229"
+	       hae="6.27"
+	       ce="20.4"
+	       le="9999999"/>
+	<detail>
+		<takv os="30"
+		      version="4.8.1.8 (0c4d4662).1676511632-CIV"
+		      device="SAMSUNG SM-T295"
+		      platform="ATAK-CIV"/>
+		<uid Droid="HelioMobile"/>
+		<precisionlocation altsrc="GPS"
+		                   geopointsrc="GPS"/>
+		<__group role="Sniper"
+<!-- 		the roles to be used in a TAK client
+<item>Team Member</item>
+        <item>Team Lead</item>
+        <item>HQ</item>
+        <item>Sniper</item>
+        <item>Medic</item>
+        <item>Forward Observer</item>
+        <item>RTO</item>
+        <item>K9</item> -->
+		         name="Yellow"/>
+      <!--   one of the followings
+		<item>White</item>
+        <item>Yellow</item>
+        <item>Orange</item>
+        <item>Magenta</item>
+        <item>Red</item>
+        <item>Maroon</item>
+        <item>Purple</item>
+        <item>Dark Blue</item>
+        <item>Blue</item>
+        <item>Cyan</item>
+        <item>Teal</item>
+        <item>Green</item>
+        <item>Dark Green</item>
+        <item>Brown</item> -->
+
+		<status battery="90"/>
+		<track course="146.6999969482422"
+		       speed="0.0"/>
+		<contact callsign="HelioMobile"
+		         endpoint="*:-1:stcp"
+		         phone="+19024024966"/>
+		<marti>
+			<dest/>
+		</marti>
+		<usericon/>
+	</detail>
+</event>

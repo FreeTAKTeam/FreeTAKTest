@@ -1,0 +1,32 @@
+<event version="2.0"
+       uid="e572aee9-3bb7-4c23-92cd-bcd021773fb9"
+       type="t-x-m-c"
+       time="2023-08-23T12:25:22.00Z"
+       start="2023-08-23T12:25:22.00Z"
+       stale="2023-08-23T12:25:42.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="WWIII"
+		         authorUid="ANDROID-351811095448994">
+			<MissionChanges>
+				<MissionChange>
+					<contentUid>7cfe6cec-ed9e-11ed-a66c-db64950af705</contentUid>
+					<creatorUid>ANDROID-351811095448994</creatorUid>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>WWIII</missionName>
+					<timestamp>2023-08-23T12:25:22.459Z</timestamp>
+					<type>ADD_CONTENT</type>
+					<details type="b-i-v"
+					         callsign="/live/Corvo"/>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>
