@@ -1,0 +1,32 @@
+<event version="2.0"
+       uid="98de80a0-fa50-44d6-89ac-07d3dc6a2ce8"
+       type="b-m-p-w-GOTO"
+       time="2023-08-23T14:24:51Z"
+       start="2023-08-23T14:24:51Z"
+       stale="2023-02-10T14:00:58Z"
+       how="h-g-i-g-o">
+	<point lat="43.8918050338426"
+	       lon="-66.0812745671293"
+	       hae="7.22599378329515"
+	       ce="9999999.0"
+	       le="9999999.0"/>
+	<detail>
+		<contact callsign="Airsoft"/>
+		<status readiness="true"/>
+		<archive/>
+		<precisionlocation altsrc="DTED0"/>
+		<remarks/>
+		<color argb="-1"/>
+		<archive/>
+		<link uid="ANDROID-352614100054990"
+		      production_time="2020-09-26T14:57:51.532Z"
+		      type="a-f-G-U-C"
+		      parent_callsign="Peregrin"
+		      relation="p-p"/>
+		<marti>
+			<dest callsign="HelioHQ"/>
+			<dest mission="WWIII"/>
+		</marti>
+		<_flow-tags_ TAK-Server-b1d6379781644d108ae159f461a94279="2023-08-23T14:24:51Z"/>
+	</detail>
+</event>

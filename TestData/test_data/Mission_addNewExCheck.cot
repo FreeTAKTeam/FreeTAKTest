@@ -1,0 +1,37 @@
+<event version="2.0"
+       uid="8aafec02-6c26-465e-aaff-af25d9f634d6"
+       type="t-x-m-c-e"
+       time="2023-09-10T16:55:20.00Z"
+       start="2023-09-10T16:55:20.00Z"
+       stale="2023-09-10T16:55:40.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="MI IV"
+		         authorUid="ANDROID-351811095448994">
+			<MissionChanges>
+				<MissionChange>
+					<creatorUid>ANDROID-351811095448994</creatorUid>
+					<externalData>
+						<uid>74f5cab5-ecd5-411a-b0a0-250cdbf62f2e</uid>
+						<name>first aid kit</name>
+						<notes>Corvo added first aid kit</notes>
+						<tool>ExCheck</tool>
+						<urlData>https://142.67.92.68:8443/Marti/api/excheck/checklist/74f5cab5-ecd5-411a-b0a0-250cdbf62f2e</urlData>
+						<urlView>https://142.67.92.68:8443/Marti/api/excheck/checklist/74f5cab5-ecd5-411a-b0a0-250cdbf62f2e/status</urlView>
+					</externalData>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>MI IV</missionName>
+					<timestamp>2023-09-10T16:55:20.917Z</timestamp>
+					<type>ADD_CONTENT</type>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>

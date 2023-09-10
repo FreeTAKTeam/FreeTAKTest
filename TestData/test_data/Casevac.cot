@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<event version="2.0"
+       uid="3ed8c27e-6bde-4c3c-bba2-9f4ef4ee8418"
+       type="b-r-f-h-c"
+       time="2023-08-28T20:08:34.08Z"
+       start="2023-08-28T20:08:34.08Z"
+       stale="2023-08-29T20:08:34.08Z"
+       how="h-g-i-g-o">
+	<point lat="38.8893615603475"
+	       lon="-77.0054232012734"
+	       hae="-9.683580952426"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<link type="a-f-G-U-C-I"
+		      uid="e7f71100-dbbe-4d93-b5b8-1037935f6ee6"
+		      parent_callsign="HelioHQ"
+		      relation="p-p"
+		      production_time="2023-08-28T20:05:37Z"/>
+		<archive/>
+		<status readiness="false"/>
+		<remarks> #FreeTAKServer</remarks>
+		<_medevac_ title="Biden is sick!"
+		           casevac="false"
+		           freq="0.0"
+		           equipment_none="true"
+		           security="0"
+		           hlz_marking="3"
+		           terrain_none="true"
+		           obstacles="None"
+		           medline_remarks=" #FreeTAKServer"
+		           zone_prot_selection="0"/>
+		<contact callsign="HelioHQ"/>
+	</detail>
+</event>

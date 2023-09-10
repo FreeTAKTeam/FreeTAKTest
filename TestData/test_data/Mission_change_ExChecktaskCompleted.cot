@@ -1,0 +1,37 @@
+<event version="2.0"
+       uid="e7186d12-0a85-4a40-a146-5c87e5aceb00"
+       type="t-x-m-c-e"
+       time="2023-09-10T16:52:39.00Z"
+       start="2023-09-10T16:52:39.00Z"
+       stale="2023-09-10T16:52:59.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="MI IV"
+		         authorUid="ANDROID-351811095448994">
+			<MissionChanges>
+				<MissionChange>
+					<creatorUid>ANDROID-351811095448994</creatorUid>
+					<externalData>
+						<uid>50287abe-702f-4024-ab9e-bda0d18ba23b</uid>
+						<name>FoodList</name>
+						<notes>Corvo completed FoodList; Need:: Salt</notes>
+						<tool>ExCheck</tool>
+						<urlData>https://142.67.92.68:8443/Marti/api/excheck/checklist/50287abe-702f-4024-ab9e-bda0d18ba23b?token=235f816267c8269cbaeb9927aeb77dc5013b5744b5874ede923105c4100cb732</urlData>
+						<urlView>https://142.67.92.68:8443/Marti/api/excheck/checklist/50287abe-702f-4024-ab9e-bda0d18ba23b/status?token=235f816267c8269cbaeb9927aeb77dc5013b5744b5874ede923105c4100cb732</urlView>
+					</externalData>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>MI IV</missionName>
+					<timestamp>2023-09-10T16:52:39.827Z</timestamp>
+					<type>ADD_CONTENT</type>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>
