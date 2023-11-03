@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event version="2.0"
+       uid="a2bc0091-8807-421a-adc6-a24b701771b5"
+       type="u-d-r"
+       time="2023-10-15T21:47:20Z"
+       start="2023-10-15T21:47:20Z"
+       stale="2023-09-11T19:14:27Z"
+       how="h-e">
+	<point lat="43.8909123"
+	       lon="-65.4225414"
+	       hae="35.6030000000"
+	       ce="9999999.0"
+	       le="9999999.0"/>
+	<detail>
+		<contact callsign="Defense Zone"/>
+		<link point="43.80564124098406,-65.51834752458461"/>
+		<link point="43.87750628108144,-65.27173880590242"/>
+		<link point="43.97620728394101,-65.32653909761217"/>
+		<link point="43.904224147305264,-65.57348860842482"/>
+		<strokeColor value="-1"/>
+		<strokeWeight value="3.0"/>
+		<strokeStyle value="dashed"/>
+		<0 value="1023410175"/>
+		<remarks>#MegaDeath #Apocalypse</remarks>
+		<labels_on value="false"/>
+		<archive/>
+		<geofenceMissions>
+			<mission uid="142.67.92.68-8443-ssl-MI IV"/>
+		</geofenceMissions>
+		<precisionlocation altsrc="DTED0"/>
+		<tog enabled="1"/>
+		<__geofence elevationMonitored="false"
+		            minElevation="NaN"
+		            monitor="All"
+		            trigger="Entry"
+		            tracking="true"
+		            maxElevation="NaN"
+		            boundingSphere="87000.0"/>
+		<_flow-tags_ TAK-Server-b1d6379781644d108ae159f461a94279="2023-10-15T21:47:20Z"/>
+	</detail>
+</event>

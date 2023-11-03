@@ -1,0 +1,37 @@
+<event version="2.0"
+       uid="55d92a6b-5006-4b55-8689-00bf46f41d10"
+       type="t-x-m-c-e"
+       time="2023-09-10T19:50:10.00Z"
+       start="2023-09-10T19:50:10.00Z"
+       stale="2023-09-10T19:50:30.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="CHANGE"
+		         tool="public"
+		         name="MI IV"
+		         authorUid="ANDROID-R9WN31QNTAJ">
+			<MissionChanges>
+				<MissionChange>
+					<creatorUid>ANDROID-R9WN31QNTAJ</creatorUid>
+					<externalData>
+						<uid>cae8074d-d334-456b-ad0b-3bb8417be9e5</uid>
+						<name>SUA 23082023 14:20</name>
+						<notes/>
+						<tool>Reports</tool>
+						<urlData>http://142.67.92.68:8080/Marti/api/citrap/cae8074d-d334-456b-ad0b-3bb8417be9e5</urlData>
+						<urlView>http://142.67.92.68:8080/Marti/api/citrap/cae8074d-d334-456b-ad0b-3bb8417be9e5</urlView>
+					</externalData>
+					<isFederatedChange>false</isFederatedChange>
+					<missionName>MI IV</missionName>
+					<timestamp>2023-09-10T19:50:10.384Z</timestamp>
+					<type>ADD_CONTENT</type>
+				</MissionChange>
+			</MissionChanges>
+		</mission>
+	</detail>
+</event>

@@ -1,0 +1,33 @@
+<event version="2.0"
+       uid="8e687e01-2a7f-4e7d-9c53-5c02f222713e"
+       type="t-x-m-i"
+       time="2023-11-02T21:11:57.00Z"
+       start="2023-11-02T21:11:57.00Z"
+       stale="2023-11-02T21:12:17.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="INVITE"
+		         tool="public"
+		         name="testinvite"
+		         authorUid="admin"
+		         token="eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlMjMwMTMwMS03Mzc1LTQwOGItOTNkZC04MDdlODU2NGFiNTIiLCJpYXQiOjE2OTg5NTk1MTcsInN1YiI6IklOVklUQVRJT04iLCJpc3MiOiIiLCJJTlZJVEFUSU9OIjoiZTIzMDEzMDEtNzM3NS00MDhiLTkzZGQtODA3ZTg1NjRhYjUyIiwiTUlTU0lPTl9OQU1FIjoidGVzdGludml0ZSJ9.xnAhRvMDTfZT7fUYIrgWG55HSWIzTeVSS2nD5uCntN4">
+			<role type="MISSION_OWNER">
+				<permissions>
+					<permission type="MISSION_WRITE"/>
+					<permission type="MISSION_SET_ROLE"/>
+					<permission type="MISSION_READ"/>
+					<permission type="MISSION_MANAGE_FEEDS"/>
+					<permission type="MISSION_DELETE"/>
+					<permission type="MISSION_UPDATE_GROUPS"/>
+					<permission type="MISSION_MANAGE_LAYERS"/>
+					<permission type="MISSION_SET_PASSWORD"/>
+				</permissions>
+			</role>
+		</mission>
+	</detail>
+</event>
