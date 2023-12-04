@@ -1,0 +1,22 @@
+<event version="2.0"
+       uid="ANDROID-351811095448994"
+       type="b-f-t-a"
+       time="2023-12-04T15:05:25.83Z"
+       start="2023-12-04T15:05:25.83Z"
+       stale="2023-12-04T15:05:35.83Z"
+       how="m-g">
+	<point lat="44.01660897"
+	       lon="-66.07179222"
+	       hae="5.25538405"
+	       ce="0.0"
+	       le="0.0"/>
+	<detail>
+		<ackresponse uid="caf0ed0b-b6af-4d98-bea3-0885b8df3003"
+		             senderUid="ANDROID-351811095448994"
+		             success="true"
+		             tag="EliopoliDefDataPackage"
+		             reason="File transferred successfully"
+		             sha256="58f7e27ae553d5cdd8ff5a4efafaf0a15b60d6cd53ceac21a39dc33053503ca5"
+		             sizeInBytes="52454"/>
+	</detail>
+</event>

@@ -1,0 +1,19 @@
+<event version="2.0"
+       uid="a2b953eb-a00b-44d3-a49d-b824ed2c194f"
+       type="t-x-m-d"
+       time="2023-11-24T18:05:50.00Z"
+       start="2023-11-24T18:05:50.00Z"
+       stale="2023-11-24T18:06:10.00Z"
+       how="h-g-i-g-o">
+	<point lat="0"
+	       lon="0"
+	       hae="0"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<mission type="DELETE"
+		         tool="public"
+		         name="shapescript"
+		         authorUid="admin"/>
+	</detail>
+</event>
