@@ -1,0 +1,42 @@
+<event version="2.0"
+       uid="f68cb355-4586-4ce6-b51a-6618f0371a6c"
+       type="b-r-f-h-c"
+       time="2023-12-04T15:52:23.78Z"
+       start="2023-12-04T15:52:23.78Z"
+       stale="2024-12-03T15:52:23.78Z"
+       how="h-g-i-g-o">
+	<point lat="43.9419172"
+	       lon="-66.0944919"
+	       hae="3.724"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<status readiness="false"/>
+		<archive/>
+		<color argb="-1"/>
+		<precisionlocation altsrc="DTED0"/>
+		<archive/>
+		<link uid="ANDROID-351811095448994"
+		      production_time="2023-12-04T15:50:54.016Z"
+		      type="a-f-G-U-C"
+		      parent_callsign="corvo"
+		      relation="p-p"/>
+		<_medevac_ terrain_rough="true"
+		           litter="1"
+		           us_civilian="1"
+		           freq="3"
+		           ambulatory="1"
+		           zone_prot_selection="0"
+		           title="MED.4.115054"
+		           priority="1"
+		           us_military="1"
+		           medline_remarks="terst"
+		           security="0"
+		           routine="1"
+		           ventilator="true"
+		           hlz_marking="3"
+		           casevac="false"
+		           urgent="1"/>
+		<contact callsign="corvo"/>
+	</detail>
+</event>

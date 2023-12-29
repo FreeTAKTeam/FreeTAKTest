@@ -1,0 +1,26 @@
+<event version="2.0"
+       uid="0d43a649-3df6-4f72-984f-5dc25e0ad436"
+       type="b-f-t-r"
+       time="2023-12-04T15:07:15.45Z"
+       start="2023-12-04T15:07:15.45Z"
+       stale="2023-12-04T15:07:25.45Z"
+       how="h-e">
+	<point lat="44.01660897"
+	       lon="-66.07179222"
+	       hae="5.25538405"
+	       ce="0.0"
+	       le="0.0"/>
+	<detail>
+		<fileshare filename="Bing_Mapsources-1.zip.zip.zip"
+		           senderUrl="https://192.168.1.22:8443/getfile?file=0&amp;sender=corvo"
+		           sizeInBytes="1112"
+		           sha256="3d503940a19800c96edf2a48b54f8e7b29163d75bd04df5a020fa35ebf71e9f1"
+		           senderUid="ANDROID-351811095448994"
+		           senderCallsign="corvo"
+		           name="Bing_Mapsources-1.zip"
+		           peerHosted="true"/>
+		<ackrequest uid="994d461e-088e-447e-9ef5-bebb65b801f1"
+		            ackrequested="true"
+		            tag="Bing_Mapsources-1.zip"/>
+	</detail>
+</event>

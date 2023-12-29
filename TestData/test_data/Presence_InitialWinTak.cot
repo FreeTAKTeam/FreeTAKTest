@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\x0a<event version="2.0"
+       uid="S-1-5-21-220624095-3181715117-1398502648-1001"
+       type="a-f-G-U"
+       time="2023-12-29T17:20:02.82Z"
+       start="2023-12-29T17:20:02.82Z"
+       stale="2023-12-29T17:26:17.82Z"
+       how="h-e">
+	<point lat="43.8405437661244"
+	       lon="-66.1118251266202"
+	       hae="-10.3728388817099"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<takv version="4.9.0.156"
+		      platform="WinTAK-CIV"
+		      os="Microsoft Windows 11 Pro"
+		      device="LENOVO 20XW003LUS"/>
+		<contact callsign="HelioHQ"
+		         endpoint="*:-1:stcp"/>
+		<uid Droid="HelioHQ"/>
+		<__group name="Yellow"
+		         role="HQ"/>
+		<status battery="99"/>
+		<track course="0.00000000"
+		       speed="0.00000000"/>
+	</detail>
+</event>"

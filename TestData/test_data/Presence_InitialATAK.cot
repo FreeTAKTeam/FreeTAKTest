@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<event version='2.0'
+       uid='ANDROID-351811095448994'
+       type='a-f-G-U-C'
+       time='2023-12-29T18:49:38.624Z'
+       start='2023-12-29T18:49:38.624Z'
+       stale='2023-12-29T18:55:53.624Z'
+       how='h-g-i-g-o'>
+	<point lat='0.0'
+	       lon='0.0'
+	       hae='9999999.0'
+	       ce='9999999.0'
+	       le='9999999.0'/>
+	<detail>
+		<takv os='28'
+		      version='4.8.1.8 (0c4d4662).1676511632-CIV'
+		      device='SAMSUNG SM-G950W'
+		      platform='ATAK-CIV'/>
+		<contact endpoint='192.168.1.12:4242:tcp'
+		         callsign='corvo'/>
+		<uid Droid='corvo'/>
+		<__group role='Team Member'
+		         name='Yellow'/>
+		<status battery='0'/>
+		<track course='292.4544485383155'
+		       speed='0.0'/>
+	</detail>
+</event>

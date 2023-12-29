@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<event version="2.0"
+       uid="S-1-5-21-220624095-3181715117-1398502648-1001.SPI1"
+       type="b-m-p-s-p-i"
+       time="2023-02-10T14:00:26.05Z"
+       start="2023-02-10T14:00:26.05Z"
+       stale="2023-02-10T14:00:46.05Z"
+       how="h-e">
+	<point lat="32.0882585586266"
+	       lon="35.9213681346144"
+	       hae="832.871170640242"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<contact callsign="HelioHQ.DP1"/>
+		<link uid="S-1-5-21-220624095-3181715117-1398502648-1001"
+		      type="a-f-G-U-C-I"
+		      relation="p-p"/>
+		<precisionlocation altsrc="DTED0"
+		                   geopointsrc="???"/>
+	</detail>
+</event>

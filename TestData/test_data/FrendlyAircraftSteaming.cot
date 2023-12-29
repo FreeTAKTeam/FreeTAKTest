@@ -1,0 +1,29 @@
+<event uid="d033fd0c-d5ac-11eb-ab27-4e58de281c19"
+       type="a-f-A-M-H-Q"
+       time="2023-12-07T18:00:21.80Z"
+       start="2023-12-07T18:00:21.80Z"
+       stale="2023-12-08T05:07:01.80Z"
+       how="m-g">
+	<point lat="38.889"
+	       lon="-77.01399"
+	       hae="9999999"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<contact callsign="Putin air"/>
+		<sensor elevation="0.0"
+		        vfov="60"
+		        north="227"
+		        roll="0.0"
+		        range="500"
+		        azimuth="0"
+		        model="Drone Camera"
+		        fov="20"
+		        type="r-e"
+		        version="0.6"/>
+		<track course="0"
+		       speed="-0.00"
+		       slope="0.00"/>
+		<__video url="rtmp://64.227.50.49:1935/live/PutinAirVideo"/>
+	</detail>
+</event>
