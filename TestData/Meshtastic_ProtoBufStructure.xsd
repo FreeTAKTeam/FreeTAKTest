@@ -1,0 +1,98 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- TAKPacket Element -->
+  <xs:element name="TAKPacket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="is_compressed" type="xs:boolean"/>
+        <xs:element name="contact" type="Contact"/>
+        <xs:element name="group" type="Group"/>
+        <xs:element name="status" type="Status"/>
+        <xs:choice>
+          <xs:element name="pli" type="PLI"/>
+          <xs:element name="chat" type="GeoChat"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- GeoChat Element -->
+  <xs:complexType name="GeoChat">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="to" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Group Element -->
+  <xs:complexType name="Group">
+    <xs:sequence>
+      <xs:element name="role" type="MemberRole"/>
+      <xs:element name="team" type="Team"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Enum for Team -->
+  <xs:simpleType name="Team">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified_Color"/>
+      <xs:enumeration value="White"/>
+      <xs:enumeration value="Yellow"/>
+      <xs:enumeration value="Orange"/>
+      <xs:enumeration value="Magenta"/>
+      <xs:enumeration value="Red"/>
+      <xs:enumeration value="Maroon"/>
+      <xs:enumeration value="Purple"/>
+      <xs:enumeration value="Dark_Blue"/>
+      <xs:enumeration value="Blue"/>
+      <xs:enumeration value="Cyan"/>
+      <xs:enumeration value="Teal"/>
+      <xs:enumeration value="Green"/>
+      <xs:enumeration value="Dark_Green"/>
+      <xs:enumeration value="Brown"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Enum for MemberRole -->
+  <xs:simpleType name="MemberRole">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified"/>
+      <xs:enumeration value="TeamMember"/>
+      <xs:enumeration value="TeamLead"/>
+      <xs:enumeration value="HQ"/>
+      <xs:enumeration value="Sniper"/>
+      <xs:enumeration value="Medic"/>
+      <xs:enumeration value="ForwardObserver"/>
+      <xs:enumeration value="RTO"/>
+      <xs:enumeration value="K9"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Status Element -->
+  <xs:complexType name="Status">
+    <xs:sequence>
+      <xs:element name="battery" type="xs:unsignedInt"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Contact Element -->
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element name="callsign" type="xs:string"/>
+      <xs:element name="device_callsign" type="xs:string"/>
+      <!-- Other elements are commented out in the proto file and omitted here -->
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- PLI Element -->
+  <xs:complexType name="PLI">
+    <xs:sequence>
+      <xs:element name="latitude_i" type="xs:int"/>
+      <xs:element name="longitude_i" type="xs:int"/>
+      <xs:element name="altitude" type="xs:int"/>
+      <xs:element name="speed" type="xs:unsignedInt"/>
+      <xs:element name="course" type="xs:unsignedInt"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
