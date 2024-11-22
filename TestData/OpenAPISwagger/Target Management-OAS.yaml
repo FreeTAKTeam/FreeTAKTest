@@ -1,0 +1,330 @@
+openapi: 3.0.1
+info:
+  title: Target Management
+  version: '24.11.06'
+  description: >-
+  contact:
+    name: freeTAKTeam
+    url: https://github.com/FreeTAKTeam
+    email: freeTAKTeam@gmail.com
+  license:
+    name: EPL
+tags:
+  - name: Target
+paths:
+  /Target/Operation:
+    get:
+      x-scope: package
+      tags:
+       - Target
+      description: >-
+        this method takes a Target object in input and calculate the sum of criticality, accessibility, Recoverability, vulnerability, recognizability and set the value Effect with all the values. the integer of Effect is also returned.
+      operationId: calculateTarget
+      responses:
+        '200':
+          $ref: '#/components/responses/200Target_get'
+  /Target/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Target
+      description: >-
+      summary: retrieve an existing Target record based on the provided ID.
+      operationId: RetreiveTarget
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Target_get'
+  /Target:
+    post:
+      x-scope: public
+      tags:
+       - Target
+      description: >-
+      summary: Creates a new Target record.
+      operationId: CreateTarget
+      requestBody:
+        $ref: '#/components/requestBodies/Target'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Target_post'
+    delete:
+      x-scope: public
+      tags:
+       - Target
+      description: >-
+      summary: Deletes an existing Target record based on the provided ID.
+      operationId: DeleteTarget
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Target_delete'
+    get:
+      x-scope: public
+      tags:
+       - Target
+      description: >-
+      summary: Retrieves a list of all Target
+      operationId: ListTarget
+      responses:
+        '200':
+          $ref: '#/components/responses/200Target_get'
+    patch:
+      x-scope: public
+      tags:
+       - Target
+      description: >-
+      summary: Updates an existing Target record.
+      operationId: PatchTarget
+      requestBody:
+        $ref: '#/components/requestBodies/Target'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Target_patch'
+components:
+  schemas:
+    Target:
+      allOf:
+        - $ref: '#/components/schemas/Asset'
+        - type: object
+          properties:
+            Critically:
+              type: integer
+              description: >-
+                Measures the importance of a target in achieving a specific objective. A target is considered critical if its destruction or neutralization will significantly impact the enemy's capabilities.
+                &nbsp;
+                <ol>
+                	<li>Loss would not affect mission performance</li>
+                	<li>Loss may reduce mission performance</li>
+                	<li>Loss would reduce mission performance</li>
+                	<li>Loss would reduce mission performance considerably</li>
+                	<li>Loss would be mission stopper</li>
+                </ol>
+            Accessibility:
+              type: integer
+              description: >-
+                Assesses how easily a target can be reached and engaged with available resources.
+                <ol>
+                	<li>Very difficult to gain access</li>
+                	<li>Difficult to gain access</li>
+                	<li>Somewhat accessible</li>
+                	<li>Accessible</li>
+                	<li>Easily accessible. No effective security</li>
+                </ol>
+            Recoverability:
+              type: integer
+              description: >-
+                Evaluates the time and effort required for the enemy to repair, replace, or bypass the damage inflicted on the target.
+                &nbsp;
+                <ol>
+                	<li>Immediate replacement. Spare parts are readily available or asset redundancy</li>
+                	<li>Easily replaced in a short time</li>
+                	<li>Can be replaced in a relatively short time</li>
+                	<li>Difficult to replace with long down time</li>
+                	<li>Extremely difficult to replace. Long down time</li>
+                </ol>
+            Vulnerability:
+              type: integer
+              description: >-
+                Measures the susceptibility of the target to damage or destruction by the attacking force.
+                <ol>
+                	<li>A dedicated adversary does not have the capability and expertise to attack</li>
+                	<li>A dedicated adversary most likely does not have the capability and expertise to attack</li>
+                	<li>A dedicated adversary may have the capability and expertise to attack</li>
+                	<li>A dedicated adversary most likely has the capability and expertise to attack</li>
+                	<li>A dedicated adversary has the capability and expertise to attack</li>
+                </ol>
+            Effect:
+              type: integer
+              description: >-
+                Effect Estimates the potential impact of successfully attacking the target on the enemy's overall mission or capabilities.
+                <ol>
+                	<li>No unfavorable impact</li>
+                	<li>Little impact; no adverse impact on persons</li>
+                	<li>Moderate impact; some adverse impact on persons</li>
+                	<li>High impact; some loss of lives or injuries</li>
+                	<li>Very high sociological, economical, political impact; considerable loss of lives and/or injured</li>
+                </ol>
+            Recognizability:
+              type: integer
+              description: >-
+                Recognizability assesses how easily a target can be identified under various conditions, including night or adverse weather.
+                <ol>
+                	<li>Extremely difficult to recognize without assistance</li>
+                	<li>Hard to recognize. Confusion probable</li>
+                	<li>Recognized with some training</li>
+                	<li>Easily recognized by most</li>
+                	<li>Easily recognized by all with no confusion</li>
+                </ol>
+            Importance:
+              type: integer
+              description: >-
+                calculated value as a sum of all the other CARVER factors. Higher importance indicate vulnerabilities
+            LastUpdated:
+              type: string
+              format: date
+              description: >-
+                A dateTime indicating when the Target was last updated.
+            defenseStrategy:
+              description: >-
+              $ref: '#/components/schemas/DefenseStrategy'
+    Asset:
+      allOf:
+        - type: object
+          properties:
+            Name:
+              type: string
+              description: >-
+            Latitude:
+              type: integer
+              description: >-
+            longitude:
+              type: integer
+              description: >-
+            Description:
+              type: string
+              description: >-
+    Error:
+      description: Error
+    DefenseStrategy:
+      enum:
+        - Detect
+        - Deny
+        - Disrupt
+        - Degrade
+        - Deceive
+        - Destroy
+      type: string
+      description: >-
+        <ul>
+        	<li>Detect: Measures to become aware of the adversary's current step.</li>
+        	<li>Deny: Changing conditions to make the adversary's step impossible.</li>
+        	<li>Disrupt: Obstacles to prevent execution of the adversary's step.</li>
+        	<li>Degrade: Decreasing the advantage of the adversary's step.</li>
+        	<li>Deceive: Providing false information to the adversary.</li>
+        	<li>Destroy: Stopping the execution of the adversary's step.</li>
+        </ul>
+  parameters:
+    ID:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    id:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: path
+  responses:
+    200Target_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Target'
+    200Target_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Target'
+    200Target_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Target'
+    200Target_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Target'
+    '200':
+      description: OK
+    '201':
+      description: Added Object
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    'Error':
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Target:
+      description: >-
+        The CARVER Target is used in the planning and decision-making phases of operations. Analysts assign scores to each criterion, often on a scale (e.g., 1 to 5), and sum these scores to prioritize targets. Higher total scores indicate more vulnerable targets. This structured approach helps ensure that resources are allocated effectively and strategic objectives are achieved efficiently.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Target'
+      required: true
+x-uml-relationships:
+  
+

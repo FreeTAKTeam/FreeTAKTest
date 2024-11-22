@@ -1,0 +1,1380 @@
+openapi: 3.0.1
+info:
+  title: SecurityAPI
+  version: '2.3.4'
+  description: >-
+    The Security component in DigitalPy is dedicated to the comprehensive management of security credentials, including certifications, tokens, passwords, and other sensitive authentication data. It handles all aspects of credential lifecycle, from creation and storage to disposal, ensuring high standards of security and data protection.
+    <u>
+    </u><b><u>Credential Management:</u></b>
+    Creation: Implements secure methods for generating and issuing various types of credentials, such as certificates, tokens, and passwords.
+    Storage: Ensures secure storage of credentials, employing encryption and other security measures to protect sensitive data from unauthorized access.
+    Disposal: Safely disposes of credentials that are no longer needed, following best practices to prevent data leakage or unauthorized retrieval.
+    <b><u>Certification Management:</u></b>
+    <ul>
+    	<li>Certificate Authority Integration: Facilitates integration with Certificate Authorities (CAs) for issuing and managing digital certificates.</li>
+    </ul>
+    <ul>
+    	<li><b>Certificate Lifecycle Management: </b>Manages the entire lifecycle of digital certificates, including issuance, renewal, revocation, and expiration.</li>
+    </ul>
+    <b><u>Token Management:</u></b>
+    <b>Token Generation and Validation</b>: Handles the generation and validation of tokens, such as JWT (JSON Web Tokens), for secure authentication and authorization processes.
+    <b>Token Expiry and Renewal</b>: Manages token expiration and renewal, ensuring tokens are valid only for their intended lifespan.
+    <b><u>Password Management:</u></b>
+    Secure Password Handling: Implements secure practices for password creation, storage, and access, including hashing and salting.
+    Password Policy Enforcement: Enforces strong password policies to enhance security, such as minimum complexity requirements and regular password changes.
+  contact:
+    name: FreeTAKTeam
+    url: http://github.com/freetakteam
+    email: freetakteam@gmail.com
+  license:
+    name: EPL
+paths:
+  /PasswordManager:
+    post:
+      x-scope: public
+      tags:
+       - PasswordManager
+      description: >-
+      summary: Creates a new PasswordManager record.
+      operationId: CreatePasswordManager
+      requestBody:
+        $ref: '#/components/requestBodies/PasswordManager'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PasswordManager_post'
+    delete:
+      x-scope: public
+      tags:
+       - PasswordManager
+      description: >-
+      summary: Deletes an existing PasswordManager record based on the provided ID.
+      operationId: DeletePasswordManager
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PasswordManager_delete'
+    get:
+      x-scope: public
+      tags:
+       - PasswordManager
+      description: >-
+      summary: Retrieves a list of all PasswordManager
+      operationId: ListPasswordManager
+      responses:
+        '200':
+          $ref: '#/components/responses/200PasswordManager_get'
+    patch:
+      x-scope: public
+      tags:
+       - PasswordManager
+      description: >-
+      summary: Updates an existing PasswordManager record.
+      operationId: PatchPasswordManager
+      requestBody:
+        $ref: '#/components/requestBodies/PasswordManager'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PasswordManager_patch'
+  /CredentialManager/{id}:
+    get:
+      x-scope: public
+      tags:
+       - CredentialManager
+      description: >-
+      summary: retrieve an existing CredentialManager record based on the provided ID.
+      operationId: RetreiveCredentialManager
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CredentialManager_get'
+  /CertificateAuthorityManagement:
+    post:
+      x-scope: public
+      tags:
+       - CertificateAuthority
+      description: >-
+         Generate a CA certificate
+      operationId: generate_ca
+      parameters:
+        - $ref: '#/components/parameters/expiry_time_secs'
+      responses:
+        '200':
+          description: simple text based return value
+          content:
+            text/plain:
+              schema:
+  /SystemUser:
+    get:
+      x-scope: public
+      tags:
+       - SystemUser
+      description: >-
+      summary: Retrieves a list of all SystemUser
+      operationId: ListSystemUser
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemUser_get'
+  /SystemUser/{id}:
+    get:
+      x-scope: public
+      tags:
+       - SystemUser
+      description: >-
+      summary: retrieve an existing SystemUser record based on the provided ID.
+      operationId: RetreiveSystemUser
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemUser_get'
+  /Password/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+      summary: retrieve an existing Password record based on the provided ID.
+      operationId: RetreivePassword
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Password_get'
+  /Token:
+    post:
+      x-scope: public
+      tags:
+       - Token
+      description: >-
+      summary: Creates a new Token record.
+      operationId: CreateToken
+      requestBody:
+        $ref: '#/components/requestBodies/Token'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Token_post'
+    delete:
+      x-scope: public
+      tags:
+       - Token
+      description: >-
+      summary: Deletes an existing Token record based on the provided ID.
+      operationId: DeleteToken
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Token_delete'
+    get:
+      x-scope: public
+      tags:
+       - Token
+      description: >-
+      summary: Retrieves a list of all Token
+      operationId: ListToken
+      responses:
+        '200':
+          $ref: '#/components/responses/200Token_get'
+    patch:
+      x-scope: public
+      tags:
+       - Token
+      description: >-
+      summary: Updates an existing Token record.
+      operationId: PatchToken
+      requestBody:
+        $ref: '#/components/requestBodies/Token'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Token_patch'
+    put:
+      x-scope: public
+      tags:
+       - Token
+      description: >-
+      operationId: validate_token
+      requestBody:
+        $ref: '#/components/requestBodies/Token'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+  /Certificate:
+    post:
+      x-scope: public
+      tags:
+       - Certificate
+      description: >-
+      summary: Creates a new Certificate record.
+      operationId: CreateCertificate
+      requestBody:
+        $ref: '#/components/requestBodies/Certificate'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Certificate_post'
+    delete:
+      x-scope: public
+      tags:
+       - Certificate
+      description: >-
+      summary: Deletes an existing Certificate record based on the provided ID.
+      operationId: DeleteCertificate
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Certificate_delete'
+    get:
+      x-scope: public
+      tags:
+       - Certificate
+      description: >-
+      summary: Retrieves a list of all Certificate
+      operationId: ListCertificate
+      responses:
+        '200':
+          $ref: '#/components/responses/200Certificate_get'
+    patch:
+      x-scope: public
+      tags:
+       - Certificate
+      description: >-
+      summary: Updates an existing Certificate record.
+      operationId: PatchCertificate
+      requestBody:
+        $ref: '#/components/requestBodies/Certificate'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Certificate_patch'
+  /AutoCertificate:
+    get:
+      x-scope: private
+      tags:
+       - AutoCertificate
+      description: >-
+         Generate the basic files needed for a new install of FTS :param ip: A string based ip address or FQDN that clients will use to connect to the server :param copy: Whether to copy server files to FTS expected locations :param expiry_time_secs: length of time in seconds that the certificate is valid for, defaults to 1 year
+      operationId: generate_auto_certs
+      parameters:
+        - $ref: '#/components/parameters/name'
+        - $ref: '#/components/parameters/ip'
+        - $ref: '#/components/parameters/copy'
+        - $ref: '#/components/parameters/expiry_time_secs'
+        - $ref: '#/components/parameters/wintak_zip'
+      responses:
+        '200':
+          description: simple text based return value
+          content:
+            text/plain:
+              schema:
+  /FIleSystem:
+    get:
+      x-scope: public
+      tags:
+       - FIleSystem
+      description: >-
+         Wrapper for creating certificate and all files needed :param common_name: Common Name of the the certificate :param cert: Type of cert being created "user" or "server" :param expiry_time_secs: length of time in seconds that the certificate is valid for, defaults to 1 year
+      operationId: bake
+      parameters:
+        - $ref: '#/components/parameters/common_name'
+        - $ref: '#/components/parameters/cert'
+        - $ref: '#/components/parameters/expiry_time_secs'
+      responses:
+        '200':
+          description: simple text based return value
+          content:
+            text/plain:
+              schema:
+  /TokenManager/{id}:
+    get:
+      x-scope: public
+      tags:
+       - TokenManager
+      description: >-
+      summary: retrieve an existing TokenManager record based on the provided ID.
+      operationId: RetreiveTokenManager
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TokenManager_get'
+  /Credential:
+    post:
+      x-scope: public
+      tags:
+       - Credentials
+      description: >-
+        Credential Management
+      operationId: create_credential
+      parameters:
+        - $ref: '#/components/parameters/self'
+        - $ref: '#/components/parameters/cred_type'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+    put:
+      x-scope: public
+      tags:
+       - Credential
+      description: >-
+      operationId: store_credential
+      parameters:
+        - $ref: '#/components/parameters/self'
+        - $ref: '#/components/parameters/name'
+        - $ref: '#/components/parameters/credential'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+    delete:
+      x-scope: public
+      tags:
+       - Credential
+      description: >-
+      operationId: dispose_credential
+      parameters:
+        - $ref: '#/components/parameters/self'
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+  /TokenManager:
+    post:
+      x-scope: public
+      tags:
+       - TokenManager
+      description: >-
+      summary: Creates a new TokenManager record.
+      operationId: CreateTokenManager
+      requestBody:
+        $ref: '#/components/requestBodies/TokenManager'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TokenManager_post'
+    delete:
+      x-scope: public
+      tags:
+       - TokenManager
+      description: >-
+      summary: Deletes an existing TokenManager record based on the provided ID.
+      operationId: DeleteTokenManager
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TokenManager_delete'
+    get:
+      x-scope: public
+      tags:
+       - TokenManager
+      description: >-
+      summary: Retrieves a list of all TokenManager
+      operationId: ListTokenManager
+      responses:
+        '200':
+          $ref: '#/components/responses/200TokenManager_get'
+    patch:
+      x-scope: public
+      tags:
+       - TokenManager
+      description: >-
+      summary: Updates an existing TokenManager record.
+      operationId: PatchTokenManager
+      requestBody:
+        $ref: '#/components/requestBodies/TokenManager'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TokenManager_patch'
+    put:
+      x-scope: private
+      tags:
+       - TokenManager
+      description: >-
+      operationId: manage_token_lifecycle
+      parameters:
+        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/action'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+  /CertificateKey:
+    post:
+      x-scope: private
+      tags:
+       - CertificateKey
+      description: >-
+         Generate a new certificate key :param keypath: String based filepath to place new key, this should have a .key file extention
+      operationId: generate_key
+      parameters:
+        - $ref: '#/components/parameters/keypath'
+      responses:
+        '200':
+          description: simple text based return value
+          content:
+            text/plain:
+              schema:
+  /CertificateManagement:
+    put:
+      x-scope: private
+      tags:
+       - Certificate
+      description: >-
+         Create a certificate and p12 file :param cn: Common Name for certificate :param pempath: String filepath for the pem file created :param p12path: String filepath for the p12 file created :param expiry_time_secs: length of time in seconds that the certificate is valid for, defaults to 1 year
+      operationId: generate_certificate
+      parameters:
+        - $ref: '#/components/parameters/common_name'
+        - $ref: '#/components/parameters/p12path'
+        - $ref: '#/components/parameters/pempath'
+        - $ref: '#/components/parameters/expiry_time_secs'
+      responses:
+        '200':
+          description: simple text based return value
+          content:
+            text/plain:
+              schema:
+    post:
+      x-scope: public
+      tags:
+       - Certificate
+      description: >-
+      operationId: manage_certificate_lifecycle
+      parameters:
+        - $ref: '#/components/parameters/cert_name'
+        - $ref: '#/components/parameters/action'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+    patch:
+      x-scope: private
+      tags:
+       - Certificate
+      description: >-
+         copy all the server files with of a given name to the FTS server cert location :param server_name: Name of the server/IP address that was used when generating the certificate
+      operationId: copy_server_certs
+      parameters:
+        - $ref: '#/components/parameters/server_name'
+      responses:
+        '200':
+          description: simple text based return value
+          content:
+            text/plain:
+              schema:
+  /Token/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Token
+      description: >-
+      summary: retrieve an existing Token record based on the provided ID.
+      operationId: RetreiveToken
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Token_get'
+  /CertificateAuthority:
+    post:
+      x-scope: public
+      tags:
+       - CertificateAuthority
+      description: >-
+      summary: Creates a new CertificateAuthority record.
+      operationId: CreateCertificateAuthority
+      requestBody:
+        $ref: '#/components/requestBodies/CertificateAuthority'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CertificateAuthority_post'
+    delete:
+      x-scope: public
+      tags:
+       - CertificateAuthority
+      description: >-
+      summary: Deletes an existing CertificateAuthority record based on the provided ID.
+      operationId: DeleteCertificateAuthority
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CertificateAuthority_delete'
+    get:
+      x-scope: public
+      tags:
+       - CertificateAuthority
+      description: >-
+      summary: Retrieves a list of all CertificateAuthority
+      operationId: ListCertificateAuthority
+      responses:
+        '200':
+          $ref: '#/components/responses/200CertificateAuthority_get'
+    patch:
+      x-scope: public
+      tags:
+       - CertificateAuthority
+      description: >-
+      summary: Updates an existing CertificateAuthority record.
+      operationId: PatchCertificateAuthority
+      requestBody:
+        $ref: '#/components/requestBodies/CertificateAuthority'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CertificateAuthority_patch'
+  /PasswordManager/{id}:
+    get:
+      x-scope: public
+      tags:
+       - PasswordManager
+      description: >-
+      summary: retrieve an existing PasswordManager record based on the provided ID.
+      operationId: RetreivePasswordManager
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PasswordManager_get'
+  /PasswordManagement:
+    put:
+      x-scope: private
+      tags:
+       - Password
+      description: >-
+      operationId: hash_password
+      parameters:
+        - $ref: '#/components/parameters/password'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+    post:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+        Verifies a password.
+      operationId: verify_password
+      parameters:
+        - $ref: '#/components/parameters/password'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Boolean_post'
+    patch:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+      operationId: enforce_password_policy
+      requestBody:
+        $ref: '#/components/requestBodies/PasswordPolicyEnforcement'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+  /CredentialManager:
+    post:
+      x-scope: public
+      tags:
+       - CredentialManager
+      description: >-
+      summary: Creates a new CredentialManager record.
+      operationId: CreateCredentialManager
+      requestBody:
+        $ref: '#/components/requestBodies/CredentialManager'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CredentialManager_post'
+    delete:
+      x-scope: public
+      tags:
+       - CredentialManager
+      description: >-
+      summary: Deletes an existing CredentialManager record based on the provided ID.
+      operationId: DeleteCredentialManager
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CredentialManager_delete'
+    get:
+      x-scope: public
+      tags:
+       - CredentialManager
+      description: >-
+      summary: Retrieves a list of all CredentialManager
+      operationId: ListCredentialManager
+      responses:
+        '200':
+          $ref: '#/components/responses/200CredentialManager_get'
+    patch:
+      x-scope: public
+      tags:
+       - CredentialManager
+      description: >-
+      summary: Updates an existing CredentialManager record.
+      operationId: PatchCredentialManager
+      requestBody:
+        $ref: '#/components/requestBodies/CredentialManager'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CredentialManager_patch'
+  /Password:
+    post:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+      summary: Creates a new Password record.
+      operationId: CreatePassword
+      requestBody:
+        $ref: '#/components/requestBodies/Password'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Password_post'
+    delete:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+      summary: Deletes an existing Password record based on the provided ID.
+      operationId: DeletePassword
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Password_delete'
+    get:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+      summary: Retrieves a list of all Password
+      operationId: ListPassword
+      responses:
+        '200':
+          $ref: '#/components/responses/200Password_get'
+    patch:
+      x-scope: public
+      tags:
+       - Password
+      description: >-
+      summary: Updates an existing Password record.
+      operationId: PatchPassword
+      requestBody:
+        $ref: '#/components/requestBodies/Password'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Password_patch'
+  /Certificate/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Certificate
+      description: >-
+      summary: retrieve an existing Certificate record based on the provided ID.
+      operationId: RetreiveCertificate
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Certificate_get'
+  /CertificateAuthority/{id}:
+    get:
+      x-scope: public
+      tags:
+       - CertificateAuthority
+      description: >-
+      summary: retrieve an existing CertificateAuthority record based on the provided ID.
+      operationId: RetreiveCertificateAuthority
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200CertificateAuthority_get'
+components:
+  schemas:
+    Certificate:
+      allOf:
+        - type: object
+          properties:
+            serialNumber:
+              type: string
+              description: >-
+            issuer:
+              type: string
+              description: >-
+            subject:
+              type: string
+              description: >-
+            issueDate:
+              type: string
+              format: date
+              description: >-
+            expireDate:
+              type: string
+              format: date
+              description: >-
+            publicKey:
+              type: string
+              description: >-
+            signatureAlgorithm:
+              type: string
+              description: >-
+            signature:
+              type: string
+              description: >-
+            version:
+              type: string
+              description: >-
+            extensions:
+              type: string
+              description: >-
+            countryName:
+              type: string
+              description: >-
+            stateOrProvinceName:
+              type: string
+              description: >-
+            localityName:
+              type: string
+              description: >-
+            organizationName:
+              type: string
+              description: >-
+            organizationalUnitName:
+              type: string
+              description: >-
+            commonName:
+              type: string
+              description: >-
+            emailAddress:
+              type: string
+              description: >-
+    CertificateAuthority:
+      allOf:
+        - $ref: '#/components/schemas/Certificate'
+        - type: object
+          properties:
+            name:
+              type: string
+              description: >-
+            endpoint:
+              type: string
+              description: >-
+            creationDate:
+              type: string
+              format: date
+              description: >-
+            expireDate:
+              type: string
+              format: date
+              description: >-
+            basicConstraints:
+              type: string
+              description: >-
+            keyUsage:
+              type: integer
+              description: >-
+            authorityKeyIdentifier:
+              type: string
+              description: >-
+            crlDistributionPoints:
+              type: string
+              description: >-
+            certificatePolicies:
+              type: string
+              description: >-
+    CredentialManager:
+      allOf:
+        - type: object
+          properties:
+            CredentialCreationMethod:
+              type: string
+              description: >-
+            EncryptionMethod:
+              type: string
+              description: >-
+            CredentialType:
+              type: string
+              description: >-
+            SecurityMeasures:
+              type: string
+              description: >-
+    Password:
+      allOf:
+        - type: object
+          properties:
+            passwordHash:
+              type: string
+              description: >-
+            creationDate:
+              type: string
+              format: date
+              description: >-
+            expireDate:
+              type: string
+              format: date
+              description: >-
+    PasswordManager:
+      allOf:
+        - type: object
+          properties:
+            ComplexityRequirements:
+              type: string
+              description: >-
+                complexity requirement expressed as a string containing a regular Expression
+            HashingMethod:
+              type: string
+              description: >-
+                <ul>
+                	<li>MD5: An older algorithm that's fast but no longer considered secure due to vulnerabilities.</li>
+                	<li>SHA-1: An improvement over MD5 but also has known vulnerabilities.</li>
+                	<li>SHA-256: Part of the SHA-2 family, widely used and currently considered secure.</li>
+                	<li>bcrypt: Specifically designed for password hashing, it includes a built-in salt and is computationally intensive to slow down brute-force attacks.</li>
+                	<li>scrypt: Similar to bcrypt, but also designed to be memory-intensive to further thwart attacks.</li>
+                	<li>Argon2: The winner of the Password Hashing Competition (PHC), designed to be highly secure and efficient.</li>
+                </ul>
+            ChangeFrequency:
+              type: string
+              description: >-
+            SaltingMethod:
+              type: string
+              description: >-
+                Salting involves adding a random value (called a "salt") to a password before hashing it. This process ensures that even if two users have the same password, their salted and hashed passwords will be different.
+    Token:
+      allOf:
+        - type: object
+          properties:
+            token:
+              type: string
+              description: >-
+            creationDate:
+              type: string
+              format: date
+              description: >-
+            expireDate:
+              type: string
+              format: date
+              description: >-
+    TokenManager:
+      allOf:
+        - type: object
+          properties:
+            ExpiryTime:
+              type: string
+              description: >-
+                the standard time for expiration
+            GenerationMethod:
+              type: string
+              description: >-
+            RenewalMethod:
+              type: string
+              description: >-
+                Can a token be extended?
+            ValidationMethod:
+              type: string
+              description: >-
+    SystemUser:
+      allOf:
+        - type: object
+          properties:
+            uid:
+              type: string
+              description: >-
+            name:
+              type: string
+              description: >-
+            token:
+              type: string
+              description: >-
+            password:
+              type: string
+              description: >-
+            group:
+              type: string
+              description: >-
+            device_type:
+              type: string
+              description: >-
+            certificate_package_name:
+              type: string
+              description: >-
+    Boolean:
+      allOf:
+        - type: object
+    PasswordPolicyEnforcement:
+      allOf:
+        - type: object
+    Error:
+      description: Error
+  parameters:
+    server_name:
+      name: server_name
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    cred_type:
+      name: cred_type
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    wintak_zip:
+      name: wintak_zip
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    ip:
+      name: ip
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    cert:
+      name: cert
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    token:
+      name: token
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    cert_name:
+      name: cert_name
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    password:
+      name: password
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    credential:
+      name: credential
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    keypath:
+      name: keypath
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    name:
+      name: name
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    expiry_time_secs:
+      name: expiry_time_secs
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: integer
+      in: query
+    self:
+      name: self
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    action:
+      name: action
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    p12path:
+      name: p12path
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    pempath:
+      name: pempath
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    ID:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    id:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: path
+    copy:
+      name: copy
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    common_name:
+      name: common_name
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+  responses:
+    200PasswordManager_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PasswordManager'
+    200PasswordManager_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PasswordManager'
+    200PasswordManager_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PasswordManager'
+    200PasswordManager_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PasswordManager'
+    200CredentialManager_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CredentialManager'
+    200SystemUser_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SystemUser'
+    200Password_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Password'
+    200Token_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+    200Token_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+    200Token_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+    200Token_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+    200Certificate_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Certificate'
+    200Certificate_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Certificate'
+    200Certificate_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Certificate'
+    200Certificate_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Certificate'
+    200TokenManager_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenManager'
+    200TokenManager_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenManager'
+    200TokenManager_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenManager'
+    200TokenManager_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenManager'
+    200CertificateAuthority_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CertificateAuthority'
+    200CertificateAuthority_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CertificateAuthority'
+    200CertificateAuthority_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CertificateAuthority'
+    200CertificateAuthority_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CertificateAuthority'
+    200Boolean_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Boolean'
+    200CredentialManager_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CredentialManager'
+    200CredentialManager_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CredentialManager'
+    200CredentialManager_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CredentialManager'
+    200Password_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Password'
+    200Password_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Password'
+    200Password_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Password'
+    '200':
+      description: OK
+    '201':
+      description: Added Object
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    'Error':
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    CredentialManager:
+      description: >-
+        the credential Manager describes how credential are created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CredentialManager'
+      required: true
+    PasswordManager:
+      description: >-
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PasswordManager'
+      required: true
+    CertificateAuthority:
+      description: >-
+        CertificateAuthority class: Represents a CA certificate with additional fields specific to CAs, such as basicConstraints, keyUsage, authorityKeyIdentifier, crlDistributionPoints, and certificatePolicies
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CertificateAuthority'
+      required: true
+    Token:
+      description: >-
+        Token class
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Token'
+      required: true
+    TokenManager:
+      description: >-
+        Expiry And Renewal, Generation And Validation strategy
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenManager'
+      required: true
+    PasswordPolicyEnforcement:
+      description: >-
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PasswordPolicyEnforcement'
+      required: true
+    Certificate:
+      description: >-
+        Certificate class Represents a generic certificate with common fields for both CA and private certificates.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Certificate'
+      required: true
+    Password:
+      description: >-
+        Password class
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Password'
+      required: true
+x-uml-relationships:
+  
+

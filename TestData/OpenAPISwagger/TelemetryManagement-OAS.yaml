@@ -1,0 +1,896 @@
+openapi: 3.0.1
+info:
+  title: TelemetryManagement
+  version: '23.0.0'
+  description: >-
+  contact:
+    name: 
+    url: 
+    email: 
+  license:
+    name: 
+paths:
+  /Metric:
+    post:
+      tags:
+       - Metric
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: CreateMetric
+      requestBody:
+        $ref: '#/components/requestBodies/Metric'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Metric_post'
+    delete:
+      tags:
+       - Metric
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: DeleteMetric
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Metric_delete'
+    get:
+      tags:
+       - Metric
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: ListMetric
+      responses:
+        '200':
+          $ref: '#/components/responses/200Metric_get'
+    patch:
+      tags:
+       - Metric
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: PatchMetric
+      requestBody:
+        $ref: '#/components/requestBodies/Metric'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Metric_patch'
+  /ServiceStatus:
+    post:
+      tags:
+       - ServiceStatus
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: CreateServiceStatus
+      requestBody:
+        $ref: '#/components/requestBodies/ServiceStatus'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ServiceStatus_post'
+    delete:
+      tags:
+       - ServiceStatus
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: DeleteServiceStatus
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ServiceStatus_delete'
+    get:
+      tags:
+       - ServiceStatus
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: ListServiceStatus
+      responses:
+        '200':
+          $ref: '#/components/responses/200ServiceStatus_get'
+    patch:
+      tags:
+       - ServiceStatus
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: PatchServiceStatus
+      requestBody:
+        $ref: '#/components/requestBodies/ServiceStatus'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ServiceStatus_patch'
+  /Log/{id}:
+    get:
+      tags:
+       - Log
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: RetreiveLog
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Log_get'
+  /Metric/{id}:
+    get:
+      tags:
+       - Metric
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: RetreiveMetric
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Metric_get'
+  /Event/{id}:
+    get:
+      tags:
+       - Event
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: RetreiveEvent
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_get'
+  /Log:
+    post:
+      tags:
+       - Log
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: CreateLog
+      requestBody:
+        $ref: '#/components/requestBodies/Log'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Log_post'
+    delete:
+      tags:
+       - Log
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: DeleteLog
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Log_delete'
+    get:
+      tags:
+       - Log
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: ListLog
+      responses:
+        '200':
+          $ref: '#/components/responses/200Log_get'
+    patch:
+      tags:
+       - Log
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: PatchLog
+      requestBody:
+        $ref: '#/components/requestBodies/Log'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Log_patch'
+  /Trace/{id}:
+    get:
+      tags:
+       - Trace
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: RetreiveTrace
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Trace_get'
+  /SystemHealth/{id}:
+    get:
+      tags:
+       - SystemHealth
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: RetreiveSystemHealth
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemHealth_get'
+  /Event:
+    post:
+      tags:
+       - Event
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: CreateEvent
+      requestBody:
+        $ref: '#/components/requestBodies/Event'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_post'
+    delete:
+      tags:
+       - Event
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: DeleteEvent
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_delete'
+    get:
+      tags:
+       - Event
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: ListEvent
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_get'
+    patch:
+      tags:
+       - Event
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: PatchEvent
+      requestBody:
+        $ref: '#/components/requestBodies/Event'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_patch'
+  /SystemHealth:
+    post:
+      tags:
+       - SystemHealth
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: CreateSystemHealth
+      requestBody:
+        $ref: '#/components/requestBodies/SystemHealth'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemHealth_post'
+    delete:
+      tags:
+       - SystemHealth
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: DeleteSystemHealth
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemHealth_delete'
+    get:
+      tags:
+       - SystemHealth
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: ListSystemHealth
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemHealth_get'
+    patch:
+      tags:
+       - SystemHealth
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: PatchSystemHealth
+      requestBody:
+        $ref: '#/components/requestBodies/SystemHealth'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SystemHealth_patch'
+  /ServiceStatus/{id}:
+    get:
+      tags:
+       - ServiceStatus
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: RetreiveServiceStatus
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ServiceStatus_get'
+  /Trace:
+    post:
+      tags:
+       - Trace
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: CreateTrace
+      requestBody:
+        $ref: '#/components/requestBodies/Trace'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Trace_post'
+    delete:
+      tags:
+       - Trace
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: DeleteTrace
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Trace_delete'
+    get:
+      tags:
+       - Trace
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: ListTrace
+      responses:
+        '200':
+          $ref: '#/components/responses/200Trace_get'
+    patch:
+      tags:
+       - Trace
+      x-scope: public
+      description: >-
+      summary: TODO
+      operationId: PatchTrace
+      requestBody:
+        $ref: '#/components/requestBodies/Trace'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Trace_patch'
+components:
+  schemas:
+    Event:
+      allOf:
+        - type: object
+          properties:
+            eventID:
+              type: string
+              description: >-
+                A unique identifier for the event
+            source:
+              type: integer
+              description: >-
+                The source of the event (e.g., application name, system component).
+            message:
+              type: integer
+              description: >-
+                A short message describing the event
+    Log:
+      allOf:
+        - type: object
+          properties:
+            Name:
+              type: integer
+              description: >-
+                The name of the logger or the component that recorded the log message.
+            timestamp:
+              type: string
+              description: >-
+                A string representing the time when the log message was recorded, formatted as a date-time.
+            severity:
+              type: string
+              description: >-
+                The severity level of the log message (e.g., INFO, WARN, ERROR).
+            message:
+              type: string
+              description: >-
+                The content of the log message.
+            file:
+              type: string
+              description: >-
+                the physical location of the log
+    Metric:
+      allOf:
+        - type: object
+          properties:
+            metricName:
+              type: string
+              description: >-
+                The name of the business metric
+            description:
+              type: string
+              description: >-
+                A brief description of the business metric.
+            value:
+              type: integer
+              description: >-
+                The value of the business metric.
+            valueExpected:
+              type: integer
+              description: >-
+                the target or expcted value for this metric
+            unit:
+              type: integer
+              description: >-
+                "The unit of measurement for the business metric. example are '#" '%", "count", "currency", "time", "other"]
+            timestamp:
+              type: string
+              format: date
+              description: >-
+                The timestamp when the metric was recorded.
+            ID:
+              type: string
+              description: >-
+                
+                metric
+    ServiceStatus:
+      allOf:
+        - type: object
+          properties:
+            ServiceName:
+              type: string
+              description: >-
+            ServiceStatus:
+              type: string
+              description: >-
+                this is the expected status
+            Port:
+              type: integer
+              description: >-
+            ServiceStatusActual:
+              type: string
+              description: >-
+                this is the current status
+    SystemHealth:
+      allOf:
+        - type: object
+          properties:
+            cpu:
+              type: integer
+              description: >-
+            disk:
+              type: integer
+              description: >-
+            memory:
+              type: integer
+              description: >-
+    Trace:
+      allOf:
+        - type: object
+          properties:
+            traceId:
+              type: integer
+              description: >-
+                unique ID of the Trace
+            span:
+              description: >-
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/Span'
+            resource:
+              description: >-
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/Resource'
+            instrumentationLibrary:
+              description: >-
+              nullable: false
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/InstrumentationLibrary'
+    Span:
+      allOf:
+        - type: object
+          properties:
+            spanId:
+              type: integer
+              description: >-
+            traceId:
+              type: integer
+              description: >-
+            name:
+              type: string
+              description: >-
+            kind:
+              type: string
+              description: >-
+                The kind of span (e.g., SERVER, CLIENT, PRODUCER, CONSUMER, INTERNAL).
+            startTime:
+              type: string
+              format: date
+              description: >-
+            endTime:
+              type: string
+              format: date
+              description: >-
+            relatedSpanID:
+              type: array
+              items:
+                type: string
+              description: >-
+    Resource:
+      allOf:
+        - type: object
+          properties:
+            attribute:
+              description: >-
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/attribute'
+    attribute:
+      allOf:
+        - type: object
+          properties:
+            key:
+              type: string
+              description: >-
+            value:
+              type: string
+              description: >-
+            ownerID:
+              type: string
+              description: >-
+                the ID of the owner of a certain attribute
+    InstrumentationLibrary:
+      allOf:
+        - type: object
+          properties:
+            name:
+              type: string
+              description: >-
+                The name of the instrumentation library.
+            version:
+              type: integer
+              description: >-
+                The version of the instrumentation library.
+    Error:
+      description: Error
+  parameters:
+    ID:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    id:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: path
+  responses:
+    200Metric_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Metric'
+    200Metric_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Metric'
+    200Metric_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Metric'
+    200Metric_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Metric'
+    200ServiceStatus_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServiceStatus'
+    200ServiceStatus_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServiceStatus'
+    200ServiceStatus_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServiceStatus'
+    200ServiceStatus_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServiceStatus'
+    200Log_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Log'
+    200Event_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200Log_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Log'
+    200Log_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Log'
+    200Log_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Log'
+    200Trace_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trace'
+    200SystemHealth_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SystemHealth'
+    200Event_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200Event_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200Event_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200SystemHealth_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SystemHealth'
+    200SystemHealth_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SystemHealth'
+    200SystemHealth_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SystemHealth'
+    200Trace_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trace'
+    200Trace_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trace'
+    200Trace_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trace'
+    '200':
+      description: OK
+    '201':
+      description: Added Object
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    'Error':
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Trace:
+      description: >-
+        defines the structure for traces, which provide end-to-end visibility into request paths. Represent the end-to-end journey of a request or transaction through a distributed system. Provide visibility into the flow of a request across multiple services and components.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trace'
+      required: true
+    SystemHealth:
+      description: >-
+        current hardware usage 
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SystemHealth'
+      required: true
+    Log:
+      description: >-
+         {"time": "2020-12-16 21:15:14,618", "type": "ERROR", "file":"TCPCoTServiceController.py:31", "message": "there has been an exception in Data Package service startup maximum recursion depth exceeded while calling a Python object"}
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Log'
+      required: true
+    ServiceStatus:
+      description: >-
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServiceStatus'
+      required: true
+    Event:
+      description: >-
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+      required: true
+    Metric:
+      description: >-
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Metric'
+      required: true
+x-uml-relationships:
+  
+  - name: "span"
+    x-ea-guid: EA0875B9-BA2B-4145-A69C-143359329A3F
+    source:
+      schema: "#/components/schemas/Trace"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/Span"
+      multiplicity: "1..-1"
+      navigability: Unspecified
+  - name: "resource"
+    x-ea-guid: 2C37D126-69D8-4b31-B493-0DDB34069AAD
+    source:
+      schema: "#/components/schemas/Trace"
+      multiplicity: "-1..-1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/Resource"
+      multiplicity: "-1..-1"
+      navigability: Unspecified
+  - name: "instrumentationLibrary"
+    x-ea-guid: 8FFFA438-74A8-44af-8274-92BF236192F0
+    source:
+      schema: "#/components/schemas/Trace"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/InstrumentationLibrary"
+      multiplicity: "0..-1"
+      navigability: Unspecified
+  - name: "attribute"
+    x-ea-guid: 5EBB8508-E0ED-4428-A623-4CBBBE284E2E
+    source:
+      schema: "#/components/schemas/Resource"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/attribute"
+      multiplicity: "1..-1"
+      navigability: Unspecified
+

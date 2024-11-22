@@ -1,0 +1,900 @@
+openapi: 3.0.1
+info:
+  title: COTManagementAPI
+  version: '23.0.0'
+  description: >-
+  contact:
+    name: 
+    url: 
+    email: 
+  license:
+    name: 
+paths:
+  /Event/{id}:
+    get:
+      tags:
+       - Event
+      description: >-
+      summary: TODO
+      operationId: RetreiveEvent
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_get'
+  /Event:
+    post:
+      tags:
+       - Event
+      description: >-
+      summary: TODO
+      operationId: CreateEvent
+      requestBody:
+        $ref: '#/components/requestBodies/Event'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_post'
+    delete:
+      tags:
+       - Event
+      description: >-
+      summary: TODO
+      operationId: DeleteEvent
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_delete'
+    get:
+      tags:
+       - Event
+      description: >-
+      summary: TODO
+      operationId: ListEvent
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_get'
+    patch:
+      tags:
+       - Event
+      description: >-
+      summary: TODO
+      operationId: PatchEvent
+      requestBody:
+        $ref: '#/components/requestBodies/Event'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Event_patch'
+components:
+  schemas:
+    Event:
+      allOf:
+        - type: object
+          properties:
+            how:
+              type: string
+              description: >-
+            version:
+              type: integer
+              description: >-
+            time:
+              type: integer
+              description: >-
+            type:
+              type: string
+              description: >-
+            stale:
+              type: string
+              description: >-
+            uid:
+              type: integer
+              description: >-
+            start:
+              type: string
+              description: >-
+            access:
+              type: string
+              description: >-
+            opex:
+              type: integer
+              description: >-
+            qos:
+              type: integer
+              description: >-
+            detail:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            point:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/point'
+    detail:
+      allOf:
+        - type: object
+          properties:
+            detail_Associates_image:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_uid:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_request:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_sensor:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_status:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_shape:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_Input:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_spatial:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_Marti:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_mission:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_emergency:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_geofenceMissions:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_TakControl:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_usericon:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/usericon'
+            detail_Associates_remarks:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/remarks'
+            detail_Associates_Precisionlocation:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/Precisionlocation'
+            detail_Associates_link:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/link'
+            detail_Associates_Health:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/Health'
+            detail_Associates_takv:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/takv'
+            detail_Associates_track:
+              description: >-
+              nullable: false
+              type: array
+              items:
+                $ref: '#/components/schemas/track'
+            detail_Associates_group:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/group'
+            detail_Associates_color:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/color'
+            detail_Associates_chat:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates_attachment_list:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates__medevac_:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates__flow-tags_:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates___serverdestination:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+            detail_Associates___geofence:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/detail'
+    usericon:
+      allOf:
+        - type: object
+          properties:
+            iconsetpath:
+              type: string
+              description: >-
+    remarks:
+      allOf:
+        - type: object
+          properties:
+            time:
+              type: string
+              description: >-
+            to:
+              type: string
+              description: >-
+            source:
+              type: string
+              description: >-
+            version:
+              type: number
+              description: >-
+            keywords:
+              type: string
+              description: >-
+            sourceID:
+              type: integer
+              description: >-
+    Precisionlocation:
+      allOf:
+        - type: object
+          properties:
+            altsrc:
+              type: string
+              description: >-
+            geopointsrc:
+              type: string
+              description: >-
+            PRECISE_IMAGE_FILE:
+              type: string
+              description: >-
+            PRECISE_IMAGE_FILE_X:
+              type: number
+              description: >-
+            PRECISE_IMAGE_FILE_Y:
+              type: number
+              description: >-
+    link:
+      allOf:
+        - type: object
+          properties:
+            uid:
+              type: integer
+              description: >-
+            production_time:
+              type: integer
+              description: >-
+            relation:
+              type: string
+              description: >-
+            type:
+              type: string
+              description: >-
+            url:
+              type: string
+              description: >-
+            parent_callsign:
+              type: integer
+              description: >-
+            remarks:
+              type: string
+              description: >-
+            mime:
+              type: string
+              description: >-
+            version:
+              type: number
+              description: >-
+            point:
+              type: string
+              description: >-
+    Health:
+      allOf:
+        - type: object
+          properties:
+            HeartRate:
+              type: integer
+              description: >-
+            StepsCount:
+              type: integer
+              description: >-
+            CaloriesBurned:
+              type: integer
+              description: >-
+            BodyTemperature:
+              type: integer
+              description: >-
+            bodyOxygen:
+              type: integer
+              description: >-
+            BloodyPressure:
+              type: string
+              description: >-
+            SleepData:
+              type: string
+              format: date
+              description: >-
+            StressLevel:
+              type: string
+              description: >-
+            ID:
+              type: integer
+              description: >-
+    takv:
+      allOf:
+        - type: object
+          properties:
+            platform:
+              type: string
+              description: >-
+            device:
+              type: string
+              description: >-
+            os:
+              type: string
+              description: >-
+            version:
+              type: string
+              description: >-
+            detail_Associates_takv:
+              description: >-
+              nullable: false
+              $ref: '#/components/schemas/takv'
+    track:
+      allOf:
+        - type: object
+          properties:
+            eCourse:
+              type: number
+              description: >-
+            speed:
+              type: var
+              description: >-
+            course:
+              type: var
+              description: >-
+            eSpeed:
+              type: number
+              description: >-
+            eSlope:
+              type: number
+              description: >-
+            version:
+              type: number
+              description: >-
+            detail_Associates_track:
+              description: >-
+              nullable: false
+              type: array
+              items:
+                $ref: '#/components/schemas/track'
+    group:
+      allOf:
+        - type: object
+          properties:
+            role:
+              type: squadnames
+              description: >-
+            name:
+              type: teamcolor
+              description: >-
+            uid:
+              type: integer
+              description: >-
+    color:
+      allOf:
+        - type: object
+          properties:
+            argb:
+              type: integer
+              description: >-
+            value:
+              type: color
+              description: >-
+    point:
+      allOf:
+        - type: object
+          properties:
+            lat:
+              type: number
+              description: >-
+            lon:
+              type: number
+              description: >-
+            ce:
+              type: number
+              description: >-
+            le:
+              type: number
+              description: >-
+            hae:
+              type: number
+              description: >-
+            Event_Associates_point:
+              description: >-
+              nullable: true
+              $ref: '#/components/schemas/point'
+    Error:
+      description: Error
+  parameters:
+    ID:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    id:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: path
+  responses:
+    200Event_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200Event_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200Event_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    200Event_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+    '200':
+      description: OK
+    '201':
+      description: Added Object
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    'Error':
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Event:
+      description: >-
+        represents a TAK event: this class is instantiated with a standard set of values.
+          The opex field is intended to indicate that the event is part of a   live operation, an exercise, or a simulation.  For backward compatibility, absence of the opex indicates "no statement", which will be interpreted in   an installation specific manner.
+          
+          opex="o-&lt;name&gt;" or "e-&lt;nickname&gt;"  or "s-&lt;nickname&gt;",
+          where "-&lt;name&gt;" is optional.  That is, it is permissible to   specify only "o", "e", or "s" for the opex value.
+        <ul>
+        	<li>  o = operations</li>
+        	<li>  e = exercise</li>
+        </ul>
+          s = simulation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Event'
+      required: true
+x-uml-relationships:
+  
+  - name: "detail"
+    x-ea-guid: 92EB3DC4-BF06-4f2d-ACAF-59E0F24CC51F
+    source:
+      schema: "#/components/schemas/Event"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Navigable
+  - name: "point"
+    x-ea-guid: 2123751C-849A-4c32-B7D4-E60808A0A1BE
+    source:
+      schema: "#/components/schemas/Event"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/point"
+      multiplicity: "1..1"
+      navigability: Navigable
+  - name: "detail_Associates_image"
+    x-ea-guid: 1A3209AC-54EC-4c78-B73D-C4F8612033E8
+    source:
+      schema: "#/components/schemas/image"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_uid"
+    x-ea-guid: 671EA9CF-5232-459e-B1E1-3C6642709BB2
+    source:
+      schema: "#/components/schemas/uid"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_request"
+    x-ea-guid: 948B5CA2-257C-47d6-BE43-4C550E318486
+    source:
+      schema: "#/components/schemas/request"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_sensor"
+    x-ea-guid: 9462389A-17DB-4c12-83A6-071EA61E1F65
+    source:
+      schema: "#/components/schemas/sensor"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_status"
+    x-ea-guid: 7DE46686-5155-4d66-A33C-351E3292D270
+    source:
+      schema: "#/components/schemas/status"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_shape"
+    x-ea-guid: 2D326D99-4071-43d1-AD7F-39759231C1E7
+    source:
+      schema: "#/components/schemas/shape"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_Input"
+    x-ea-guid: CBC62E93-42B9-4e55-BF1D-32419CC8745A
+    source:
+      schema: "#/components/schemas/Input"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_spatial"
+    x-ea-guid: FEE68F6F-304C-45b6-B435-93313DF3C83B
+    source:
+      schema: "#/components/schemas/spatial"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_Marti"
+    x-ea-guid: 583FDA7E-364F-48f3-83B4-F532A09D6CE2
+    source:
+      schema: "#/components/schemas/Marti"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_mission"
+    x-ea-guid: EA489E04-BCDA-4669-B5A0-BC52A69ECBCA
+    source:
+      schema: "#/components/schemas/mission"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_emergency"
+    x-ea-guid: B1181E69-8DFD-47a8-9909-403D385C2BB6
+    source:
+      schema: "#/components/schemas/emergency"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_geofenceMissions"
+    x-ea-guid: A5CF2C5B-68F4-4dbc-8189-380213054E41
+    source:
+      schema: "#/components/schemas/geofenceMissions"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_TakControl"
+    x-ea-guid: 18D7AAAD-B414-4714-AE92-3A8935CB0B14
+    source:
+      schema: "#/components/schemas/TakControl"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_usericon"
+    x-ea-guid: A4CCF391-E0FC-4de8-B74D-86AC61CA0F59
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/usericon"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_remarks"
+    x-ea-guid: C123D2C1-EEC3-42c5-B615-F287C79E0020
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/remarks"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_Precisionlocation"
+    x-ea-guid: 970DA487-5820-4326-BC6E-99C116B2342F
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/Precisionlocation"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_link"
+    x-ea-guid: 5464525A-586C-43f0-B3ED-BFEFA5D844ED
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/link"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_Health"
+    x-ea-guid: 2351A81A-D469-441c-A16A-355A979401AA
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/Health"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_takv"
+    x-ea-guid: 04DABEAE-7146-4ff5-9708-670FCB03E104
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Navigable
+    target:
+      schema: "#/components/schemas/takv"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_track"
+    x-ea-guid: FE6BB31E-9F6E-4423-8146-F87F23781E89
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Navigable
+    target:
+      schema: "#/components/schemas/track"
+      multiplicity: "0..-1"
+      navigability: Navigable
+  - name: "detail_Associates_group"
+    x-ea-guid: 2F2E3E2E-677B-4df6-906E-BB633714ACD8
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/group"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_color"
+    x-ea-guid: A0AC8453-F937-44aa-9FEC-F50586EE22B6
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Non-Navigable
+    target:
+      schema: "#/components/schemas/color"
+      multiplicity: "0..1"
+      navigability: Navigable
+  - name: "detail_Associates_chat"
+    x-ea-guid: 72B7CB42-557A-43fa-ABF3-CB1E71D02002
+    source:
+      schema: "#/components/schemas/chat"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_attachment_list"
+    x-ea-guid: AD87A1BC-D7D2-4846-B850-3A83C1E86D74
+    source:
+      schema: "#/components/schemas/attachment_list"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates__medevac_"
+    x-ea-guid: 0F713C97-8BCD-4dc7-A133-1FAAA01BAEE9
+    source:
+      schema: "#/components/schemas/_medevac_"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates__flow-tags_"
+    x-ea-guid: 6CC17D4A-151B-4ff7-AF1E-A04AFE307C1F
+    source:
+      schema: "#/components/schemas/_flow-tags_"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates___serverdestination"
+    x-ea-guid: 9EAAF0BE-1752-4337-AB95-E4BE15CCF612
+    source:
+      schema: "#/components/schemas/__serverdestination"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates___geofence"
+    x-ea-guid: 49DD9711-78C0-446c-B127-4DD0E96AA0E6
+    source:
+      schema: "#/components/schemas/__geofence"
+      multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_takv"
+    x-ea-guid: 04DABEAE-7146-4ff5-9708-670FCB03E104
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/takv"
+      multiplicity: "0..1"
+      navigability: Unspecified
+  - name: "detail_Associates_track"
+    x-ea-guid: FE6BB31E-9F6E-4423-8146-F87F23781E89
+    source:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/track"
+      multiplicity: "0..-1"
+      navigability: Unspecified
+  - name: "Event_Associates_point"
+    x-ea-guid: 2123751C-849A-4c32-B7D4-E60808A0A1BE
+    source:
+      schema: "#/components/schemas/Event"
+      multiplicity: "1..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/point"
+      multiplicity: "1..1"
+      navigability: Unspecified
+

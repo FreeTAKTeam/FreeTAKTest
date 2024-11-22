@@ -1,0 +1,368 @@
+openapi: 3.0.1
+info:
+  title: HealthManagerAPI
+  version: '2.3.1'
+  description: >-
+    the health API manages TAK team's physical information 
+  contact:
+    name: Giu
+    url: https://github.com/FreeTAKTeam
+    email: brothercorvo@gmail.com
+  license:
+    name: EPL
+paths:
+  /Health:
+    post:
+      tags:
+       - Health
+      description: >-
+      summary: TODO
+      operationId: CreateHealth
+      requestBody:
+        $ref: '#/components/requestBodies/Health'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Health_post'
+    delete:
+      tags:
+       - Health
+      description: >-
+      summary: TODO
+      operationId: DeleteHealth
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Health_delete'
+    get:
+      tags:
+       - Health
+      description: >-
+      summary: TODO
+      operationId: ListHealth
+      responses:
+        '200':
+          $ref: '#/components/responses/200Health_get'
+    patch:
+      tags:
+       - Health
+      description: >-
+      summary: TODO
+      operationId: PatchHealth
+      requestBody:
+        $ref: '#/components/requestBodies/Health'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Health_patch'
+  /Contact/{id}:
+    get:
+      tags:
+       - Contact
+      description: >-
+      summary: TODO
+      operationId: RetreiveContact
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Contact_get'
+  /Contact:
+    post:
+      tags:
+       - Contact
+      description: >-
+      summary: TODO
+      operationId: CreateContact
+      requestBody:
+        $ref: '#/components/requestBodies/Contact'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Contact_post'
+    delete:
+      tags:
+       - Contact
+      description: >-
+      summary: TODO
+      operationId: DeleteContact
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Contact_delete'
+    get:
+      tags:
+       - Contact
+      description: >-
+      summary: TODO
+      operationId: ListContact
+      responses:
+        '200':
+          $ref: '#/components/responses/200Contact_get'
+    patch:
+      tags:
+       - Contact
+      description: >-
+      summary: TODO
+      operationId: PatchContact
+      requestBody:
+        $ref: '#/components/requestBodies/Contact'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Contact_patch'
+  /Health/{id}:
+    get:
+      tags:
+       - Health
+      description: >-
+      summary: TODO
+      operationId: RetreiveHealth
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Health_get'
+components:
+  schemas:
+    Contact:
+      allOf:
+        - type: object
+          properties:
+            iconsetpath:
+              type: string
+              description: >-
+            callsign:
+              type: string
+              description: >-
+            freq:
+              type: number
+              description: >-
+            email:
+              type: string
+              description: >-
+            endpoint:
+              type: string
+              description: >-
+            dsn:
+              type: string
+              description: >-
+            phone:
+              type: string
+              description: >-
+            modulation:
+              type: string
+              description: >-
+            hostname:
+              type: string
+              description: >-
+            version:
+              type: number
+              description: >-
+            xmppUsername:
+              type: integer
+              description: >-
+            Contact_Associates_Health:
+              description: >-
+              nullable: false
+              type: array
+              items:
+                $ref: '#/components/schemas/Health'
+    Health:
+      allOf:
+        - type: object
+          properties:
+            HeartRate:
+              type: integer
+              description: >-
+            StepsCount:
+              type: integer
+              description: >-
+            CaloriesBurned:
+              type: integer
+              description: >-
+            BodyTemperature:
+              type: integer
+              description: >-
+            bodyOxygen:
+              type: integer
+              description: >-
+            BloodyPressure:
+              type: string
+              description: >-
+            SleepData:
+              type: string
+              format: date
+              description: >-
+            StressLevel:
+              type: string
+              description: >-
+            ID:
+              type: integer
+              description: >-
+    Error:
+      description: Error
+  parameters:
+    ID:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: query
+    id:
+      name: id
+      required: true
+      description: >-
+        TODO
+      schema:
+        type: string
+      in: path
+  responses:
+    200Health_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+    200Health_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+    200Health_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+    200Health_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+    200Contact_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Contact'
+    200Contact_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Contact'
+    200Contact_delete:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Contact'
+    200Contact_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Contact'
+    '200':
+      description: OK
+    '201':
+      description: Added Object
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    'Error':
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Health:
+      description: >-
+        this class contains information regarding the current physical status of a connected user, measured with sensors.
+        health metrics typically derived from a smartwatch or fitness sensors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+      required: true
+    Contact:
+      description: >-
+        This is a Cursor On Target Class representing communications parameters for contacting a friendly element for human-to-human communications. The objective of this Class is to carry the essential information needed to contact this entity by a variety of means.   Multiple ways of establishing contact can be specified;
+        noThe attributes  callsign, phone, and email should be self-explanatory.  particular mode of contact is required. Other attributes, freq, dsn, modulation, and hostname, are also available.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Contact'
+      required: true
+x-uml-relationships:
+  
+  - name: "Contact_Associates_Health"
+    x-ea-guid: E59F36E0-8228-4537-BBE1-D8B3998F7FF8
+    source:
+      schema: "#/components/schemas/Contact"
+      multiplicity: "1..1"
+      navigability: Navigable
+    target:
+      schema: "#/components/schemas/Health"
+      multiplicity: "0..-1"
+      navigability: Non-Navigable
+
