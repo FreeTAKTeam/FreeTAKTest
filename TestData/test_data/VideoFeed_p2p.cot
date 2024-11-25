@@ -1,0 +1,38 @@
+<event version="2.0"
+       uid="757288a5-2834-4b97-895e-90c6ba6afe80"
+       type="b-i-v"
+       time="2024-11-25T14:45:27.84Z"
+       start="2024-11-25T14:45:27.84Z"
+       stale="2024-11-25T15:45:27.84Z"
+       how="m-g"
+       access="Undefined">
+	<point lat="0"
+	       lon="0"
+	       hae="9999999"
+	       ce="9999999"
+	       le="9999999"/>
+	<detail>
+		<link uid="757288a5-2834-4b97-895e-90c6ba6afe80"
+		      production_time="2024-11-25T14:45:27.848Z"
+		      relationship="p-p"
+		      parent_callsign="freTAKTeam"/>
+		<__video>
+			<ConnectionEntry networkTimeout="0"
+			                 uid="757288a5-2834-4b97-895e-90c6ba6afe80"
+			                 path="/cdn-au/au-avalon/chunklist.m3u8"
+			                 protocol="https"
+			                 bufferTime="-1"
+			                 address="cams.cdn-surfline.com"
+			                 port="443"
+			                 roverPort="-1"
+			                 rtspReliable="0"
+			                 ignoreEmbeddedKLV="false"
+			                 alias="Avalon Cam"/>
+		</__video>
+		<contact callsign="Avalon Cam"/>
+		<marti>
+			<dest callsign="cool guy"/>
+		</marti>
+		<usericon/>
+	</detail>
+</event>
