@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: FilmologyManagement
-  version: '24.11.20'
+  version: '24.11.26'
   description: >-
     Filmology is a test API that describes all the possible variant of a DAF + API model and his implementation as a DigitalPy application
   contact:
@@ -438,20 +438,13 @@ components:
         - $ref: '#/components/schemas/Person'
         - type: object
           properties:
-            Composition:
+            CompositionMovie:
               description: >-
-              nullable: true
-              type: string
-              x-reference: '#/components/schemas/NMActorMovie'
-    NMActorMovie:
-      allOf:
-        - type: object
-          properties:
-            Composition:
-              description: >-
-              nullable: true
-              type: string
-              x-reference: '#/components/schemas/NMActorMovie'
+              nullable: false
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/Actor'
     Person:
       allOf:
         - $ref: '#/components/schemas/EntityBaseExtended'
@@ -536,16 +529,18 @@ components:
               type: string
               format: date
               description: >-
-            CompositionMoviePoster1:
+            CompositionActor:
+              description: >-
+              nullable: false
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/Actor'
+            CompositionPosterPrimary:
               description: >-
               nullable: true
               type: string
               x-reference: '#/components/schemas/Poster'
-            CompositionMNActorMovie:
-              description: >-
-              nullable: true
-              type: string
-              x-reference: '#/components/schemas/NMActorMovie'
             MovieAggregationDirector:
               description: >-
               nullable: false
@@ -910,25 +905,15 @@ components:
       required: true
 x-uml-relationships:
   
-  - name: "Composition"
-    x-ea-guid: A53446F8-8D41-4920-AC9F-636AA84A73C3
+  - name: "CompositionMovie"
+    x-ea-guid: FE76A1C2-1CE3-42a4-8B7C-D738E7E11781
     source:
-      schema: "#/components/schemas/Actor"
-      multiplicity: "1..1"
-      navigability: Navigable
-    target:
-      schema: "#/components/schemas/NMActorMovie"
-      multiplicity: "1..1"
-      navigability: Navigable
-  - name: "Composition"
-    x-ea-guid: A53446F8-8D41-4920-AC9F-636AA84A73C3
-    source:
-      schema: "#/components/schemas/Actor"
-      multiplicity: "1..1"
+      schema: "#/components/schemas/Movie"
+      multiplicity: "0..-1"
       navigability: Unspecified
     target:
-      schema: "#/components/schemas/NMActorMovie"
-      multiplicity: "1..1"
+      schema: "#/components/schemas/Actor"
+      multiplicity: "0..-1"
       navigability: Unspecified
   - name: "DateAggregationMovie"
     x-ea-guid: 173F3957-77BD-4dbf-9BCF-ABC3F33BB147
@@ -940,7 +925,17 @@ x-uml-relationships:
       schema: "#/components/schemas/Movie"
       multiplicity: "0..-1"
       navigability: Navigable
-  - name: "CompositionMoviePoster1"
+  - name: "CompositionActor"
+    x-ea-guid: FE76A1C2-1CE3-42a4-8B7C-D738E7E11781
+    source:
+      schema: "#/components/schemas/Movie"
+      multiplicity: "0..-1"
+      navigability: Navigable
+    target:
+      schema: "#/components/schemas/Actor"
+      multiplicity: "0..-1"
+      navigability: Navigable
+  - name: "CompositionPosterPrimary"
     x-ea-guid: 062CCA3D-7D47-4b27-AE53-1266FE1B3C84
     source:
       schema: "#/components/schemas/Movie"
@@ -948,16 +943,6 @@ x-uml-relationships:
       navigability: Non-Navigable
     target:
       schema: "#/components/schemas/Poster"
-      multiplicity: "1..1"
-      navigability: Navigable
-  - name: "CompositionMNActorMovie"
-    x-ea-guid: FE76A1C2-1CE3-42a4-8B7C-D738E7E11781
-    source:
-      schema: "#/components/schemas/Movie"
-      multiplicity: "1..1"
-      navigability: Navigable
-    target:
-      schema: "#/components/schemas/NMActorMovie"
       multiplicity: "1..1"
       navigability: Navigable
   - name: "MovieAggregationDirector"
