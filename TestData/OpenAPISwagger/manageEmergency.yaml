@@ -67,12 +67,15 @@ paths:
   /deleteEmergency:
     delete:
       summary: "Delete an active emergency"
-      post:
       parameters:
-       - in: "body"
-      name: "body"
-      - name: "uid"
-        type: "string"
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              uid:
+                type: "string"
       responses:
         200:
           description: "Success"

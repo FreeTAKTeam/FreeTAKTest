@@ -139,7 +139,8 @@ paths:
           description: simple text based return value
           content:
             text/plain:
-              schema:
+              schema:         
+                $ref: '#/components/schemas/Subscriber'
   /Subscriber/{id}:
     get:
       x-scope: public
@@ -166,6 +167,7 @@ paths:
           content:
             text/plain:
               schema:
+                $ref: '#/components/schemas/Subscriber'
   /Subscriber:
     post:
       x-scope: public
@@ -213,18 +215,7 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200Subscriber_patch'
-    delete:
-      x-scope: public
-      tags:
-       - Subscriber
-      description: >-
-      operationId: RemoveSubscriber
-      responses:
-        '200':
-          description: simple text based return value
-          content:
-            text/plain:
-              schema:
+
 components:
   schemas:
     Subscriber:
@@ -264,6 +255,35 @@ components:
               description: >-
     Error:
       description: Error
+    ReticulumInfo:
+      type: object
+      description: Summarizes the  Reticulum node and application configuration.
+      properties:
+        is_transport_enabled:
+          type: boolean
+          description: Indicates whether Reticulum transport mode is enabled.
+        is_connected_to_shared_instance:
+          type: boolean
+          description: True when the node is linked to a shared Reticulum instance.
+        reticulum_config_path:
+          type: integer
+          format: int64
+          description: Filesystem path handle or identifier for the Reticulum configuration (Int64).
+        database_path:
+          type: string
+          description: Filesystem path to the Reticulum database.
+        storage_path:
+          type: string
+          description: Root path where Reticulum stores persistent data.
+        rns_version:
+          type: string
+          description: Installed Reticulum (RNS) version string.
+        lxmf_version:
+          type: string
+          description: Installed LXMF library version.
+        app_version:
+          type: string
+          description: Version of the Reticulum Telemetry Hub application.
   parameters:
     identity:
       name: identity

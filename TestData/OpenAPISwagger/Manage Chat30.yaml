@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: ManageChat API
   description: API for managing chat messages in a TAK-compatible application
-  termsOfService: ""
+  termsOfService: "EPL"
   contact:
     name: FreeTAKTeam@gmail.com
     url: https://freetakteam.github.io/FreeTAKServer-User-Docs/API/

@@ -101,3 +101,27 @@ components:
         longitude:
           type: string
           description: The angular distance of the geoobject from the meridian of the green
+    SPIObject:
+      type: object
+      description: Defines the data required to create or update a sensor point of interest (SPI).
+      properties:
+        uid:
+          type: string
+          description: Identifier of the SPI; include when updating an existing SPI.
+        timeout:
+          type: integer
+          description: Time in seconds before the SPI expires; default is 300.
+        longitude:
+          type: number
+          format: double
+          description: Angular distance from the Greenwich meridian, expressed as a signed decimal degree.
+        latitude:
+          type: number
+          format: double
+          description: Angular distance from the equator, expressed as a signed decimal degree.
+        droneUid:
+          type: string
+          description: UID of the drone that owns this SPI.
+        name:
+          type: string
+          description: Name that will be displayed for the SPI and related video stream.
