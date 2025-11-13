@@ -1,5 +1,5 @@
 swagger: '2.0'
-info:
+info: simple API to post objects
   version: 1.0.0
   title: ManageChat API
   description: API for managing chat messages in a TAK-compatible application
