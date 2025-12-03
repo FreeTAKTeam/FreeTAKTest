@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: ReticulumTelemetryHub
-  version: '2025.06.05'
+  version: '2025.11.14'
   description: >-
     Abstract service for Reticulum Telemetry Hub.   This API manages subscribers, topics, client lists,  and provides hub?join/leave functionality over a Reticulum?based network.
   contact:

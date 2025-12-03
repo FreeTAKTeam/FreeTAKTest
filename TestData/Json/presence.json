@@ -1,0 +1,28 @@
+{
+  "event": {
+    "version": "2.0",
+    "uid": "RTH",
+    "type": "a-f-G-U-C",
+    "how": "h-g-i-g-o",
+    "time": "2025-12-03T15:16:19Z",
+    "start": "2025-12-03T15:11:23Z",
+    "stale": "2025-12-03T15:17:19Z",
+    "point": { "lat": 44.0, "lon": -63.0, "hae": 10.0, "ce": 5.0, "le": 5.0 },
+    "detail": {
+      "contact": {
+        "callsign": "unknown",
+        "endpoint": "137.184.101.250:8087:tcp"
+      },
+      "group": { "name": "Yellow", "role": "Team Member" },
+      "track": { "course": 0.0, "speed": 0.0 },
+      "takv": {
+        "version": "4.9.0.156",
+        "platform": "WinTAK-CIV",
+        "os": "Microsoft Windows 11 Pro",
+        "device": "LENOVO 20XW003LUS"
+      },
+      "uid": { "Droid": "unknown" },
+      "status": { "battery": 0.0 }
+    }
+  }
+}
