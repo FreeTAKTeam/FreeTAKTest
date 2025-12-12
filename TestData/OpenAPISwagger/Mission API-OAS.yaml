@@ -1,0 +1,466 @@
+openapi: 3.0.1
+info:
+  title: Mission API
+  version: '25.12.12'
+  description: Mission creation, update, retrieval, and related mission metadata.
+  contact:
+    name: corvo
+    url: https://github.com/FreeTAKTeam
+    email: brothercorvo@gmail.com
+  license:
+    name: Eclipse Public License 2.0
+    url: https://www.eclipse.org/legal/epl-2.0/
+servers:
+  - url: /
+security: []
+paths:
+  /teams/{teamid}/members/count:
+    get:
+      x-scope: public
+      tags:
+        - Team
+      summary: Calculate team member count
+      description: Takes a team uid and returns the number of team members associated.
+      operationId: CalculateTeamMembersNumber
+      parameters:
+        - $ref: '#/components/parameters/teamid'
+      responses:
+        '200':
+          description: Team member count
+          content:
+            application/json:
+              schema:
+                type: integer
+                minimum: 0
+        '400':
+          $ref: '#/components/responses/Error'
+  /Mission/{id}:
+    get:
+      x-scope: public
+      tags:
+        - Mission
+      summary: Retrieve an existing Mission record
+      description: Retrieve an existing Mission record based on the provided ID.
+      operationId: RetreiveMission
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Mission_get'
+        '404':
+          $ref: '#/components/responses/Error'
+    delete:
+      x-scope: public
+      tags:
+        - Mission
+      summary: Delete an existing Mission record
+      description: Deletes an existing Mission record based on the provided ID.
+      operationId: DeleteMission
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/Error'
+  /Mission:
+    post:
+      x-scope: public
+      tags:
+        - Mission
+      summary: Create a new Mission record
+      description: Creates a new Mission record.
+      operationId: CreateMission
+      requestBody:
+        $ref: '#/components/requestBodies/Mission'
+      responses:
+        '201':
+          $ref: '#/components/responses/200Mission_post'
+        '400':
+          $ref: '#/components/responses/Error'
+    get:
+      x-scope: public
+      tags:
+        - Mission
+      summary: List missions
+      description: Retrieves a list of all missions.
+      operationId: ListMission
+      responses:
+        '200':
+          $ref: '#/components/responses/200Mission_list'
+        '400':
+          $ref: '#/components/responses/Error'
+    patch:
+      x-scope: public
+      tags:
+        - Mission
+      summary: Update an existing Mission record
+      description: Updates an existing Mission record.
+      operationId: PatchMission
+      requestBody:
+        $ref: '#/components/requestBodies/Mission'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Mission_patch'
+        '400':
+          $ref: '#/components/responses/Error'
+components:
+  schemas:
+    Mission:
+      allOf:
+        - $ref: '#/components/schemas/BaseSchema'
+        - type: object
+          properties:
+            serialversionuid:
+              type: integer
+            Missionid:
+              type: integer
+            description:
+              type: string
+            chatroom:
+              type: string
+              description: the name and path of the mission topic
+            baselayer:
+              type: string
+            path:
+              type: string
+            classification:
+              type: string
+            tool:
+              type: string
+            keywords:
+              type: array
+              items:
+                type: string
+            parent:
+              type: string
+            children:
+              type: array
+              items:
+                type: string
+            feeds:
+              type: array
+              items:
+                type: string
+              description: a list of URL providing relevant information
+            passwordhash:
+              type: string
+            MissionPriority:
+              type: integer
+            ownerrole:
+              type: string
+            token:
+              type: string
+            inviteonly:
+              type: string
+            logs:
+              type: array
+              items:
+                type: string
+            expiration:
+              type: string
+              format: date
+            MissionTeam:
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/Team'
+            defaultrole:
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/MissionRole'
+            missionchanges:
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/MissionChange'
+            Mission_Associates_LogEntry:
+              nullable: false
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/LogEntry'
+            missionStatus:
+              $ref: '#/components/schemas/missionStatus'
+    Team:
+      allOf:
+        - type: object
+          properties:
+            teamName:
+              type: string
+            color:
+              type: string
+            teamdescription:
+              type: string
+            uid:
+              type: integer
+    MissionRole:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+            usingmissiondefault:
+              type: string
+            permissions:
+              nullable: true
+              type: array
+              items:
+                type: string
+                x-reference: '#/components/schemas/MissionPermission'
+            role:
+              $ref: '#/components/schemas/missionRoleList'
+    MissionPermission:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+            permission:
+              type: string
+    MissionChange:
+      allOf:
+        - type: object
+          properties:
+            creatorUid:
+              type: string
+            missionID:
+              type: string
+            timestamp:
+              type: string
+              format: date
+            type:
+              type: string
+            isFederatedChange:
+              type: boolean
+            content:
+              nullable: true
+              type: string
+              x-reference: '#/components/schemas/missionchangecontent'
+            changeType:
+              $ref: '#/components/schemas/MissionChangeType'
+    missionchangecontent:
+      allOf:
+        - type: object
+          properties:
+            hashes:
+              type: array
+              items:
+                type: string
+            uid:
+              type: string
+            name:
+              type: string
+            tool:
+              type: string
+            urlData:
+              type: string
+            notes:
+              type: string
+    LogEntry:
+      allOf:
+        - $ref: '#/components/schemas/BaseSchema'
+        - type: object
+          properties:
+            content:
+              type: string
+            entryuid:
+              type: string
+            missionUID:
+              type: string
+            servertime:
+              type: string
+              format: date
+              description: // time when LogEntry is saved to the database
+            dtg:
+              type: string
+              format: date
+              description: date time group - client provided timestamp
+            contenthashes:
+              type: array
+              items:
+                type: string
+              description: list of contentHashes (e.g. "e70ceeb0641462513c4b87df05c57dcbaf4e36184a820ef997693074b738d3e6"), typically referring to a COT
+            keywords:
+              type: array
+              items:
+                type: string
+    BaseSchema:
+      allOf:
+        - type: object
+          properties:
+            uid:
+              type: string
+              description: a string with the ID / name of the author
+            name:
+              type: string
+            creatoruid:
+              type: string
+            createtime:
+              type: string
+              format: date
+            lastedited:
+              type: string
+              format: date
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        code:
+          type: string
+          description: Stable, machine-readable error code.
+        message:
+          type: string
+          description: Human-readable error message.
+        details:
+          type: object
+          additionalProperties: true
+        traceId:
+          type: string
+          description: Optional server trace identifier.
+    missionStatus:
+      enum:
+        - MISSION_ACTIVE
+        - MISSION_PENDING
+        - MISSION_DELETED
+        - MISSION_COMPLETED_SUCCCESS
+        - MISSION_COMPLETED_FAILED
+      type: string
+    missionRoleList:
+      enum:
+        - MISSION_OWNER
+        - MISSION_SUBSCRIBER
+        - MISSION_READONLY_SUBSCRIBER
+      type: string
+    MissionChangeType:
+      enum:
+        - CREATE_MISSION
+        - DELETE_MISSION
+        - ADD_CONTENT
+        - REMOVE_CONTENT
+        - CREATE_DATA_FEED
+        - DELETE_DATA_FEED
+        - MAP_LAYER
+      type: string
+  parameters:
+    id:
+      name: id
+      required: true
+      description: TODO
+      schema:
+        type: string
+      in: path
+    teamid:
+      name: teamid
+      required: true
+      description: Team identifier (uid).
+      schema:
+        type: string
+      in: path
+  responses:
+    200Mission_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Mission'
+    200Mission_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Mission'
+    200Mission_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Mission'
+    200Mission_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Mission'
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Mission:
+      description: This class and the corresponding table don't have a lot of fields. They exist mainly for the purpose of providing a primary key, and a single record for joining on the resources, uids and keywords.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Mission'
+      required: true
+x-uml-relationships:
+  - name: MissionTeam
+    x-ea-guid: 57FE07EF-FFA0-4e78-B0D8-A4D3846CCC65
+    source:
+      schema: '#/components/schemas/Mission'
+      multiplicity: 0..-1
+      navigability: Unspecified
+    target:
+      schema: '#/components/schemas/Team'
+      multiplicity: 1..-1
+      navigability: Unspecified
+  - name: defaultrole
+    x-ea-guid: 431B2A80-0542-42ba-968D-C1E90D8F65B1
+    source:
+      schema: '#/components/schemas/Mission'
+      multiplicity: -1..-1
+      navigability: Non-Navigable
+    target:
+      schema: '#/components/schemas/MissionRole'
+      multiplicity: -1..-1
+      navigability: Navigable
+  - name: missionchanges
+    x-ea-guid: 9008E6A3-3009-4949-BED3-AD4F2B705BE8
+    source:
+      schema: '#/components/schemas/Mission'
+      multiplicity: -1..-1
+      navigability: Unspecified
+    target:
+      schema: '#/components/schemas/MissionChange'
+      multiplicity: -1..-1
+      navigability: Unspecified
+  - name: Mission_Associates_LogEntry
+    x-ea-guid: E6A44DAA-D052-4c4a-B3AC-86C1F0892DE6
+    source:
+      schema: '#/components/schemas/Mission'
+      multiplicity: 0..0
+      navigability: Non-Navigable
+    target:
+      schema: '#/components/schemas/LogEntry'
+      multiplicity: 0..-1
+      navigability: Navigable
+  - name: permissions
+    x-ea-guid: 7EA8B475-53E0-4fd8-B295-25B9B2E85567
+    source:
+      schema: '#/components/schemas/MissionRole'
+      multiplicity: -1..-1
+      navigability: Unspecified
+    target:
+      schema: '#/components/schemas/MissionPermission'
+      multiplicity: -1..-1
+      navigability: Unspecified
+  - name: content
+    x-ea-guid: 4E2E1440-030B-4b9c-A1B3-A9E2102FA07D
+    source:
+      schema: '#/components/schemas/MissionChange'
+      multiplicity: 1..1
+      navigability: Unspecified
+    target:
+      schema: '#/components/schemas/missionchangecontent'
+      multiplicity: 1..1
+      navigability: Unspecified

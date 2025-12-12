@@ -1,17 +1,19 @@
 openapi: 3.0.1
 info:
   title: COTManagementAPI
-  version: '23.0.0'
+  version: '25.12.12'
   description: >-
+    this is a generic API to manage COTS messages
   contact:
-    name: 
-    url: 
-    email: 
+    name: FreeTAKTream
+    url:  https://github.com/FreeTAKTeam
+    email: FreeTAKTream@gmail.com
   license:
-    name: 
+    name: EPL
 paths:
   /Event/{id}:
     get:
+      x-scope: public
       tags:
        - Event
       description: >-
@@ -24,6 +26,7 @@ paths:
           $ref: '#/components/responses/200Event_get'
   /Event:
     post:
+      x-scope: public
       tags:
        - Event
       description: >-
@@ -35,6 +38,7 @@ paths:
         '200':
           $ref: '#/components/responses/200Event_post'
     delete:
+      x-scope: public
       tags:
        - Event
       description: >-
@@ -46,6 +50,7 @@ paths:
         '200':
           $ref: '#/components/responses/200Event_delete'
     get:
+      x-scope: public
       tags:
        - Event
       description: >-
@@ -55,6 +60,7 @@ paths:
         '200':
           $ref: '#/components/responses/200Event_get'
     patch:
+      x-scope: public
       tags:
        - Event
       description: >-
@@ -71,6 +77,9 @@ components:
       allOf:
         - type: object
           properties:
+            uid:
+              type: integer
+              description: >-
             how:
               type: string
               description: >-
@@ -85,9 +94,6 @@ components:
               description: >-
             stale:
               type: string
-              description: >-
-            uid:
-              type: integer
               description: >-
             start:
               type: string
@@ -104,11 +110,13 @@ components:
             detail:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             point:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/point'
+              type: string
+              x-reference: '#/components/schemas/point'
     detail:
       allOf:
         - type: object
@@ -116,117 +124,150 @@ components:
             detail_Associates_image:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_uid:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_request:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_sensor:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_status:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_shape:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_Input:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_spatial:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_Marti:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_mission:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_emergency:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_geofenceMissions:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_TakControl:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_usericon:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/usericon'
+              type: string
+              x-reference: '#/components/schemas/usericon'
             detail_Associates_remarks:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/remarks'
+              type: string
+              x-reference: '#/components/schemas/remarks'
             detail_Associates_Precisionlocation:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/Precisionlocation'
+              type: string
+              x-reference: '#/components/schemas/Precisionlocation'
             detail_Associates_link:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/link'
+              type: string
+              x-reference: '#/components/schemas/link'
             detail_Associates_Health:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/Health'
+              type: string
+              x-reference: '#/components/schemas/Health'
             detail_Associates_takv:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/takv'
+              type: string
+              x-reference: '#/components/schemas/takv'
             detail_Associates_track:
               description: >-
               nullable: false
               type: array
               items:
-                $ref: '#/components/schemas/track'
+                type: string
+                x-reference: '#/components/schemas/track'
             detail_Associates_group:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/group'
+              type: string
+              x-reference: '#/components/schemas/group'
             detail_Associates_color:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/color'
+              type: string
+              x-reference: '#/components/schemas/color'
             detail_Associates_chat:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates_attachment_list:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates__medevac_:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates__flow-tags_:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates___serverdestination:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
             detail_Associates___geofence:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/detail'
+              type: string
+              x-reference: '#/components/schemas/detail'
+            detail_Associates_Event:
+              description: >-
+              nullable: true
+              type: string
+              x-reference: '#/components/schemas/detail'
     usericon:
       allOf:
         - type: object
@@ -360,7 +401,8 @@ components:
             detail_Associates_takv:
               description: >-
               nullable: false
-              $ref: '#/components/schemas/takv'
+              type: string
+              x-reference: '#/components/schemas/takv'
     track:
       allOf:
         - type: object
@@ -369,10 +411,10 @@ components:
               type: number
               description: >-
             speed:
-              type: var
+              type: string
               description: >-
             course:
-              type: var
+              type: string
               description: >-
             eSpeed:
               type: number
@@ -388,16 +430,17 @@ components:
               nullable: false
               type: array
               items:
-                $ref: '#/components/schemas/track'
+                type: string
+                x-reference: '#/components/schemas/track'
     group:
       allOf:
         - type: object
           properties:
             role:
-              type: squadnames
+              type: string
               description: >-
             name:
-              type: teamcolor
+              type: string
               description: >-
             uid:
               type: integer
@@ -410,7 +453,7 @@ components:
               type: integer
               description: >-
             value:
-              type: color
+              type: string
               description: >-
     point:
       allOf:
@@ -434,7 +477,8 @@ components:
             Event_Associates_point:
               description: >-
               nullable: true
-              $ref: '#/components/schemas/point'
+              type: string
+              x-reference: '#/components/schemas/point'
     Error:
       description: Error
   parameters:
@@ -860,8 +904,18 @@ x-uml-relationships:
   - name: "detail_Associates___geofence"
     x-ea-guid: 49DD9711-78C0-446c-B127-4DD0E96AA0E6
     source:
-      schema: "#/components/schemas/__geofence"
+      schema: "#/components/schemas/Geofence"
       multiplicity: "0..1"
+      navigability: Unspecified
+    target:
+      schema: "#/components/schemas/detail"
+      multiplicity: "1..1"
+      navigability: Unspecified
+  - name: "detail_Associates_Event"
+    x-ea-guid: 92EB3DC4-BF06-4f2d-ACAF-59E0F24CC51F
+    source:
+      schema: "#/components/schemas/Event"
+      multiplicity: "1..1"
       navigability: Unspecified
     target:
       schema: "#/components/schemas/detail"

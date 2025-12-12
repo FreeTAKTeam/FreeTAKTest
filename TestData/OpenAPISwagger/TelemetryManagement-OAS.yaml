@@ -3,12 +3,10 @@ info:
   title: TelemetryManagement
   version: '23.0.0'
   description: >-
-  contact:
-    name: 
-    url: 
-    email: 
+    url: https://github.com/FreeTAKTeam
+    email: brothercorvo@gmail.com
   license:
-    name: 
+    name: EPL
 paths:
   /Metric:
     post:
