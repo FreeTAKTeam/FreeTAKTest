@@ -1,81 +1,111 @@
-swagger: "2.0"
+openapi: 3.0.1
 info:
   version: "1.0"
   title: "ManageEmergency API"
-basePath: "/ManageEmergency"
-schemes:
-  - "http"
+servers:
+  - url: /ManageEmergency
 paths:
   /postEmergency:
     post:
-      consumes:
-        - application/json
-      produces:
-        - application/json
       summary: "Create a new emergency"
-      parameters:
-        - name: "name"
-          in: "formData"
-          required: true
-          type: "string"
-        - name: "emergencyType"
-          in: "formData"
-          required: true
-          type: "string"
-          enum:
-            - "911 Alert"
-            - "Ring The Bell"
-            - "Geo-fence Breached"
-            - "In Contact"
-        - name: "longitude"
-          in: "formData"
-          required: true
-          type: "number"
-        - name: "latitude"
-          in: "formData"
-          required: true
-          type: "number"
-        - name: "uid"
-          in: "formData"
-          required: true
-          type: "string"
-        - name: "address"
-          in: "formData"
-          type: "string"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - name
+                - emergencyType
+                - longitude
+                - latitude
+                - uid
+              properties:
+                name:
+                  type: string
+                emergencyType:
+                  type: string
+                  enum:
+                    - "911 Alert"
+                    - "Ring The Bell"
+                    - "Geo-fence Breached"
+                    - "In Contact"
+                longitude:
+                  type: number
+                latitude:
+                  type: number
+                uid:
+                  type: string
+                address:
+                  type: string
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - emergencyType
+                - longitude
+                - latitude
+                - uid
+              properties:
+                name:
+                  type: string
+                emergencyType:
+                  type: string
+                  enum:
+                    - "911 Alert"
+                    - "Ring The Bell"
+                    - "Geo-fence Breached"
+                    - "In Contact"
+                longitude:
+                  type: number
+                latitude:
+                  type: number
+                uid:
+                  type: string
+                address:
+                  type: string
       responses:
-        200:
+        "200":
           description: "Success"
+          content:
+            application/json: {}
   /getEmergency:
     get:
       summary: "Get a list of current active emergencies"
-      parameters: []
       responses:
-        200:
+        "200":
           description: "Success"
-          schema:
-            type: "object"
-            properties:
-              json_list:
-                type: "array"
-                items:
-                  type: "object"
-                  properties:
-                    PrimaryKey:
-                      type: "integer"
-                    event_id:
-                      type: "string"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json_list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        PrimaryKey:
+                          type: integer
+                        event_id:
+                          type: string
   /deleteEmergency:
     delete:
       summary: "Delete an active emergency"
-      parameters:
-        - in: "body"
-          name: "body"
-          required: true
-          schema:
-            type: "object"
-            properties:
-              uid:
-                type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - uid
+              properties:
+                uid:
+                  type: string
       responses:
-        200:
+        "200":
           description: "Success"
+          content:
+            application/json: {}
