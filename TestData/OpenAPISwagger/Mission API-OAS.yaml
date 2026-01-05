@@ -104,6 +104,107 @@ paths:
           $ref: '#/components/responses/200Mission_patch'
         '400':
           $ref: '#/components/responses/Error'
+  /Mission/{id}/logEntry:
+    get:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: List log entries for a mission
+      description: Retrieves log entries for the provided mission ID.
+      operationId: ListMissionLogEntry
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200LogEntry_list'
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: Create a log entry for a mission
+      description: Creates a log entry associated with the provided mission ID.
+      operationId: CreateMissionLogEntry
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/LogEntry'
+      responses:
+        '201':
+          $ref: '#/components/responses/200LogEntry_post'
+        '400':
+          $ref: '#/components/responses/Error'
+  /LogEntry/{id}:
+    get:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: Retrieve an existing LogEntry record
+      description: Retrieve an existing LogEntry record based on the provided ID.
+      operationId: RetreiveLogEntry
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200LogEntry_get'
+        '404':
+          $ref: '#/components/responses/Error'
+    delete:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: Delete an existing LogEntry record
+      description: Deletes an existing LogEntry record based on the provided ID.
+      operationId: DeleteLogEntry
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/Error'
+  /LogEntry:
+    post:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: Create a new LogEntry record
+      description: Creates a new LogEntry record for a mission.
+      operationId: CreateLogEntry
+      requestBody:
+        $ref: '#/components/requestBodies/LogEntry'
+      responses:
+        '201':
+          $ref: '#/components/responses/200LogEntry_post'
+        '400':
+          $ref: '#/components/responses/Error'
+    get:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: List log entries
+      description: Retrieves a list of all log entries.
+      operationId: ListLogEntry
+      responses:
+        '200':
+          $ref: '#/components/responses/200LogEntry_list'
+        '400':
+          $ref: '#/components/responses/Error'
+    patch:
+      x-scope: public
+      tags:
+        - LogEntry
+      summary: Update an existing LogEntry record
+      description: Updates an existing LogEntry record.
+      operationId: PatchLogEntry
+      requestBody:
+        $ref: '#/components/requestBodies/LogEntry'
+      responses:
+        '200':
+          $ref: '#/components/responses/200LogEntry_patch'
+        '400':
+          $ref: '#/components/responses/Error'
 components:
   schemas:
     Mission:
@@ -389,6 +490,32 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Mission'
+    200LogEntry_get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LogEntry'
+    200LogEntry_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/LogEntry'
+    200LogEntry_post:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LogEntry'
+    200LogEntry_patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LogEntry'
     Error:
       description: Error
       content:
@@ -402,6 +529,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Mission'
+      required: true
+    LogEntry:
+      description: A small information record that logs a mission event of note.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LogEntry'
       required: true
 x-uml-relationships:
   - name: MissionTeam
