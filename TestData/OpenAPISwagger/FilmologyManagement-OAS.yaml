@@ -10,428 +10,857 @@ info:
     email: Freetakteam@gmail.com
   license:
     name: EPL
+
+tags:
+  - name: Movies
+    description: Movie catalog and related metadata.
+  - name: Directors
+    description: Director records and relationships.
+  - name: Actors
+    description: Actor records and relationships.
+  - name: Genres
+    description: Genre classification records.
+  - name: Languages
+    description: Language records for localization.
+  - name: Dates
+    description: Release date records.
+  - name: Posters
+    description: Poster assets associated with movies.
+
+servers:
+  - url: https://api.example.com
+    description: Production
+  - url: https://sandbox.example.com
+    description: Sandbox
+
+security:
+  - BearerAuth: []
 paths:
-  /Movie:
+  /Movies:
     post:
       x-scope: public
       tags:
-       - Movie
-      description: >-
+       - Movies
       summary: Creates a new Movie record.
       operationId: CreateMovie
       requestBody:
         $ref: '#/components/requestBodies/Movie'
       responses:
-        '200':
-          $ref: '#/components/responses/200Movie_post'
-    delete:
-      x-scope: public
-      tags:
-       - Movie
-      description: >-
-      summary: Deletes an existing Movie record based on the provided ID.
-      operationId: DeleteMovie
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Movie_delete'
+        '201':
+          $ref: '#/components/responses/201Movie_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
     get:
       x-scope: public
       tags:
-       - Movie
-      description: >-
+       - Movies
       summary: Retrieves a list of all Movie
       operationId: ListMovie
       responses:
         '200':
-          $ref: '#/components/responses/200Movie_get'
-    patch:
-      x-scope: public
-      tags:
-       - Movie
-      description: >-
-      summary: Updates an existing Movie record.
-      operationId: PatchMovie
-      requestBody:
-        $ref: '#/components/requestBodies/Movie'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Movie_patch'
-  /Director/{id}:
+          $ref: '#/components/responses/200Movie_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Directors/{id}:
     get:
       x-scope: public
       tags:
-       - Director
-      description: >-
-      summary: retrieve an existing Director record based on the provided ID.
-      operationId: RetreiveDirector
+       - Directors
+      summary: Retrieve an existing Director record based on the provided ID.
+      operationId: RetrieveDirector
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
         '200':
           $ref: '#/components/responses/200Director_get'
-  /Poster:
-    post:
-      x-scope: public
-      tags:
-       - Poster
-      description: >-
-      summary: Creates a new Poster record.
-      operationId: CreatePoster
-      requestBody:
-        $ref: '#/components/requestBodies/Poster'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Poster_post'
-    delete:
-      x-scope: public
-      tags:
-       - Poster
-      description: >-
-      summary: Deletes an existing Poster record based on the provided ID.
-      operationId: DeletePoster
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Poster_delete'
-    get:
-      x-scope: public
-      tags:
-       - Poster
-      description: >-
-      summary: Retrieves a list of all Poster
-      operationId: ListPoster
-      responses:
-        '200':
-          $ref: '#/components/responses/200Poster_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
     patch:
       x-scope: public
       tags:
-       - Poster
-      description: >-
-      summary: Updates an existing Poster record.
-      operationId: PatchPoster
-      requestBody:
-        $ref: '#/components/requestBodies/Poster'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Poster_patch'
-  /Genre/{id}:
-    get:
-      x-scope: public
-      tags:
-       - Genre
-      description: >-
-      summary: retrieve an existing Genre record based on the provided ID.
-      operationId: RetreiveGenre
-      parameters:
-        - $ref: '#/components/parameters/id'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Genre_get'
-  /Date:
-    post:
-      x-scope: public
-      tags:
-       - Date
-      description: >-
-      summary: Creates a new Date record.
-      operationId: CreateDate
-      requestBody:
-        $ref: '#/components/requestBodies/Date'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Date_post'
-    delete:
-      x-scope: public
-      tags:
-       - Date
-      description: >-
-      summary: Deletes an existing Date record based on the provided ID.
-      operationId: DeleteDate
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Date_delete'
-    get:
-      x-scope: public
-      tags:
-       - Date
-      description: >-
-      summary: Retrieves a list of all Date
-      operationId: ListDate
-      responses:
-        '200':
-          $ref: '#/components/responses/200Date_get'
-    patch:
-      x-scope: public
-      tags:
-       - Date
-      description: >-
-      summary: Updates an existing Date record.
-      operationId: PatchDate
-      requestBody:
-        $ref: '#/components/requestBodies/Date'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Date_patch'
-  /Language/{id}:
-    get:
-      x-scope: public
-      tags:
-       - Language
-      description: >-
-      summary: retrieve an existing Language record based on the provided ID.
-      operationId: RetreiveLanguage
-      parameters:
-        - $ref: '#/components/parameters/id'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Language_get'
-  /Director:
-    post:
-      x-scope: public
-      tags:
-       - Director
-      description: >-
-      summary: Creates a new Director record.
-      operationId: CreateDirector
-      requestBody:
-        $ref: '#/components/requestBodies/Director'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Director_post'
-    delete:
-      x-scope: public
-      tags:
-       - Director
-      description: >-
-      summary: Deletes an existing Director record based on the provided ID.
-      operationId: DeleteDirector
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Director_delete'
-    get:
-      x-scope: public
-      tags:
-       - Director
-      description: >-
-      summary: Retrieves a list of all Director
-      operationId: ListDirector
-      responses:
-        '200':
-          $ref: '#/components/responses/200Director_get'
-    patch:
-      x-scope: public
-      tags:
-       - Director
-      description: >-
+       - Directors
       summary: Updates an existing Director record.
-      operationId: PatchDirector
+      operationId: UpdateDirector
+      parameters:
+        - $ref: '#/components/parameters/id'
       requestBody:
         $ref: '#/components/requestBodies/Director'
       responses:
         '200':
           $ref: '#/components/responses/200Director_patch'
-  /Date/{id}:
-    get:
-      x-scope: public
-      tags:
-       - Date
-      description: >-
-      summary: retrieve an existing Date record based on the provided ID.
-      operationId: RetreiveDate
-      parameters:
-        - $ref: '#/components/parameters/id'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Date_get'
-  /Actor:
-    post:
-      x-scope: public
-      tags:
-       - Actor
-      description: >-
-      summary: Creates a new Actor record.
-      operationId: CreateActor
-      requestBody:
-        $ref: '#/components/requestBodies/Actor'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Actor_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
     delete:
       x-scope: public
       tags:
-       - Actor
-      description: >-
-      summary: Deletes an existing Actor record based on the provided ID.
-      operationId: DeleteActor
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Actor_delete'
-    get:
-      x-scope: public
-      tags:
-       - Actor
-      description: >-
-      summary: Retrieves a list of all Actor
-      operationId: ListActor
-      responses:
-        '200':
-          $ref: '#/components/responses/200Actor_get'
-    patch:
-      x-scope: public
-      tags:
-       - Actor
-      description: >-
-      summary: Updates an existing Actor record.
-      operationId: PatchActor
-      requestBody:
-        $ref: '#/components/requestBodies/Actor'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Actor_patch'
-  /Movie/{id}:
-    get:
-      x-scope: public
-      tags:
-       - Movie
-      description: >-
-      summary: retrieve an existing Movie record based on the provided ID.
-      operationId: RetreiveMovie
+       - Directors
+      summary: Deletes an existing Director record based on the provided ID.
+      operationId: DeleteDirector
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
-        '200':
-          $ref: '#/components/responses/200Movie_get'
-  /Language:
+        '204':
+          $ref: '#/components/responses/204Director_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Posters:
     post:
       x-scope: public
       tags:
-       - Language
-      description: >-
-      summary: Creates a new Language record.
-      operationId: CreateLanguage
+       - Posters
+      summary: Creates a new Poster record.
+      operationId: CreatePoster
       requestBody:
-        $ref: '#/components/requestBodies/Language'
+        $ref: '#/components/requestBodies/Poster'
       responses:
-        '200':
-          $ref: '#/components/responses/200Language_post'
-    delete:
-      x-scope: public
-      tags:
-       - Language
-      description: >-
-      summary: Deletes an existing Language record based on the provided ID.
-      operationId: DeleteLanguage
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Language_delete'
+        '201':
+          $ref: '#/components/responses/201Poster_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
     get:
       x-scope: public
       tags:
-       - Language
-      description: >-
-      summary: Retrieves a list of all Language
-      operationId: ListLanguage
+       - Posters
+      summary: Retrieves a list of all Poster
+      operationId: ListPoster
       responses:
         '200':
-          $ref: '#/components/responses/200Language_get'
-    patch:
-      x-scope: public
-      tags:
-       - Language
-      description: >-
-      summary: Updates an existing Language record.
-      operationId: PatchLanguage
-      requestBody:
-        $ref: '#/components/requestBodies/Language'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Language_patch'
-  /Poster/{id}:
+          $ref: '#/components/responses/200Poster_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Genres/{id}:
     get:
       x-scope: public
       tags:
-       - Poster
-      description: >-
-      summary: retrieve an existing Poster record based on the provided ID.
-      operationId: RetreivePoster
+       - Genres
+      summary: Retrieve an existing Genre record based on the provided ID.
+      operationId: RetrieveGenre
       parameters:
         - $ref: '#/components/parameters/id'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Poster_get'
-  /Actor/{id}:
-    get:
-      x-scope: public
-      tags:
-       - Actor
-      description: >-
-      summary: retrieve an existing Actor record based on the provided ID.
-      operationId: RetreiveActor
-      parameters:
-        - $ref: '#/components/parameters/id'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Actor_get'
-  /Genre:
-    post:
-      x-scope: public
-      tags:
-       - Genre
-      description: >-
-      summary: Creates a new Genre record.
-      operationId: CreateGenre
-      requestBody:
-        $ref: '#/components/requestBodies/Genre'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Genre_post'
-    delete:
-      x-scope: public
-      tags:
-       - Genre
-      description: >-
-      summary: Deletes an existing Genre record based on the provided ID.
-      operationId: DeleteGenre
-      parameters:
-        - $ref: '#/components/parameters/ID'
-      responses:
-        '200':
-          $ref: '#/components/responses/200Genre_delete'
-    get:
-      x-scope: public
-      tags:
-       - Genre
-      description: >-
-      summary: Retrieves a list of all Genre
-      operationId: ListGenre
       responses:
         '200':
           $ref: '#/components/responses/200Genre_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
     patch:
       x-scope: public
       tags:
-       - Genre
-      description: >-
+       - Genres
       summary: Updates an existing Genre record.
-      operationId: PatchGenre
+      operationId: UpdateGenre
+      parameters:
+        - $ref: '#/components/parameters/id'
       requestBody:
         $ref: '#/components/requestBodies/Genre'
       responses:
         '200':
           $ref: '#/components/responses/200Genre_patch'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      x-scope: public
+      tags:
+       - Genres
+      summary: Deletes an existing Genre record based on the provided ID.
+      operationId: DeleteGenre
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Genre_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Dates:
+    post:
+      x-scope: public
+      tags:
+       - Dates
+      summary: Creates a new Date record.
+      operationId: CreateDate
+      requestBody:
+        $ref: '#/components/requestBodies/Date'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Date_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      x-scope: public
+      tags:
+       - Dates
+      summary: Retrieves a list of all Date
+      operationId: ListDate
+      responses:
+        '200':
+          $ref: '#/components/responses/200Date_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Languages/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Languages
+      summary: Retrieve an existing Language record based on the provided ID.
+      operationId: RetrieveLanguage
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Language_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      x-scope: public
+      tags:
+       - Languages
+      summary: Updates an existing Language record.
+      operationId: UpdateLanguage
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/Language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Language_patch'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      x-scope: public
+      tags:
+       - Languages
+      summary: Deletes an existing Language record based on the provided ID.
+      operationId: DeleteLanguage
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Language_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Directors:
+    post:
+      x-scope: public
+      tags:
+       - Directors
+      summary: Creates a new Director record.
+      operationId: CreateDirector
+      requestBody:
+        $ref: '#/components/requestBodies/Director'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Director_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      x-scope: public
+      tags:
+       - Directors
+      summary: Retrieves a list of all Director
+      operationId: ListDirector
+      responses:
+        '200':
+          $ref: '#/components/responses/200Director_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Dates/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Dates
+      summary: Retrieve an existing Date record based on the provided ID.
+      operationId: RetrieveDate
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Date_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      x-scope: public
+      tags:
+       - Dates
+      summary: Updates an existing Date record.
+      operationId: UpdateDate
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/Date'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Date_patch'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      x-scope: public
+      tags:
+       - Dates
+      summary: Deletes an existing Date record based on the provided ID.
+      operationId: DeleteDate
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Date_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Actors:
+    post:
+      x-scope: public
+      tags:
+       - Actors
+      summary: Creates a new Actor record.
+      operationId: CreateActor
+      requestBody:
+        $ref: '#/components/requestBodies/Actor'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Actor_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      x-scope: public
+      tags:
+       - Actors
+      summary: Retrieves a list of all Actor
+      operationId: ListActor
+      responses:
+        '200':
+          $ref: '#/components/responses/200Actor_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Movies/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Movies
+      summary: Retrieve an existing Movie record based on the provided ID.
+      operationId: RetrieveMovie
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Movie_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      x-scope: public
+      tags:
+       - Movies
+      summary: Updates an existing Movie record.
+      operationId: UpdateMovie
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/Movie'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Movie_patch'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      x-scope: public
+      tags:
+       - Movies
+      summary: Deletes an existing Movie record based on the provided ID.
+      operationId: DeleteMovie
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Movie_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Languages:
+    post:
+      x-scope: public
+      tags:
+       - Languages
+      summary: Creates a new Language record.
+      operationId: CreateLanguage
+      requestBody:
+        $ref: '#/components/requestBodies/Language'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Language_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      x-scope: public
+      tags:
+       - Languages
+      summary: Retrieves a list of all Language
+      operationId: ListLanguage
+      responses:
+        '200':
+          $ref: '#/components/responses/200Language_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Posters/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Posters
+      summary: Retrieve an existing Poster record based on the provided ID.
+      operationId: RetrievePoster
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Poster_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      x-scope: public
+      tags:
+       - Posters
+      summary: Updates an existing Poster record.
+      operationId: UpdatePoster
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/Poster'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Poster_patch'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      x-scope: public
+      tags:
+       - Posters
+      summary: Deletes an existing Poster record based on the provided ID.
+      operationId: DeletePoster
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Poster_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Actors/{id}:
+    get:
+      x-scope: public
+      tags:
+       - Actors
+      summary: Retrieve an existing Actor record based on the provided ID.
+      operationId: RetrieveActor
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Actor_get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      x-scope: public
+      tags:
+       - Actors
+      summary: Updates an existing Actor record.
+      operationId: UpdateActor
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/Actor'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Actor_patch'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      x-scope: public
+      tags:
+       - Actors
+      summary: Deletes an existing Actor record based on the provided ID.
+      operationId: DeleteActor
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          $ref: '#/components/responses/204Actor_delete'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+  /Genres:
+    post:
+      x-scope: public
+      tags:
+       - Genres
+      summary: Creates a new Genre record.
+      operationId: CreateGenre
+      requestBody:
+        $ref: '#/components/requestBodies/Genre'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Genre_post'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      x-scope: public
+      tags:
+       - Genres
+      summary: Retrieves a list of all Genre
+      operationId: ListGenre
+      responses:
+        '200':
+          $ref: '#/components/responses/200Genre_list'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Actor:
       allOf:
@@ -439,12 +868,11 @@ components:
         - type: object
           properties:
             CompositionMovie:
-              description: >-
               nullable: false
               type: array
               items:
                 type: string
-                x-reference: '#/components/schemas/Actor'
+                x-reference: '#/components/schemas/Movie'
     Person:
       allOf:
         - $ref: '#/components/schemas/EntityBaseExtended'
@@ -452,13 +880,10 @@ components:
           properties:
             surname:
               type: string
-              description: >-
             birth:
               type: string
-              description: >-
             nationality:
               type: string
-              description: >-
     EntityBaseExtended:
       allOf:
         - $ref: '#/components/schemas/EntityBase'
@@ -466,10 +891,8 @@ components:
           properties:
             name:
               type: string
-              description: >-
             description:
               type: string
-              description: >-
     EntityBase:
       allOf:
         - type: object
@@ -477,26 +900,21 @@ components:
             created:
               type: string
               format: date
-              description: >-
             creator:
               type: string
               description: >-
                 user name of the creator
             last_editor:
               type: string
-              description: >-
             modified:
               type: string
-              description: >-
     Date:
       allOf:
         - type: object
           properties:
             year:
               type: string
-              description: >-
             DateAggregationMovie:
-              description: >-
               nullable: false
               type: array
               items:
@@ -509,52 +927,41 @@ components:
           properties:
             alias:
               type: string
-              description: >-
             color:
               type: string
-              description: >-
             country:
               type: string
-              description: >-
             URL:
               type: string
-              description: >-
             plot:
               type: string
-              description: >-
             runtime:
               type: string
-              description: >-
             date:
               type: string
               format: date
-              description: >-
             CompositionActor:
-              description: >-
               nullable: false
               type: array
               items:
                 type: string
                 x-reference: '#/components/schemas/Actor'
             CompositionPosterPrimary:
-              description: >-
               nullable: true
               type: string
               x-reference: '#/components/schemas/Poster'
             MovieAggregationDirector:
-              description: >-
               nullable: false
               type: array
               items:
                 type: string
-                x-reference: '#/components/schemas/Movie'
+                x-reference: '#/components/schemas/Director'
             MovieAggregationPoster:
-              description: >-
               nullable: false
               type: array
               items:
                 type: string
-                x-reference: '#/components/schemas/Movie'
+                x-reference: '#/components/schemas/Poster'
     Poster:
       allOf:
         - $ref: '#/components/schemas/Image'
@@ -565,14 +972,12 @@ components:
           properties:
             fileName:
               type: string
-              description: >-
     Director:
       allOf:
         - $ref: '#/components/schemas/Person'
         - type: object
           properties:
             DirectorAggregationMovie:
-              description: >-
               nullable: false
               type: array
               items:
@@ -589,18 +994,9 @@ components:
           properties:
             shortForm:
               type: string
-              description: >-
     Error:
       description: Error
   parameters:
-    ID:
-      name: id
-      required: true
-      description: >-
-        TODO
-      schema:
-        type: string
-      in: query
     id:
       name: id
       required: true
@@ -610,18 +1006,22 @@ components:
         type: string
       in: path
   responses:
-    200Movie_post:
-      description: Success
+    201Movie_post:
+      description: Created
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Movie'
-    200Movie_delete:
+    204Movie_delete:
+      description: Deleted
+    200Movie_list:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Movie'
+            type: array
+            items:
+              $ref: '#/components/schemas/Movie'
     200Movie_get:
       description: Success
       content:
@@ -634,24 +1034,50 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Movie'
+    201Director_post:
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Director'
+    204Director_delete:
+      description: Deleted
+    200Director_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Director'
     200Director_get:
       description: Success
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Director'
-    200Poster_post:
+    200Director_patch:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Poster'
-    200Poster_delete:
-      description: Success
+            $ref: '#/components/schemas/Director'
+    201Poster_post:
+      description: Created
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Poster'
+    204Poster_delete:
+      description: Deleted
+    200Poster_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Poster'
     200Poster_get:
       description: Success
       content:
@@ -664,24 +1090,50 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Poster'
+    201Genre_post:
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Genre'
+    204Genre_delete:
+      description: Deleted
+    200Genre_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Genre'
     200Genre_get:
       description: Success
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Genre'
-    200Date_post:
+    200Genre_patch:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Date'
-    200Date_delete:
-      description: Success
+            $ref: '#/components/schemas/Genre'
+    201Date_post:
+      description: Created
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Date'
+    204Date_delete:
+      description: Deleted
+    200Date_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Date'
     200Date_get:
       description: Success
       content:
@@ -694,42 +1146,50 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Date'
+    201Language_post:
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Language'
+    204Language_delete:
+      description: Deleted
+    200Language_list:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Language'
     200Language_get:
       description: Success
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Language'
-    200Director_post:
+    200Language_patch:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Director'
-    200Director_delete:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Director'
-    200Director_patch:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Director'
-    200Actor_post:
-      description: Success
+            $ref: '#/components/schemas/Language'
+    201Actor_post:
+      description: Created
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Actor'
-    200Actor_delete:
+    204Actor_delete:
+      description: Deleted
+    200Actor_list:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Actor'
+            type: array
+            items:
+              $ref: '#/components/schemas/Actor'
     200Actor_get:
       description: Success
       content:
@@ -742,42 +1202,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Actor'
-    200Language_post:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Language'
-    200Language_delete:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Language'
-    200Language_patch:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Language'
-    200Genre_post:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Genre'
-    200Genre_delete:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Genre'
-    200Genre_patch:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Genre'
     '200':
       description: OK
     '201':
@@ -908,11 +1332,11 @@ x-uml-relationships:
   - name: "CompositionMovie"
     x-ea-guid: FE76A1C2-1CE3-42a4-8B7C-D738E7E11781
     source:
-      schema: "#/components/schemas/Movie"
+      schema: "#/components/schemas/Actor"
       multiplicity: "0..-1"
       navigability: Unspecified
     target:
-      schema: "#/components/schemas/Actor"
+      schema: "#/components/schemas/Movie"
       multiplicity: "0..-1"
       navigability: Unspecified
   - name: "DateAggregationMovie"
@@ -948,21 +1372,21 @@ x-uml-relationships:
   - name: "MovieAggregationDirector"
     x-ea-guid: 7F5FC3D6-6D16-4f4f-BA8A-CECA0A779D75
     source:
-      schema: "#/components/schemas/Director"
+      schema: "#/components/schemas/Movie"
       multiplicity: "1..1"
       navigability: Unspecified
     target:
-      schema: "#/components/schemas/Movie"
+      schema: "#/components/schemas/Director"
       multiplicity: "0..-1"
       navigability: Unspecified
   - name: "MovieAggregationPoster"
     x-ea-guid: 173F3957-77BD-4dbf-9BCF-ABC3F33BB147
     source:
-      schema: "#/components/schemas/Date"
+      schema: "#/components/schemas/Movie"
       multiplicity: "1..1"
       navigability: Unspecified
     target:
-      schema: "#/components/schemas/Movie"
+      schema: "#/components/schemas/Poster"
       multiplicity: "0..-1"
       navigability: Unspecified
   - name: "DirectorAggregationMovie"
