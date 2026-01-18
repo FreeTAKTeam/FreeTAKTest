@@ -1,0 +1,1609 @@
+openapi: 3.0.0
+info:
+  title: FreeTAKServer REST API
+  version: "1.9"
+  description: |-
+    This OpenAPI specification describes the REST API endpoints for FreeTAKServer (FTS).
+    The specification combines the **public API** and **internal REST API** documented in the
+    FreeTAKServer user documentation.  Each endpoint description and the associated
+    request/response schemas were derived from examples and parameter lists in the official
+    documentation【78350673279001†L115-L127】【125652230415315†L471-L499】.
+    
+    All requests require an API key.  Clients must provide a `Bearer` token in the
+    `Authorization` header (e.g., `Authorization: Bearer your_api_key`)【78350673279001†L118-L125】.
+
+servers:
+  - url: http://{host}:{port}
+    description: Default server
+    variables:
+      host:
+        default: localhost
+      port:
+        default: "19023"
+
+security:
+  - bearerAuth: []
+
+paths:
+  "/manageAPI/getHelp":
+    get:
+      summary: Retrieve API version and supported endpoints
+      description: Return the API version and the list of supported endpoints【78350673279001†L119-L146】.
+      operationId: getHelp
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetHelpResponse"
+  "/ManageGeoObject/postGeoObject":
+    post:
+      summary: Create a new GeoObject
+      description: |
+        Create a GeoObject on the map.  GeoObjects can represent people, equipment or other
+        entities.  Some fields are optional: when omitted the server may derive values
+        automatically【78350673279001†L155-L188】.  If a `uid` is provided the call may update an
+        existing GeoObject, otherwise a new object is created【78350673279001†L184-L187】.
+      operationId: postGeoObject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeoObjectRequest"
+            example:
+              longitude: -77.0104
+              latitude: 38.889
+              attitude: hostile
+              bearing: 132
+              distance: 1
+              geoObject: Gnd Combat Infantry Sniper
+              how: nonCoT
+              name: Putin
+              timeout: 600
+      responses:
+        "200":
+          description: GeoObject created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeoObjectResponse"
+  "/ManageGeoObject/putGeoObject":
+    put:
+      summary: Update a GeoObject
+      description: |
+        Update an existing GeoObject’s coordinates or other attributes.  A valid `uid` is
+        required【78350673279001†L376-L418】.  Other attributes may be included to modify the
+        object.
+      operationId: putGeoObject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PutGeoObjectRequest"
+            example:
+              uid: "44455566775623"
+              longitude: -66.12614
+              latitude: 43.96552
+              attitude: hostile
+              geoObject: Sniper
+      responses:
+        "200":
+          description: GeoObject updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeoObjectResponse"
+  "/ManageGeoObject/getGeoObject":
+    get:
+      summary: Retrieve GeoObjects within a radius
+      description: |
+        Return all GeoObjects in a specified radius.  Parameters are passed in the URL query
+        string【78350673279001†L439-L475】.
+      operationId: getGeoObject
+      parameters:
+        - in: query
+          name: longitude
+          schema:
+            type: number
+          description: Longitude of the center point (default 0)
+        - in: query
+          name: latitude
+          schema:
+            type: number
+          description: Latitude of the center point (default 0)
+        - in: query
+          name: radius
+          schema:
+            type: integer
+            default: 100
+          description: Search radius in meters【78350673279001†L454-L456】.
+        - in: query
+          name: attitude
+          schema:
+            type: string
+          description: Optional attitude filter (e.g., friendly or hostile)
+      responses:
+        "200":
+          description: List of GeoObjects
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeoObjectsResponse"
+  "/ManageGeoObject/GetRepeatedMessages":
+    get:
+      summary: Retrieve repeated messages
+      description: Return GeoObjects that are regularly resent by the server【78350673279001†L482-L489】.
+      operationId: getRepeatedMessages
+      responses:
+        "200":
+          description: Messages returned
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  "/ManageChat/postChatToAll":
+    post:
+      summary: Send a GeoChat message to all clients
+      description: Send a text message from a sender to all connected clients【78350673279001†L491-L517】.
+      operationId: postChatToAll
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatRequest"
+            example:
+              message: "sending this over Rest API"
+              sender: "Admin"
+      responses:
+        "200":
+          description: Message sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+  "/ManageEmergency/postEmergency":
+    post:
+      summary: Create an emergency
+      description: Create a new emergency with the specified details【78350673279001†L520-L558】.
+      operationId: postEmergency
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmergencyRequest"
+            example:
+              name: Corvo
+              emergencyType: In Contact
+              longitude: -77.01395
+              latitude: 38.889
+      responses:
+        "200":
+          description: Emergency created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmergencyResponse"
+  "/ManageEmergency/getEmergency":
+    get:
+      summary: Get active emergencies
+      description: Retrieve a list of active emergencies【78350673279001†L561-L584】.
+      operationId: getEmergency
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetEmergencyResponse"
+  "/ManageEmergency/deleteEmergency":
+    delete:
+      summary: Delete an emergency
+      description: Delete or deactivate an emergency【78350673279001†L585-L611】.
+      operationId: deleteEmergency
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteEmergencyRequest"
+            example:
+              uid: 459b5874-1ebf-11eb-9e70-4e58de281c19
+              status: off
+      responses:
+        "200":
+          description: Emergency deleted
+          content:
+            application/json:
+              schema:
+                type: object
+  "/ManagePresence/postPresence":
+    post:
+      summary: Create or update a team member’s presence
+      description: Record the current position and role of a team member【78350673279001†L617-L670】.
+      operationId: postPresence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PresenceRequest"
+            example:
+              uid: 999b5874-1ebf-11zz-9e70-4e58de281c19
+              how: nonCoT
+              name: POTUS
+              longitude: -77.01385
+              latitude: 38.889
+              role: Team Member
+              team: Yellow
+      responses:
+        "200":
+          description: Presence recorded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PresenceResponse"
+  "/ManagePresence/putPresence":
+    put:
+      summary: Update a team member’s presence
+      description: Update the location or status of an existing presence【78350673279001†L673-L689】.
+      operationId: putPresence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePresenceRequest"
+      responses:
+        "200":
+          description: Presence updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PresenceResponse"
+  "/ManageRoute/postRoute":
+    post:
+      summary: Create or update a route
+      description: Create a new route or update an existing route on the map【78350673279001†L691-L748】.
+      operationId: postRoute
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RouteRequest"
+            examples:
+              basic:
+                value:
+                  longitude: -77.02385
+                  latitude: 38.999
+                  routeName: trip to Phil
+                  startName: Washington
+                  endName: Philadelphia
+                  timeout: 40000
+                  latitudeDest: 39.940
+                  longitudeDest: -75.01385
+              withAddress:
+                value:
+                  longitude: -77.01385
+                  latitude: 38.889
+                  routeName: trip to wichita
+                  timeout: 40000
+                  address: Wichita, KS, USA
+              withMethod:
+                value:
+                  longitude: -77.02385
+                  latitude: 38.999
+                  routeName: trip to halifax
+                  latitudeDest: 44.69
+                  longitudeDest: -63.57
+                  method: Flying
+      responses:
+        "200":
+          description: Route created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RouteResponse"
+  "/ManageVideoStream/postVideoStream":
+    post:
+      summary: Create a video stream
+      description: Create a new video stream entry for clients to view【78350673279001†L795-L848】.
+      operationId: postVideoStream
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoStreamRequest"
+            example:
+              streamAddress: "64.227.70.77"
+              streamPort: "1935"
+              streamPath: "/LiveApp/342508189321134315564775"
+              alias: "Demo Stream From Drone"
+              streamProtocol: "rtmp"
+      responses:
+        "200":
+          description: Video stream created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoStreamResponse"
+  "/ManageVideoStream/getVideoStream":
+    get:
+      summary: List video streams
+      description: Retrieve a list of available video stream paths【78350673279001†L852-L873】.
+      operationId: getVideoStream
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoStreamResponse"
+  "/Sensor/postDrone":
+    post:
+      summary: Create or update a drone sensor
+      description: |
+        Create a drone object with a field of view, range and video stream or update an existing drone
+        object【78350673279001†L884-L959】.  When a `uid` is provided the existing drone is updated.
+      operationId: postDrone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DroneRequest"
+            example:
+              name: Putin air
+              Bearing: "90"
+              longitude: -77.01383
+              latitude: 38.883
+              FieldOfView: "20"
+              Range: "500"
+              VideoURLUID: rtmp://64.227.50.48:1935/live/PutinAirVideo
+              SPILongitude: -77.01393
+              SPILatitude: 38.885
+              SPIName: Putin air SPI
+      responses:
+        "200":
+          description: Drone created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DroneResponse"
+  "/Sensor/postSPI":
+    post:
+      summary: Create or update a Sensor Point of Interest (SPI)
+      description: |
+        Create a point of interest or update an existing SPI for a drone【78350673279001†L978-L1027】.
+      operationId: postSPI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SpiRequest"
+            example:
+              uid: e452b6bf-d4f0-11eb-b818-2cf05d092d98
+              timeout: 500
+              longitude: 4
+              latitude: 8
+              droneUid: d76f608a-d4f0-11eb-b375-2cf05d092d98
+              name: test
+      responses:
+        "200":
+          description: SPI created or updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpiResponse"
+  "/ManageKML/postKML":
+    post:
+      summary: Submit a KML report
+      description: Submit a KML report containing a set of geo‑information and metadata【78350673279001†L1030-L1083】.
+      operationId: postKML
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KmlRequest"
+            example:
+              name: Putin Report
+              longitude: -77.01399
+              latitude: 38.889
+              body:
+                userCallsign: Mr Putin
+                dateTime: 2021-07-13
+                type: Surveillance
+                eventScale: Capital
+                importance: Routine
+                status: FurtherInvestigation
+                Time Observed: 2021-05-13T13:55:05.19Z
+                Duration of Event: All day
+                Method Of Detection: General Observation
+                Surveillance Type: Discreet
+                Assessed Threats: Threat to Mission
+                Final Remarks: SNAFU
+      responses:
+        "200":
+          description: KML report accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KmlResponse"
+  "/ManageSystemUser/postSystemUser":
+    post:
+      summary: Create system users
+      description: Create one or more system users on the server【125652230415315†L471-L499】.
+      operationId: postSystemUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SystemUserRequest"
+            example:
+              systemUsers:
+                - Name: dan
+                  Group: Yellow
+                  Token: token
+                  Password: psw1
+                  Certs: "true"
+                  DeviceType: mobile
+      responses:
+        "201":
+          description: Users created
+          content:
+            application/json:
+              schema:
+                type: object
+  "/ManageSystemUser/deleteSystemUser":
+    delete:
+      summary: Delete system users
+      description: Remove one or more system users and revoke their certificates【125652230415315†L503-L519】.
+      operationId: deleteSystemUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteSystemUserRequest"
+            example:
+              systemUsers:
+                - uid: 46b3de87-85f5-400d-a098-536f2e1421ce
+      responses:
+        "200":
+          description: Users deleted
+          content:
+            application/json:
+              schema:
+                type: object
+  "/ManageSystemUser/putSystemUser":
+    put:
+      summary: Update system users
+      description: Update information for existing system users【125652230415315†L524-L544】.
+      operationId: putSystemUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSystemUserRequest"
+            example:
+              systemUsers:
+                - uid: existing user id
+                  password: new user password
+                  token: new user token
+                  group: new user group
+      responses:
+        "200":
+          description: Users updated
+          content:
+            application/json:
+              schema:
+                type: object
+  "/DataPackageTable":
+    get:
+      summary: List data packages
+      description: Retrieve information for all DataPackages on the server【125652230415315†L555-L566】.
+      operationId: getDataPackages
+      responses:
+        "200":
+          description: Data packages returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DataPackagesResponse"
+    post:
+      summary: Upload a data package
+      description: Upload a zipped data package.  The request body is binary data and
+        query parameters specify the filename and optional creator UID【125652230415315†L569-L575】.
+      operationId: postDataPackage
+      parameters:
+        - in: query
+          name: filename
+          required: true
+          schema:
+            type: string
+          description: Name of the zipped file
+        - in: query
+          name: creatorUid
+          required: false
+          schema:
+            type: string
+          description: UID of the user associated with the DataPackage (defaults to server)
+      requestBody:
+        required: true
+        content:
+          application/zip:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "201":
+          description: Data package uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete data packages
+      description: Delete one or more data packages by hash【125652230415315†L577-L586】.
+      operationId: deleteDataPackage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataPackagesDeleteRequest"
+            example:
+              DataPackages:
+                - hash: "194728885783f87ws84888943fjew"
+                - hash: "19472mw45783f7ws848758943fjegr"
+      responses:
+        "200":
+          description: Data packages deleted
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Update data packages
+      description: Modify attributes of an existing data package【125652230415315†L589-L605】.
+      operationId: putDataPackage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataPackagesUpdateRequest"
+            example:
+              DataPackages:
+                - PrimaryKey: "1"
+                  Name: new_name
+                  Keywords: new keywords
+                  Privacy: "0"
+      responses:
+        "200":
+          description: Data package updated
+          content:
+            application/json:
+              schema:
+                type: object
+  "/MissionTable":
+    get:
+      summary: Retrieve missions
+      description: Get information about all mission packages【125652230415315†L618-L666】.
+      operationId: getMissionTable
+      responses:
+        "200":
+          description: Missions returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MissionResponse"
+    post:
+      summary: Create a mission
+      description: Endpoint reserved for future use; not implemented【125652230415315†L668-L671】.
+      operationId: postMissionTable
+      responses:
+        "501":
+          description: Not implemented
+    delete:
+      summary: Delete missions
+      description: Endpoint reserved for future use; not implemented【125652230415315†L668-L673】.
+      operationId: deleteMissionTable
+      responses:
+        "501":
+          description: Not implemented
+  "/ExCheckTable":
+    get:
+      summary: List ExCheck items
+      description: Retrieve templates and checklists present on the server【125652230415315†L702-L733】.
+      operationId: getExCheck
+      responses:
+        "200":
+          description: ExCheck items returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExCheckResponse"
+    post:
+      summary: Upload an ExCheck template
+      description: Create a template on the server from an XML file【125652230415315†L679-L687】.
+      operationId: postExCheck
+      parameters:
+        - in: query
+          name: clientUid
+          required: true
+          schema:
+            type: string
+          description: UID of the client creating the template【125652230415315†L679-L685】
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Template uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete templates and checklists
+      description: Delete templates or checklists by UID【125652230415315†L688-L699】.
+      operationId: deleteExCheck
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExCheckDeleteRequest"
+            example:
+              ExCheck:
+                Templates:
+                  - uid: TemplateUID1
+                  - uid: TemplateUID2
+                Checklists:
+                  - uid: ChecklistUID1
+                  - uid: ChecklistUID2
+      responses:
+        "200":
+          description: Items deleted
+          content:
+            application/json:
+              schema:
+                type: object
+  "/FederationTable":
+    get:
+      summary: List federations
+      description: Retrieve active federations and federation configurations【125652230415315†L756-L797】.
+      operationId: getFederationTable
+      responses:
+        "200":
+          description: Federations returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FederationResponse"
+    post:
+      summary: Create federation configurations
+      description: Create one or more outgoing federation configurations【125652230415315†L799-L816】.
+      operationId: postFederationTable
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FederationCreateRequest"
+            example:
+              outgoingFederations:
+                - name: federation 1
+                  address: 127.0.0.1
+                  port: "9000"
+                  fallBack: federation 2
+                  status: Disabled
+                  reconnectInterval: "32"
+                  maxRetries: "15"
+      responses:
+        "200":
+          description: Federations created
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete federation configurations
+      description: Delete one or more federation configurations by ID【125652230415315†L818-L830】.
+      operationId: deleteFederationTable
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FederationDeleteRequest"
+            example:
+              federations:
+                - id: 111-111-111
+      responses:
+        "200":
+          description: Federations deleted
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Update federation configurations
+      description: Modify attributes of an existing federation configuration【125652230415315†L832-L845】.
+      operationId: putFederationTable
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FederationUpdateRequest"
+            example:
+              federations:
+                - id: 111-111-111
+                  name: new federation 1
+                  fallBack: new fallback
+                  status: Enabled
+                  reconnectInterval: "15"
+                  maxRetries: "10"
+      responses:
+        "200":
+          description: Federation updated
+          content:
+            application/json:
+              schema:
+                type: object
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    GetHelpResponse:
+      type: object
+      properties:
+        APIVersion:
+          type: string
+        SupportedEndpoints:
+          type: array
+          items:
+            type: string
+      required:
+        - APIVersion
+        - SupportedEndpoints
+    GeoObjectRequest:
+      type: object
+      properties:
+        longitude:
+          type: number
+        latitude:
+          type: number
+        attitude:
+          type: string
+          description: Expected behaviour of the GeoObject (e.g., friendly, hostile)
+        bearing:
+          type: number
+          description: Direction in degrees
+        distance:
+          type: number
+        geoObject:
+          type: string
+          description: Type of the geo object (may be a nickname or full name)
+        how:
+          type: string
+          description: How the geo information was acquired
+        name:
+          type: string
+          description: Identifier for the GeoObject on the map
+        timeout:
+          type: integer
+        uid:
+          type: string
+        address:
+          type: string
+      required:
+        - geoObject
+        - how
+        - name
+    GeoObjectResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+      required:
+        - uid
+    PutGeoObjectRequest:
+      allOf:
+        - $ref: "#/components/schemas/GeoObjectRequest"
+        - type: object
+          required:
+            - uid
+            - longitude
+            - latitude
+            - attitude
+    GeoObjectsResponse:
+      type: object
+      additionalProperties: true
+    ChatRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        sender:
+          type: string
+      required:
+        - message
+        - sender
+    ChatResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status message
+      required:
+        - status
+    EmergencyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        emergencyType:
+          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
+        uid:
+          type: string
+        address:
+          type: string
+      required:
+        - name
+        - emergencyType
+        - longitude
+        - latitude
+    EmergencyResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+      required:
+        - uid
+    GetEmergencyResponse:
+      type: object
+      properties:
+        json_list:
+          type: array
+          items:
+            type: object
+            properties:
+              PrimaryKey:
+                type: integer
+              event_id:
+                type: string
+            required:
+              - PrimaryKey
+              - event_id
+      required:
+        - json_list
+    DeleteEmergencyRequest:
+      type: object
+      properties:
+        uid:
+          type: string
+        status:
+          type: string
+          description: on or off
+      required:
+        - uid
+        - status
+    PresenceRequest:
+      type: object
+      properties:
+        uid:
+          type: string
+        how:
+          type: string
+        name:
+          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
+        role:
+          type: string
+        team:
+          type: string
+      required:
+        - how
+        - name
+        - longitude
+        - latitude
+        - role
+        - team
+    UpdatePresenceRequest:
+      allOf:
+        - $ref: "#/components/schemas/PresenceRequest"
+        - type: object
+          required:
+            - uid
+    PresenceResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+      required:
+        - uid
+    RouteRequest:
+      type: object
+      properties:
+        timeout:
+          type: integer
+        address:
+          type: string
+        method:
+          type: string
+          description: Driving, Flying, Walking, Swimming or Watercraft
+        longitudeDest:
+          type: number
+        latitudeDest:
+          type: number
+        uid:
+          type: string
+        routeName:
+          type: string
+        endName:
+          type: string
+        startName:
+          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
+      required:
+        - longitude
+        - latitude
+    RouteResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+      required:
+        - uid
+    VideoStreamRequest:
+      type: object
+      properties:
+        streamAddress:
+          type: string
+        streamPort:
+          type: string
+        streamPath:
+          type: string
+        alias:
+          type: string
+        streamProtocol:
+          type: string
+      required:
+        - streamAddress
+        - streamPort
+        - streamPath
+        - alias
+        - streamProtocol
+    VideoStreamResponse:
+      type: object
+      properties:
+        video_stream:
+          type: array
+          items:
+            type: string
+      required:
+        - video_stream
+    DroneRequest:
+      type: object
+      properties:
+        timeout:
+          type: integer
+        name:
+          type: string
+        Range:
+          type: string
+        Bearing:
+          type: string
+        FieldOfView:
+          type: string
+        VideoURLUID:
+          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
+        uid:
+          type: string
+        SPIName:
+          type: string
+        SPILongitude:
+          type: number
+        SPILatitude:
+          type: number
+      required:
+        - name
+        - Range
+        - Bearing
+        - FieldOfView
+        - VideoURLUID
+        - longitude
+        - latitude
+    DroneResponse:
+      type: object
+      properties:
+        droneUid:
+          type: string
+        spiUid:
+          type: string
+      required:
+        - droneUid
+        - spiUid
+    SpiRequest:
+      type: object
+      properties:
+        uid:
+          type: string
+        timeout:
+          type: integer
+        longitude:
+          type: number
+        latitude:
+          type: number
+        droneUid:
+          type: string
+        name:
+          type: string
+      required:
+        - longitude
+        - latitude
+        - droneUid
+        - name
+    SpiResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+      required:
+        - uid
+    KmlRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
+        body:
+          type: object
+          additionalProperties:
+            type: string
+      required:
+        - name
+        - longitude
+        - latitude
+        - body
+    KmlResponse:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    SystemUserRequest:
+      type: object
+      properties:
+        systemUsers:
+          type: array
+          items:
+            $ref: "#/components/schemas/SystemUser"
+      required:
+        - systemUsers
+    SystemUser:
+      type: object
+      properties:
+        Name:
+          type: string
+        Group:
+          type: string
+        Token:
+          type: string
+        Password:
+          type: string
+        Certs:
+          type: string
+        DeviceType:
+          type: string
+      required:
+        - Name
+        - Group
+    DeleteSystemUserRequest:
+      type: object
+      properties:
+        systemUsers:
+          type: array
+          items:
+            type: object
+            properties:
+              uid:
+                type: string
+            required:
+              - uid
+      required:
+        - systemUsers
+    UpdateSystemUserRequest:
+      type: object
+      properties:
+        systemUsers:
+          type: array
+          items:
+            type: object
+            properties:
+              uid:
+                type: string
+              password:
+                type: string
+              token:
+                type: string
+              group:
+                type: string
+            required:
+              - uid
+      required:
+        - systemUsers
+    DataPackagesResponse:
+      type: object
+      properties:
+        DataPackages:
+          type: array
+          items:
+            $ref: "#/components/schemas/DataPackage"
+      required:
+        - DataPackages
+    DataPackage:
+      type: object
+      properties:
+        Keywords:
+          type: string
+        name:
+          type: string
+        privacy:
+          type: string
+        size:
+          type: string
+        submitted:
+          type: string
+      required:
+        - Keywords
+        - name
+        - privacy
+        - size
+        - submitted
+    DataPackagesDeleteRequest:
+      type: object
+      properties:
+        DataPackages:
+          type: array
+          items:
+            type: object
+            properties:
+              hash:
+                type: string
+            required:
+              - hash
+      required:
+        - DataPackages
+    DataPackagesUpdateRequest:
+      type: object
+      properties:
+        DataPackages:
+          type: array
+          items:
+            type: object
+            properties:
+              PrimaryKey:
+                type: string
+              Name:
+                type: string
+              Keywords:
+                type: string
+              Privacy:
+                type: string
+            required:
+              - PrimaryKey
+      required:
+        - DataPackages
+    MissionResponse:
+      type: object
+      properties:
+        version:
+          type: string
+        type:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Mission"
+        nodeId:
+          type: string
+      required:
+        - version
+        - type
+        - data
+        - nodeId
+    Mission:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        chatRoom:
+          type: string
+        tool:
+          type: string
+        keywords:
+          type: array
+          items:
+            type: string
+        creatorUid:
+          type: string
+        createTime:
+          type: string
+        groups:
+          type: array
+          items:
+            type: string
+        externalData:
+          type: array
+          items:
+            type: string
+        uids:
+          type: array
+          items:
+            $ref: "#/components/schemas/MissionUid"
+        contents:
+          type: array
+          items:
+            $ref: "#/components/schemas/MissionContent"
+        passwordProtected:
+          type: boolean
+      required:
+        - name
+        - description
+        - tool
+        - keywords
+        - creatorUid
+        - createTime
+        - groups
+        - externalData
+        - uids
+        - contents
+        - passwordProtected
+    MissionUid:
+      type: object
+      properties:
+        data:
+          type: string
+        timestamp:
+          type: string
+        creatorUid:
+          type: string
+        details:
+          $ref: "#/components/schemas/MissionUidDetails"
+      required:
+        - data
+        - timestamp
+        - creatorUid
+        - details
+    MissionUidDetails:
+      type: object
+      properties:
+        type:
+          type: string
+        callsign:
+          type: string
+        iconsetPath:
+          type: string
+      required:
+        - type
+        - callsign
+        - iconsetPath
+    MissionContent:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            filename:
+              type: string
+            keywords:
+              type: array
+              items:
+                type: string
+            mimeType:
+              type: string
+            name:
+              type: string
+            submissionTime:
+              type: string
+            submitter:
+              type: string
+            uid:
+              type: string
+            hash:
+              type: string
+            size:
+              type: integer
+          required:
+            - filename
+            - keywords
+            - mimeType
+            - name
+            - submissionTime
+            - submitter
+            - uid
+            - hash
+            - size
+        timestamp:
+          type: string
+        creatorUid:
+          type: string
+      required:
+        - data
+        - timestamp
+        - creatorUid
+    ExCheckResponse:
+      type: object
+      properties:
+        ExCheck:
+          type: object
+          properties:
+            Templates:
+              type: array
+              items:
+                $ref: "#/components/schemas/ExCheckTemplate"
+            Checklists:
+              type: array
+              items:
+                $ref: "#/components/schemas/ExCheckChecklist"
+          required:
+            - Templates
+            - Checklists
+      required:
+        - ExCheck
+    ExCheckTemplate:
+      type: object
+      properties:
+        filename:
+          type: string
+        name:
+          type: string
+        submissionTime:
+          type: string
+        submitter:
+          type: string
+        uid:
+          type: string
+        hash:
+          type: string
+        size:
+          type: integer
+        description:
+          type: string
+      required:
+        - filename
+        - name
+        - submissionTime
+        - submitter
+        - uid
+        - hash
+        - size
+        - description
+    ExCheckChecklist:
+      type: object
+      properties:
+        filename:
+          type: string
+        name:
+          type: string
+        startTime:
+          type: string
+        submitter:
+          type: string
+        uid:
+          type: string
+        description:
+          type: string
+        template:
+          type: string
+      required:
+        - filename
+        - name
+        - startTime
+        - submitter
+        - uid
+        - description
+        - template
+    ExCheckDeleteRequest:
+      type: object
+      properties:
+        ExCheck:
+          type: object
+          properties:
+            Templates:
+              type: array
+              items:
+                type: object
+                properties:
+                  uid:
+                    type: string
+                required:
+                  - uid
+            Checklists:
+              type: array
+              items:
+                type: object
+                properties:
+                  uid:
+                    type: string
+                required:
+                  - uid
+          required:
+            - Templates
+            - Checklists
+      required:
+        - ExCheck
+    FederationResponse:
+      type: object
+      properties:
+        activeFederations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Federation"
+        federations:
+          type: array
+          items:
+            $ref: "#/components/schemas/FederationDetailed"
+      required:
+        - activeFederations
+        - federations
+    Federation:
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        port:
+          type: string
+        initiator:
+          type: string
+        readCount:
+          type: string
+        processedCount:
+          type: string
+      required:
+        - id
+        - address
+        - port
+        - initiator
+        - readCount
+        - processedCount
+    FederationDetailed:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        port:
+          type: string
+        fallBack:
+          type: string
+        status:
+          type: string
+        reconnectInterval:
+          type: string
+        maxRetries:
+          type: string
+        lastError:
+          type: string
+      required:
+        - id
+        - name
+        - address
+        - port
+        - fallBack
+        - status
+        - reconnectInterval
+        - maxRetries
+    FederationCreateRequest:
+      type: object
+      properties:
+        outgoingFederations:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              address:
+                type: string
+              port:
+                type: string
+              fallBack:
+                type: string
+              status:
+                type: string
+              reconnectInterval:
+                type: string
+              maxRetries:
+                type: string
+            required:
+              - name
+              - address
+              - port
+      required:
+        - outgoingFederations
+    FederationDeleteRequest:
+      type: object
+      properties:
+        federations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+            required:
+              - id
+      required:
+        - federations
+    FederationUpdateRequest:
+      type: object
+      properties:
+        federations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              fallBack:
+                type: string
+              status:
+                type: string
+              reconnectInterval:
+                type: string
+              maxRetries:
+                type: string
+            required:
+              - id
+      required:
+        - federations
